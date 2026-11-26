@@ -31,7 +31,7 @@ app.use('/uploads', express.static(uploadsDir));
 
 // Static catalog images serving (from local public/catalog-images, or external drive fallback)
 const localPublicCatalog = path.join(__dirname, '..', 'public', 'catalog-images');
-const defaultDrivePath = '/Volumes/STUDIO/AKSHAR/AKSHAR 1TB/AKSHAR SALES/|| Craftique Products';
+const defaultDrivePath = '/Volumes/STUDIO/AKSHAR/AKSHAR 1TB/AKSHAR SALES/|| Akshar PrintShop Pro';
 
 if (fs.existsSync(localPublicCatalog)) {
   console.log('[Server] Serving catalog images from public/catalog-images:', localPublicCatalog);
@@ -981,8 +981,8 @@ module.exports = app;
 if (!process.env.VERCEL && require.main === module) {
   app.listen(PORT, async () => {
     console.log(`=======================================================`);
-    console.log(`  🌟 CREAFTIQUE FULLSTACK SERVER RUNNING ON PORT ${PORT} `);
-    console.log(`  Brand: Creaftique | UPI ID: aksharstudio-3@okisbii    `);
+    console.log(`  🖨️ AKSHAR PRINTSHOP PRO SERVER RUNNING ON PORT ${PORT} `);
+    console.log(`  Brand: Akshar PrintShop Pro | UPI: aksharstudio-2@okicici `);
     console.log(`=======================================================`);
 
     // Initial catalog sync and start real-time directory watcher
