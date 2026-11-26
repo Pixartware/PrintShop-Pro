@@ -29,7 +29,8 @@ npm run build
 # 3. Commit and push any updated catalog images and products to GitHub
 echo ""
 echo "🚀 Step 3: Pushing latest code to GitHub (Pixartware/PrintShop-Pro)..."
-git remote set-url origin https://github.com/Pixartware/PrintShop-Pro.git
+# Ensure remote is present
+git remote get-url origin >/dev/null 2>&1 || git remote add origin https://github.com/Pixartware/PrintShop-Pro.git
 git add -A
 if git diff-index --quiet HEAD --; then
   echo "✅ Git is already up to date. No new file changes."
