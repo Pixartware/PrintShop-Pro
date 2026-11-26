@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const BUNDLED_DB_FILE = path.join(__dirname, 'data', 'creaftique.json');
+const BUNDLED_DB_FILE = path.join(__dirname, 'data', 'printshop.json');
 const DB_FILE = process.env.VERCEL
-  ? path.join('/tmp', 'creaftique.json')
+  ? path.join('/tmp', 'printshop.json')
   : BUNDLED_DB_FILE;
 
 // Default initial state
@@ -35,540 +35,314 @@ const INITIAL_SETTINGS = {
 
 const INITIAL_CATEGORIES = [
   {
-    id: "decor",
-    name: "Décor",
-    slug: "decor",
-    description: "Handcrafted wall art, personalized frames & artisanal home accents.",
-    icon: "Frame",
-    subcategories: [
-      { id: "paintings", name: "Paintings", slug: "paintings" },
-      { id: "wall-art", name: "Wall Art", slug: "wall-art" },
-      { id: "hanging", name: "Hanging", slug: "hanging" },
-      { id: "posters", name: "Posters", slug: "posters" },
-      { id: "photo-frames", name: "Photo Frames", slug: "photo-frames" },
-      { id: "customized-frames", name: "Customized Frames", slug: "customized-frames" },
-      { id: "decorative-products", name: "Decorative Products", slug: "decorative-products" }
+    "id": "commercial-printing",
+    "name": "Commercial Printing",
+    "slug": "commercial-printing",
+    "description": "High-speed digital printing on 12x18 & 13x19 sheets across 100 to 350 GSM papers.",
+    "icon": "Printer",
+    "subcategories": [
+      {
+        "id": "sheet-printing",
+        "name": "Sheet Printing",
+        "slug": "sheet-printing"
+      },
+      {
+        "id": "flyers-leaflets",
+        "name": "Flyers & Leaflets",
+        "slug": "flyers-leaflets"
+      },
+      {
+        "id": "brochures",
+        "name": "Brochures",
+        "slug": "brochures"
+      },
+      {
+        "id": "posters",
+        "name": "Posters",
+        "slug": "posters"
+      },
+      {
+        "id": "magazines-books",
+        "name": "Magazines & Booklets",
+        "slug": "magazines-books"
+      }
     ]
   },
   {
-    id: "printing",
-    name: "Printing Services",
-    slug: "printing",
-    description: "High-definition archival commercial & personal printing solutions.",
-    icon: "Printer",
-    subcategories: [
-      { id: "photo-albums", name: "Photo Albums", slug: "photo-albums" },
-      { id: "magazines", name: "Magazines", slug: "magazines" },
-      { id: "photo-collage", name: "Photo Collage", slug: "photo-collage" },
-      { id: "cards", name: "Cards", slug: "cards" },
-      { id: "invitations", name: "Invitations", slug: "invitations" },
-      { id: "stickers", name: "Stickers", slug: "stickers" },
-      { id: "tags", name: "Tags", slug: "tags" },
-      { id: "packaging", name: "Packaging", slug: "packaging" },
-      { id: "brochures", name: "Brochures", slug: "brochures" },
-      { id: "flyers", name: "Flyers", slug: "flyers" },
-      { id: "business-cards", name: "Business Cards", slug: "business-cards" },
-      { id: "certificates", name: "Certificates", slug: "certificates" },
-      { id: "photo-prints", name: "Photo Prints", slug: "photo-prints" }
+    "id": "stickers-labels",
+    "name": "Stickers & Labels",
+    "slug": "stickers-labels",
+    "description": "Precision computer half-cut sticker sheets, vinyl, opaque & transparent prints.",
+    "icon": "Sparkles",
+    "subcategories": [
+      {
+        "id": "sticker-sheets",
+        "name": "Sticker Sheets (Half Cut)",
+        "slug": "sticker-sheets"
+      },
+      {
+        "id": "vinyl-stickers",
+        "name": "Vinyl & Waterproof Stickers",
+        "slug": "vinyl-stickers"
+      },
+      {
+        "id": "opaque-transparent",
+        "name": "Opaque & Transparent Sheets",
+        "slug": "opaque-transparent"
+      },
+      {
+        "id": "product-labels",
+        "name": "Product & Packaging Labels",
+        "slug": "product-labels"
+      }
     ]
   },
   {
-    id: "customized-products",
-    name: "Customized Products",
-    slug: "customized-products",
-    description: "Bespoke gifts, photo magnets, customized backdrops and party supplies.",
-    icon: "Sparkles",
-    subcategories: [
-      { id: "photo-magnets", name: "Photo Magnets", slug: "photo-magnets" },
-      { id: "insta-photo-cards", name: "Insta Photo Cards", slug: "insta-photo-cards" },
-      { id: "party-supplies", name: "Party Supplies & Cutouts", slug: "party-supplies" },
-      { id: "custom-labels", name: "Custom Book & Bottle Labels", slug: "custom-labels" }
+    "id": "business-stationery",
+    "name": "Business Stationery",
+    "slug": "business-stationery",
+    "description": "Executive visiting cards, letterheads, certificates, envelopes & branded stationery.",
+    "icon": "FileText",
+    "subcategories": [
+      {
+        "id": "visiting-cards",
+        "name": "Visiting Cards",
+        "slug": "visiting-cards"
+      },
+      {
+        "id": "letterheads",
+        "name": "A3 & A4 Letterheads",
+        "slug": "letterheads"
+      },
+      {
+        "id": "certificates",
+        "name": "Certificates",
+        "slug": "certificates"
+      },
+      {
+        "id": "envelopes",
+        "name": "Envelopes & Folders",
+        "slug": "envelopes"
+      }
+    ]
+  },
+  {
+    "id": "party-specialty",
+    "name": "Event & Party Printing",
+    "slug": "party-specialty",
+    "description": "Party paper printing, custom cutouts, photo backdrops & festival banners.",
+    "icon": "Calendar",
+    "subcategories": [
+      {
+        "id": "party-paper",
+        "name": "Party Paper Printing",
+        "slug": "party-paper"
+      },
+      {
+        "id": "cutouts-props",
+        "name": "Party Cutouts & Props",
+        "slug": "cutouts-props"
+      },
+      {
+        "id": "photo-prints",
+        "name": "Custom Photo Prints",
+        "slug": "photo-prints"
+      }
     ]
   }
 ];
 
 const INITIAL_PRODUCTS = [
   {
-    id: "prod-001",
-    sku: "WA001",
-    name: "Customized Canvas Wall Art",
-    category: "Décor",
-    category_slug: "decor",
-    subcategory: "Wall Art",
-    subcategory_slug: "wall-art",
-    short_description: "Museum-grade stretched canvas with vivid pigment inks and durable pine wooden subframe.",
-    full_description: "Transform your most treasured memories or bespoke artistic themes into breathtaking museum-grade wall art. Printed on heavyweight 380 GSM textured poly-cotton canvas using 12-color archival giclée inks. Finished with an invisible anti-UV coating that protects against dust, moisture, and fading for over 50 years.",
-    material: "Canvas",
-    default_size: "18 × 24 inch",
-    width: "18",
-    height: "24",
-    thickness: "1.25 inch",
-    weight: "1.4 kg",
-    base_price: 1250,
-    selling_price: 1450,
-    mrp: 2499,
-    discount: 42,
-    tax: 18,
-    stock: 99,
-    production_time: "2-3 business days",
-    tags: ["Canvas", "Wall Décor", "Personalized Art", "Giclée", "Living Room"],
-    keywords: ["custom canvas print", "personalized wall art", "framed photo canvas", "creaftique canvas"],
-    images: [
-      "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=900&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=900&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1582561424760-0321d75e81fa?w=900&auto=format&fit=crop&q=80"
+    "id": "PERSONALIZED_PRINT_SERVICE",
+    "sku": "APP_PRINT_SERVICE",
+    "name": "Personalized Commercial Print Service",
+    "category": "Commercial Printing",
+    "category_slug": "commercial-printing",
+    "subcategory": "Sheet Printing",
+    "subcategory_slug": "sheet-printing",
+    "short_description": "High-speed commercial 12x18 & 13x19 sheet digital printing, 100-350 GSM papers, sticker sheets, thermal lamination & precision half-cut.",
+    "full_description": "Studio-grade commercial digital printing designed for rapid turnarounds and impeccable sharpness. Choose from 100 GSM, 130 GSM, 170 GSM, 210 GSM, 250 GSM, 300 GSM, and 350 GSM art papers/boards, specialty Gloss/Matte Sticker sheets, and Opaque/Transparent Vinyl films. Configure single or both-side gloss/matte thermal lamination and precision computer half-cut kiss cutting. Upload print-ready files (ZIP, RAR, CDR, PSD, AI, PDF, JPG, PNG) and calculate multi-item costs in real-time.",
+    "material": "Art Card / Sticker / Vinyl Substrates",
+    "default_size": "12 × 18 inch",
+    "width": "12",
+    "height": "18",
+    "thickness": "0.5 mm",
+    "weight": "0.05 kg",
+    "base_price": 9,
+    "selling_price": 9,
+    "mrp": 15,
+    "discount": 40,
+    "tax": 18,
+    "stock": 9999,
+    "production_time": "Same Day / 24 Hours",
+    "tags": [
+      "Sheet Printing",
+      "Digital Printing",
+      "12x18",
+      "13x19",
+      "Sticker Sheet",
+      "Lamination",
+      "Commercial"
     ],
-    customization_available: true,
-    requires_photo: true,
-    required_photos_count: 1,
-    custom_text_allowed: true,
-    active: true,
-    featured: true,
-    new_product: false,
-    best_seller: true,
-    costs: {
-      material_cost: 320,
-      print_cost: 210,
-      labor_cost: 150,
-      packaging_cost: 80,
-      shipping_cost: 90
+    "keywords": [
+      "12x18 digital printing",
+      "13x19 print",
+      "sticker printing",
+      "commercial print shop",
+      "lamination",
+      "half cut stickers"
+    ],
+    "images": [
+      "/catalog-images/00.%20Personalized%20Print%20Service/01%20Custom%20Printing%20Showcase_%20Flyers%2C%20Cards%20%26%20Stickers-5.jpg",
+      "/catalog-images/00.%20Personalized%20Print%20Service/01%20Personalised%20Print%20Services%20Infographic%20Grid.jpg",
+      "/catalog-images/00.%20Personalized%20Print%20Service/01%20Personalized%20Print%20Service%20Showcase-1.jpg",
+      "/catalog-images/00.%20Personalized%20Print%20Service/01%20Personalized%20Prints%2C%20Stickers%20%26%20Packaging.jpg",
+      "/catalog-images/00.%20Personalized%20Print%20Service/02%20Print%20Sheet%20Size%20Comparison-3.jpg",
+      "/catalog-images/00.%20Personalized%20Print%20Service/03%20Premium%20Media%20%26%20Sticker%20Guide.jpg",
+      "/catalog-images/00.%20Personalized%20Print%20Service/04%20Premium%20Lamination%20Finish%20Options.jpg",
+      "/catalog-images/00.%20Personalized%20Print%20Service/05%20Custom%20Floral%20Packaging%20Solutions.jpg",
+      "/catalog-images/00.%20Personalized%20Print%20Service/06%20Precision%20Cutting%20Services%20Infographic.jpg",
+      "/catalog-images/00.%20Personalized%20Print%20Service/Custom%20Paper%20Prints%20Showcase%20(1).jpg"
+    ],
+    "customization_available": true,
+    "requires_photo": true,
+    "required_photos_count": 1,
+    "custom_text_allowed": true,
+    "active": true,
+    "featured": true,
+    "new_product": true,
+    "best_seller": true,
+    "costs": {
+      "material_cost": 4,
+      "print_cost": 3,
+      "labor_cost": 1,
+      "packaging_cost": 1,
+      "shipping_cost": 0
     },
-    custom_options: {
-      sizes: [
-        { name: "8 × 10 inch", price_adj: -400, area_sqin: 80 },
-        { name: "12 × 18 inch", price_adj: -150, area_sqin: 216 },
-        { name: "18 × 24 inch", price_adj: 0, area_sqin: 432, default: true },
-        { name: "24 × 36 inch", price_adj: 850, area_sqin: 864 },
-        { name: "Custom Size", price_adj: 0, is_custom: true }
+    "custom_options": {
+      "sizes": [
+        {
+          "name": "12 × 18 inch (Single Side)",
+          "price_adj": 0,
+          "default": true
+        },
+        {
+          "name": "12 × 18 inch (Both Side)",
+          "price_adj": 3
+        },
+        {
+          "name": "13 × 19 inch (Single Side)",
+          "price_adj": 1
+        },
+        {
+          "name": "13 × 19 inch (Both Side)",
+          "price_adj": 4
+        },
+        {
+          "name": "A3 Single Side",
+          "price_adj": 0.5
+        }
       ],
-      materials: [
-        { name: "Premium Matte Canvas (380 GSM)", price_adj: 0, default: true },
-        { name: "Glossy Archival Canvas (400 GSM)", price_adj: 150 },
-        { name: "Textured Linen Canvas", price_adj: 250 },
-        { name: "Synthetic Poly-Silk Canvas", price_adj: -100 }
+      "materials": [
+        {
+          "name": "300 GSM Premium Art Card",
+          "price_adj": 0,
+          "default": true
+        },
+        {
+          "name": "350 GSM Heavy Board",
+          "price_adj": 1
+        },
+        {
+          "name": "250 GSM Art Card",
+          "price_adj": -1
+        },
+        {
+          "name": "210 GSM Art Paper",
+          "price_adj": -1.5
+        },
+        {
+          "name": "170 GSM Art Paper",
+          "price_adj": -2
+        },
+        {
+          "name": "130 GSM Paper",
+          "price_adj": -3
+        },
+        {
+          "name": "Self-Adhesive Sticker Sheet",
+          "price_adj": 0
+        },
+        {
+          "name": "Opaque / Transparent Film",
+          "price_adj": 4
+        }
       ],
-      finishes: [
-        { name: "Matte Anti-Glare Coating", price_adj: 0, default: true },
-        { name: "Glossy Lustre Seal", price_adj: 80 },
-        { name: "UV Protective Textured Varnish", price_adj: 180 }
+      "finishes": [
+        {
+          "name": "Without Lamination (Natural)",
+          "price_adj": 0,
+          "default": true
+        },
+        {
+          "name": "Thermal Gloss Lamination",
+          "price_adj": 4.5
+        },
+        {
+          "name": "Thermal Matte Lamination",
+          "price_adj": 4.5
+        },
+        {
+          "name": "Both Side Gloss Lamination",
+          "price_adj": 6
+        },
+        {
+          "name": "Both Side Matte Lamination",
+          "price_adj": 6
+        }
       ],
-      frames: [
-        { name: "Gallery Wrap (Frameless Stretched)", price_adj: 0, default: true },
-        { name: "Sleek Matte Black Floating Frame", price_adj: 450 },
-        { name: "Natural Teak Wood Floating Frame", price_adj: 550 },
-        { name: "Opulent Golden Luxe Frame", price_adj: 650 },
-        { name: "Modern White Float Frame", price_adj: 450 }
+      "frames": [],
+      "quantity_tiers": [
+        {
+          "min": 1,
+          "max": 24,
+          "discount_percent": 0
+        },
+        {
+          "min": 25,
+          "max": 99,
+          "discount_percent": 5
+        },
+        {
+          "min": 100,
+          "max": 499,
+          "discount_percent": 10
+        },
+        {
+          "min": 500,
+          "max": 9999,
+          "discount_percent": 20
+        }
       ],
-      quantity_tiers: [
-        { min: 1, max: 9, discount_percent: 0 },
-        { min: 10, max: 49, discount_percent: 15 },
-        { min: 50, max: 99, discount_percent: 25 },
-        { min: 100, max: 9999, discount_percent: 40 }
-      ],
-      extras: [
-        { id: "express", name: "Express 24h Production", price_adj: 299 },
-        { id: "gift_wrap", name: "Premium Gift Packaging & Calligraphy Card", price_adj: 149 },
-        { id: "design_review", name: "Professional Designer Pre-Print Touchup", price_adj: 199 }
+      "extras": [
+        {
+          "id": "half_cut",
+          "name": "Computer Half-Cut Kiss Cutting (Per Sheet)",
+          "price_adj": 8
+        },
+        {
+          "id": "full_cut",
+          "name": "Guillotine Precision Trimming",
+          "price_adj": 2
+        }
       ]
     },
-    seo: {
-      title: "Buy Custom Canvas Wall Art Online | Creaftique",
-      meta_description: "Order handcrafted custom canvas wall art with vibrant archival giclée prints. Gallery stretched with custom size options and dynamic pricing.",
-      keywords: "custom canvas, wall art india, personalized photo frame, giclee print",
-      slug: "customized-canvas-wall-art"
-    }
-  },
-  {
-    id: "prod-002",
-    sku: "PA002",
-    name: "Heritage Photobook Album",
-    category: "Printing",
-    category_slug: "printing",
-    subcategory: "Photo Albums",
-    subcategory_slug: "photo-albums",
-    short_description: "Hardcover lay-flat coffee table wedding and travel album with pearl lustre photo pages.",
-    full_description: "Cherish your life's greatest milestones in timeless elegance. The Heritage Photobook features seamless 180-degree lay-flat panoramic spreads, thick archival card-stock pages, and a tailored linen or vegan leather hardcover with optional embossed gold foiling.",
-    material: "Premium Paper",
-    default_size: "12 × 8 inch",
-    width: "12",
-    height: "8",
-    thickness: "1 inch",
-    weight: "1.8 kg",
-    base_price: 2400,
-    selling_price: 2850,
-    mrp: 4500,
-    discount: 37,
-    tax: 18,
-    stock: 50,
-    production_time: "4-5 business days",
-    tags: ["Photo Album", "Wedding", "Baby Album", "Layflat", "Photobook"],
-    keywords: ["wedding photo album", "layflat photobook", "custom photo album online", "creaftique album"],
-    images: [
-      "https://images.unsplash.com/photo-1544717305-2782549b5136?w=900&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1532012164546-f432f2e3777f?w=900&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=900&auto=format&fit=crop&q=80"
-    ],
-    customization_available: true,
-    requires_photo: true,
-    required_photos_count: 24,
-    custom_text_allowed: true,
-    active: true,
-    featured: true,
-    new_product: true,
-    best_seller: true,
-    costs: {
-      material_cost: 780,
-      print_cost: 540,
-      labor_cost: 350,
-      packaging_cost: 120,
-      shipping_cost: 140
-    },
-    custom_options: {
-      sizes: [
-        { name: "8 × 6 inch (Mini Landscape)", price_adj: -600, pages: 20 },
-        { name: "10 × 10 inch (Square Classic)", price_adj: -200, pages: 30 },
-        { name: "12 × 8 inch (Landscape Grand)", price_adj: 0, pages: 30, default: true },
-        { name: "18 × 12 inch (Royal Wedding Edition)", price_adj: 1200, pages: 40 }
-      ],
-      materials: [
-        { name: "Lustre Fuji Crystal Pearl (260 GSM)", price_adj: 0, default: true },
-        { name: "Silk Touch Archival Paper (300 GSM)", price_adj: 300 },
-        { name: "Metallic High Gloss Fine Art", price_adj: 500 }
-      ],
-      finishes: [
-        { name: "Hardcover Textured Linen", price_adj: 0, default: true },
-        { name: "Vegan Leather with Gold Foil Embossing", price_adj: 350 },
-        { name: "Acrylic Window Photo Cover", price_adj: 550 }
-      ],
-      frames: [],
-      quantity_tiers: [
-        { min: 1, max: 2, discount_percent: 0 },
-        { min: 3, max: 9, discount_percent: 10 },
-        { min: 10, max: 49, discount_percent: 20 },
-        { min: 50, max: 999, discount_percent: 35 }
-      ],
-      extras: [
-        { id: "express", name: "Express 48h Binding & Dispatch", price_adj: 499 },
-        { id: "box", name: "Handmade Velvet Keepsake Box", price_adj: 399 },
-        { id: "pro_design", name: "Professional Album Curation & Layout", price_adj: 450 }
-      ]
-    },
-    seo: {
-      title: "Custom Wedding Photobook & Photo Albums | Creaftique",
-      meta_description: "Order layflat handcrafted wedding albums and memory photobooks. Archival grade photo printing with custom foiling.",
-      keywords: "photobook, wedding album, layflat photo book, personalized photo album",
-      slug: "heritage-photobook-album"
-    }
-  },
-  {
-    id: "prod-003",
-    sku: "IC003",
-    name: "Luxury Foil Wedding Invitation Suite",
-    category: "Printing",
-    category_slug: "printing",
-    subcategory: "Invitations",
-    subcategory_slug: "invitations",
-    short_description: "Custom metallic foil stamped cards on 450 GSM handmade cotton rag stock with wax seal.",
-    full_description: "Make an unforgettable announcement with our royal wedding and engagement suites. Featuring intricate rose gold or champage gold foil stamping on artisan cotton card stock with deckled or smooth edges, paired with personalized butter-paper inserts and customized wax seals.",
-    material: "Premium Paper",
-    default_size: "5 × 7 inch",
-    width: "5",
-    height: "7",
-    thickness: "0.8 mm",
-    weight: "0.04 kg",
-    base_price: 65,
-    selling_price: 75,
-    mrp: 120,
-    discount: 37,
-    tax: 18,
-    stock: 5000,
-    production_time: "5-7 business days",
-    tags: ["Invitations", "Wedding Cards", "Gold Foil", "Luxury Stationery", "Custom Cards"],
-    keywords: ["foil wedding invitations", "luxury wedding card printing", "custom invite card", "creaftique invitation"],
-    images: [
-      "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=900&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1607344645866-009c320c5ab8?w=900&auto=format&fit=crop&q=80"
-    ],
-    customization_available: true,
-    requires_photo: false,
-    custom_text_allowed: true,
-    active: true,
-    featured: true,
-    new_product: false,
-    best_seller: true,
-    costs: {
-      material_cost: 18,
-      print_cost: 14,
-      labor_cost: 10,
-      packaging_cost: 5,
-      shipping_cost: 4
-    },
-    custom_options: {
-      sizes: [
-        { name: "5 × 7 inch (Standard Suite)", price_adj: 0, default: true },
-        { name: "6 × 8 inch (Grand Royal)", price_adj: 25 },
-        { name: "4 × 6 inch (Save The Date)", price_adj: -15 }
-      ],
-      materials: [
-        { name: "Handmade Cotton Rag 450 GSM", price_adj: 0, default: true },
-        { name: "Pearl Metallic Shimmer 350 GSM", price_adj: 10 },
-        { name: "Translucent Vellum Overlay", price_adj: 15 }
-      ],
-      finishes: [
-        { name: "Champagne Gold Hot Foil", price_adj: 0, default: true },
-        { name: "Rose Gold Lustre Foil", price_adj: 5 },
-        { name: "Embossed Blind Letterpress", price_adj: 10 }
-      ],
-      frames: [],
-      quantity_tiers: [
-        { min: 25, max: 99, discount_percent: 0 },
-        { min: 100, max: 249, discount_percent: 15 },
-        { min: 250, max: 499, discount_percent: 25 },
-        { min: 500, max: 5000, discount_percent: 35 }
-      ],
-      extras: [
-        { id: "wax_seal", name: "Custom Monogram Wax Seal & Envelope Liner", price_adj: 20 },
-        { id: "calligraphy", name: "Individual Guest Address Calligraphy", price_adj: 15 }
-      ]
-    },
-    seo: {
-      title: "Custom Foil Wedding Invitations | Creaftique",
-      meta_description: "Order bespoke foil stamped wedding invitations and stationery suites. Luxury cotton rag paper with wax seals.",
-      keywords: "wedding invitation cards, foil stamping cards, custom invitations online",
-      slug: "luxury-foil-wedding-invitations"
-    }
-  },
-  {
-    id: "prod-004",
-    sku: "AF004",
-    name: "Minimalist Floating Acrylic Photo Frame",
-    category: "Décor",
-    category_slug: "decor",
-    subcategory: "Photo Frames",
-    subcategory_slug: "photo-frames",
-    short_description: "High-clarity cast acrylic with polished bevel edges and solid brass standoff wall hardware.",
-    full_description: "Bring a sleek contemporary gallery feel into your home or office. Two 4mm sheets of optical grade virgin cast acrylic suspend your custom photographic print in mid-air. Secured with solid architectural brass standoffs in brushed gold, matte black, or chrome.",
-    material: "Acrylic",
-    default_size: "12 × 18 inch",
-    width: "12",
-    height: "18",
-    thickness: "8 mm total",
-    weight: "1.9 kg",
-    base_price: 1100,
-    selling_price: 1350,
-    mrp: 2199,
-    discount: 38,
-    tax: 18,
-    stock: 80,
-    production_time: "2-3 business days",
-    tags: ["Acrylic Frame", "Floating Frame", "Modern Décor", "Photo Frame"],
-    keywords: ["acrylic photo frame", "floating picture frame", "standoff frame", "creaftique acrylic"],
-    images: [
-      "https://images.unsplash.com/photo-1549887534-1541e9326642?w=900&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=900&auto=format&fit=crop&q=80"
-    ],
-    customization_available: true,
-    requires_photo: true,
-    required_photos_count: 1,
-    custom_text_allowed: true,
-    active: true,
-    featured: true,
-    new_product: true,
-    best_seller: false,
-    costs: {
-      material_cost: 390,
-      print_cost: 160,
-      labor_cost: 140,
-      packaging_cost: 90,
-      shipping_cost: 110
-    },
-    custom_options: {
-      sizes: [
-        { name: "8 × 10 inch", price_adj: -350 },
-        { name: "12 × 18 inch", price_adj: 0, default: true },
-        { name: "18 × 24 inch", price_adj: 650 },
-        { name: "Custom Size", price_adj: 0, is_custom: true }
-      ],
-      materials: [
-        { name: "Optical Clear Cast Acrylic (4mm + 4mm)", price_adj: 0, default: true },
-        { name: "Anti-Reflective Museum Acrylic", price_adj: 300 }
-      ],
-      finishes: [
-        { name: "Diamond Polished Bevel Edge", price_adj: 0, default: true },
-        { name: "Frosted Edge Perimeter", price_adj: 100 }
-      ],
-      frames: [
-        { name: "Brushed Brass Standoffs", price_adj: 0, default: true },
-        { name: "Matte Black Standoffs", price_adj: 50 },
-        { name: "Mirror Chrome Standoffs", price_adj: 50 }
-      ],
-      quantity_tiers: [
-        { min: 1, max: 4, discount_percent: 0 },
-        { min: 5, max: 19, discount_percent: 12 },
-        { min: 20, max: 999, discount_percent: 25 }
-      ],
-      extras: [
-        { id: "mounting", name: "Heavy-duty Wall Anchor Kit with Bubble Level", price_adj: 80 }
-      ]
-    },
-    seo: {
-      title: "Custom Floating Acrylic Photo Frames | Creaftique",
-      meta_description: "Shop high-clarity cast acrylic frames with architectural brass standoffs. Customizable with your own photos.",
-      keywords: "acrylic frame, floating frame, modern picture frame",
-      slug: "minimalist-floating-acrylic-photo-frame"
-    }
-  },
-  {
-    id: "prod-005",
-    sku: "ST005",
-    name: "Custom Die-Cut Vinyl Stickers & Labels",
-    category: "Printing",
-    category_slug: "printing",
-    subcategory: "Stickers",
-    subcategory_slug: "stickers",
-    short_description: "Waterproof, scratch-resistant precision contour-cut vinyl stickers for branding or gifting.",
-    full_description: "High performance polymeric vinyl stickers engineered for laptops, tumblers, product packaging, and cars. Waterproof, scratch-resistant, and UV-resistant for outdoor longevity. Precision kiss-cut or die-cut to any custom shape with zero minimum quantity hurdles.",
-    material: "Vinyl",
-    default_size: "2 × 2 inch",
-    width: "2",
-    height: "2",
-    thickness: "100 micron",
-    weight: "0.01 kg",
-    base_price: 180,
-    selling_price: 220,
-    mrp: 350,
-    discount: 37,
-    tax: 18,
-    stock: 9999,
-    production_time: "1-2 business days",
-    tags: ["Stickers", "Vinyl Decals", "Packaging", "Waterproof", "Branding"],
-    keywords: ["custom stickers", "die cut vinyl stickers", "waterproof labels", "creaftique stickers"],
-    images: [
-      "https://images.unsplash.com/photo-1572375992501-4b0892d50c69?w=900&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1589384267710-7a170981ca78?w=900&auto=format&fit=crop&q=80"
-    ],
-    customization_available: true,
-    requires_photo: true,
-    required_photos_count: 1,
-    custom_text_allowed: true,
-    active: true,
-    featured: false,
-    new_product: true,
-    best_seller: true,
-    costs: {
-      material_cost: 35,
-      print_cost: 25,
-      labor_cost: 20,
-      packaging_cost: 15,
-      shipping_cost: 30
-    },
-    custom_options: {
-      sizes: [
-        { name: "2 × 2 inch (Pack of 50)", price_adj: 0, default: true },
-        { name: "3 × 3 inch (Pack of 50)", price_adj: 120 },
-        { name: "4 × 4 inch (Pack of 50)", price_adj: 260 }
-      ],
-      materials: [
-        { name: "Glossy Waterproof Vinyl", price_adj: 0, default: true },
-        { name: "Matte Velvet Touch Vinyl", price_adj: 50 },
-        { name: "Holographic Rainbow Foil Vinyl", price_adj: 180 },
-        { name: "Transparent Clear Vinyl", price_adj: 80 }
-      ],
-      finishes: [
-        { name: "UV Protective Over-laminate", price_adj: 0, default: true },
-        { name: "Heavy Duty 3M Industrial Grip", price_adj: 90 }
-      ],
-      frames: [],
-      quantity_tiers: [
-        { min: 1, max: 4, discount_percent: 0 },
-        { min: 5, max: 19, discount_percent: 18 },
-        { min: 20, max: 99, discount_percent: 32 },
-        { min: 100, max: 9999, discount_percent: 50 }
-      ],
-      extras: [
-        { id: "sample", name: "Pre-production Sample Proof Photo", price_adj: 99 }
-      ]
-    },
-    seo: {
-      title: "Custom Die Cut Vinyl Stickers Online | Creaftique",
-      meta_description: "Order personalized waterproof vinyl stickers and product packaging labels. Holographic, matte, and glossy finishes with instant customizer.",
-      keywords: "custom stickers india, vinyl stickers, personalized labels, brand stickers",
-      slug: "custom-die-cut-vinyl-stickers"
-    }
-  },
-  {
-    id: "prod-006",
-    sku: "PM006",
-    name: "Vintage Polaroid Wooden Photo Magnets",
-    category: "Customized Products",
-    category_slug: "customized-products",
-    subcategory: "Photo Magnets",
-    subcategory_slug: "photo-magnets",
-    short_description: "Set of 6 magnetic wood tiles with nostalgic retro borders and ultra-strong neodymium backing.",
-    full_description: "Turn your refrigerator or magnetic memo board into a curated gallery of smiling memories. Crafted from 4mm sustainably sourced birch wood with rounded corners and vivid archival direct-UV printing. Each tile includes an inset neodymium magnet with solid grip.",
-    material: "Wood",
-    default_size: "3 × 3 inch (Set of 6)",
-    width: "3",
-    height: "3",
-    thickness: "4 mm",
-    weight: "0.25 kg",
-    base_price: 380,
-    selling_price: 450,
-    mrp: 799,
-    discount: 43,
-    tax: 18,
-    stock: 200,
-    production_time: "1-2 business days",
-    tags: ["Photo Magnets", "Gifts", "Fridge Magnets", "Personalized Gifts", "Wood"],
-    keywords: ["photo magnets", "wooden fridge magnets", "polaroid magnets", "creaftique gifts"],
-    images: [
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=900&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1549887534-1541e9326642?w=900&auto=format&fit=crop&q=80"
-    ],
-    customization_available: true,
-    requires_photo: true,
-    required_photos_count: 6,
-    custom_text_allowed: true,
-    active: true,
-    featured: true,
-    new_product: false,
-    best_seller: true,
-    costs: {
-      material_cost: 110,
-      print_cost: 65,
-      labor_cost: 50,
-      packaging_cost: 30,
-      shipping_cost: 45
-    },
-    custom_options: {
-      sizes: [
-        { name: "Set of 6 (3 × 3 inch)", price_adj: 0, default: true },
-        { name: "Set of 12 (3 × 3 inch)", price_adj: 380 },
-        { name: "Set of 18 (3 × 3 inch)", price_adj: 720 }
-      ],
-      materials: [
-        { name: "Natural Birch Wood (4mm)", price_adj: 0, default: true },
-        { name: "Ultra-White Acrylic Magnet", price_adj: 80 }
-      ],
-      finishes: [
-        { name: "Matte Natural Grain", price_adj: 0, default: true },
-        { name: "High Gloss Poly-Seal", price_adj: 50 }
-      ],
-      frames: [],
-      quantity_tiers: [
-        { min: 1, max: 4, discount_percent: 0 },
-        { min: 5, max: 15, discount_percent: 15 },
-        { min: 16, max: 999, discount_percent: 28 }
-      ],
-      extras: [
-        { id: "tin_box", name: "Embossed Tin Keepsake Gift Box", price_adj: 120 }
-      ]
-    },
-    seo: {
-      title: "Personalized Wooden Photo Fridge Magnets | Creaftique",
-      meta_description: "Customize set of magnetic wooden photo tiles with your phone memories. Perfect anniversary and birthday keepsake.",
-      keywords: "photo magnets, fridge magnets customized, personalized gift",
-      slug: "vintage-polaroid-wooden-photo-magnets"
+    "seo": {
+      "title": "Personalized Commercial Print Service | Akshar PrintShop Pro",
+      "meta_description": "Order professional 12x18 & 13x19 sheet digital printing, 100-350 GSM papers, sticker sheets, thermal lamination & half-cut.",
+      "keywords": "12x18 printing, 13x19 printing, digital print shop, stickers, lamination",
+      "slug": "personalized-print-service"
     }
   }
 ];
@@ -636,23 +410,14 @@ class Database {
     }
   }
 
-  // Master ordered category list specified by user
+  // Master ordered category list for Akshar PrintShop Pro
   static ORDERED_CATEGORIES = [
-    "Canvas Hanging",
-    "Canvas Frame",
-    "Personalized Photo Frame",
-    "Personalized Artwork Frame",
-    "Miniature Frame",
-    "Paper Frame",
-    "Photo Albums",
-    "Magazine Albums",
-    "Photo Magnets",
-    "Insta Photo Cards",
-    "Birthday Party Supplies",
-    "Personalized Labels",
-    "Personalized Stickers",
-    "Personalized Invitation Cards",
-    "Personalized Business Cards"
+    "Personalized Print Service",
+    "Commercial Printing",
+    "Sheet Printing",
+    "Stickers & Labels",
+    "Business Stationery",
+    "Event & Party Printing"
   ];
 
   // --- Products ---
@@ -675,7 +440,7 @@ class Database {
       list = list.filter(p => p.featured);
     }
 
-    // Sort products by the master 15-category sequence (01 to 15)
+    // Sort products by priority categories
     list.sort((a, b) => {
       const idxA = Database.ORDERED_CATEGORIES.findIndex(c => c.toLowerCase() === (a.category || '').toLowerCase());
       const idxB = Database.ORDERED_CATEGORIES.findIndex(c => c.toLowerCase() === (b.category || '').toLowerCase());
@@ -713,46 +478,29 @@ class Database {
 
   // --- Categories ---
   getCategories() {
-    const ORDERED = Database.ORDERED_CATEGORIES;
+    const configuredCategories = this.data.categories || [];
     const prodCategories = [...new Set((this.data.products || []).map(p => p.category).filter(Boolean))];
-    
-    // Combine ordered list with any extra discovered categories
-    const allCatNames = [...ORDERED];
-    prodCategories.forEach(c => {
-      if (!allCatNames.some(o => o.toLowerCase() === c.toLowerCase())) {
-        allCatNames.push(c);
+
+    const result = [...configuredCategories];
+    for (const catName of prodCategories) {
+      if (!result.some(c => (c.name || '').toLowerCase() === catName.toLowerCase())) {
+        const slug = catName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        let icon = 'Printer';
+        const lower = catName.toLowerCase();
+        if (lower.includes('sticker') || lower.includes('label')) icon = 'Tag';
+        else if (lower.includes('card') || lower.includes('stationery')) icon = 'FileText';
+        else if (lower.includes('party') || lower.includes('event')) icon = 'Calendar';
+        result.push({
+          id: `cat-${slug}`,
+          name: catName,
+          slug: slug,
+          description: `High-quality ${catName} solutions customized to your specifications.`,
+          icon: icon,
+          subcategories: []
+        });
       }
-    });
-
-    const categories = allCatNames.map((catName, index) => {
-      const slug = catName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-      let icon = 'Sparkles';
-      const lower = catName.toLowerCase();
-      if (lower.includes('hanging') || lower.includes('scroll')) icon = 'Layers';
-      else if (lower.includes('canvas') || lower.includes('frame') || lower.includes('art')) icon = 'Frame';
-      else if (lower.includes('album') || lower.includes('magazine')) icon = 'BookOpen';
-      else if (lower.includes('sticker') || lower.includes('label')) icon = 'Tag';
-      else if (lower.includes('party') || lower.includes('birthday')) icon = 'PartyPopper';
-      else if (lower.includes('card') || lower.includes('invitation') || lower.includes('business')) icon = 'Printer';
-      else if (lower.includes('magnet') || lower.includes('shadow') || lower.includes('miniature')) icon = 'Box';
-
-      const orderNum = index + 1;
-      const orderPrefix = String(orderNum).padStart(2, '0');
-
-      return {
-        id: `cat-${slug}`,
-        name: catName,
-        slug: slug,
-        order: orderNum,
-        order_prefix: orderPrefix,
-        display_name: `${orderPrefix}. ${catName}`,
-        description: `Bespoke handcrafted ${catName.toLowerCase()} customized to perfection.`,
-        icon: icon,
-        subcategories: []
-      };
-    });
-
-    return categories;
+    }
+    return result;
   }
 
   saveCategory(category) {

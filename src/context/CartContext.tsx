@@ -25,7 +25,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>(() => {
     try {
-      const saved = localStorage.getItem('creaftique_cart');
+      const saved = localStorage.getItem('printshop_cart');
       return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
@@ -36,7 +36,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem('creaftique_cart', JSON.stringify(cart));
+      localStorage.setItem('printshop_cart', JSON.stringify(cart));
     } catch (e) {
       console.warn('LocalStorage save error:', e);
     }

@@ -1,0 +1,380 @@
+{
+  "settings": {
+    "business_name": "Akshar PrintShop Pro",
+    "brand_title": "Akshar PrintShop Pro",
+    "tagline": "Commercial Digital Printing & Precision Finishing",
+    "upi_id": "aksharstudio-2@okicici",
+    "whatsapp_number": "916354871446",
+    "script_url": "https://script.google.com/macros/s/AKfycbzRwtwNObuYTQXaZA9sOQW8mfArrfosgT2TqoK-s5w8FtYNYwDl6ZaeauhRD_Nz2cF_/exec",
+    "admin_emails": [
+      "admin@phototoolsai.com",
+      "hitesh@phototoolsai.com",
+      "pixartware@gmail.com"
+    ],
+    "admin_pin": "1234",
+    "gst_rate": 18,
+    "shipping_fee": 70,
+    "free_shipping_threshold": 1000,
+    "order_prefix": "APP",
+    "catalog_source_path": "/Volumes/STUDIO/AKSHAR/AKSHAR 1TB/AKSHAR SALES/|| Akshar PrintShop Pro",
+    "sync_status": {
+      "connected": true,
+      "last_sync": "2026-11-26T13:38:50.797Z",
+      "products_found": 1,
+      "new_products": 0,
+      "updated_products": 1,
+      "images_count": 10,
+      "source_dir": "/Volumes/STUDIO/AKSHAR/AKSHAR 1TB/AKSHAR SALES/|| Akshar PrintShop Pro",
+      "auto_watch_enabled": true
+    }
+  },
+  "categories": [
+    {
+      "id": "commercial-printing",
+      "name": "Commercial Printing",
+      "slug": "commercial-printing",
+      "description": "High-speed digital printing on 12x18 & 13x19 sheets across 100 to 350 GSM papers.",
+      "icon": "Printer",
+      "subcategories": [
+        {
+          "id": "sheet-printing",
+          "name": "Sheet Printing",
+          "slug": "sheet-printing"
+        },
+        {
+          "id": "flyers-leaflets",
+          "name": "Flyers & Leaflets",
+          "slug": "flyers-leaflets"
+        },
+        {
+          "id": "brochures",
+          "name": "Brochures",
+          "slug": "brochures"
+        },
+        {
+          "id": "posters",
+          "name": "Posters",
+          "slug": "posters"
+        },
+        {
+          "id": "magazines-books",
+          "name": "Magazines & Booklets",
+          "slug": "magazines-books"
+        }
+      ]
+    },
+    {
+      "id": "stickers-labels",
+      "name": "Stickers & Labels",
+      "slug": "stickers-labels",
+      "description": "Precision computer half-cut sticker sheets, vinyl, opaque & transparent prints.",
+      "icon": "Sparkles",
+      "subcategories": [
+        {
+          "id": "sticker-sheets",
+          "name": "Sticker Sheets (Half Cut)",
+          "slug": "sticker-sheets"
+        },
+        {
+          "id": "vinyl-stickers",
+          "name": "Vinyl & Waterproof Stickers",
+          "slug": "vinyl-stickers"
+        },
+        {
+          "id": "opaque-transparent",
+          "name": "Opaque & Transparent Sheets",
+          "slug": "opaque-transparent"
+        },
+        {
+          "id": "product-labels",
+          "name": "Product & Packaging Labels",
+          "slug": "product-labels"
+        }
+      ]
+    },
+    {
+      "id": "business-stationery",
+      "name": "Business Stationery",
+      "slug": "business-stationery",
+      "description": "Executive visiting cards, letterheads, certificates, envelopes & branded stationery.",
+      "icon": "FileText",
+      "subcategories": [
+        {
+          "id": "visiting-cards",
+          "name": "Visiting Cards",
+          "slug": "visiting-cards"
+        },
+        {
+          "id": "letterheads",
+          "name": "A3 & A4 Letterheads",
+          "slug": "letterheads"
+        },
+        {
+          "id": "certificates",
+          "name": "Certificates",
+          "slug": "certificates"
+        },
+        {
+          "id": "envelopes",
+          "name": "Envelopes & Folders",
+          "slug": "envelopes"
+        }
+      ]
+    },
+    {
+      "id": "party-specialty",
+      "name": "Event & Party Printing",
+      "slug": "party-specialty",
+      "description": "Party paper printing, custom cutouts, photo backdrops & festival banners.",
+      "icon": "Calendar",
+      "subcategories": [
+        {
+          "id": "party-paper",
+          "name": "Party Paper Printing",
+          "slug": "party-paper"
+        },
+        {
+          "id": "cutouts-props",
+          "name": "Party Cutouts & Props",
+          "slug": "cutouts-props"
+        },
+        {
+          "id": "photo-prints",
+          "name": "Custom Photo Prints",
+          "slug": "photo-prints"
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-sync-personalized_print_service",
+      "sku": "PERSONALIZED_PRINT_SERVICE",
+      "name": "Personalized Commercial Print Service",
+      "category": "Personalized Print Service",
+      "category_slug": "personalized-print-service",
+      "subcategory": "Personalized Print Service",
+      "subcategory_slug": "personalized-print-service",
+      "short_description": "High-speed commercial 12x18 & 13x19 sheet digital printing, 100-350 GSM papers, sticker sheets, thermal lamination & precision half-cut.",
+      "full_description": "Studio-grade commercial digital printing designed for rapid turnarounds and impeccable sharpness. Choose from 100 GSM, 130 GSM, 170 GSM, 210 GSM, 250 GSM, 300 GSM, and 350 GSM art papers/boards, specialty Gloss/Matte Sticker sheets, and Opaque/Transparent Vinyl films. Configure single or both-side gloss/matte thermal lamination and precision computer half-cut kiss cutting. Upload print-ready files (ZIP, RAR, CDR, PSD, AI, PDF, JPG, PNG) and calculate multi-item costs in real-time.",
+      "material": "Art Card / Sticker / Vinyl Substrates",
+      "default_size": "Custom Size / Specifications",
+      "base_price": 9,
+      "selling_price": 9,
+      "mrp": 15,
+      "discount": 40,
+      "tax": 18,
+      "stock": 250,
+      "production_time": "1-2 business days",
+      "tags": [
+        "Personalized Print Service",
+        "Akshar PrintShop Pro",
+        "Digital Print",
+        "Commercial"
+      ],
+      "keywords": [
+        "personalized print service",
+        "personalized print service",
+        "personalized_print_service",
+        "customized",
+        "photo print"
+      ],
+      "images": [
+        "/catalog-images/00%20Personalized%20Print%20Service/02%20Print%20Sheet%20Size%20Comparison-3.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/01%20Custom%20Printing%20Showcase_%20Flyers%2C%20Cards%20%26%20Stickers-5.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/01%20Personalised%20Print%20Services%20Infographic%20Grid.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/01%20Personalized%20Print%20Service%20Showcase-1.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/01%20Personalized%20Prints%2C%20Stickers%20%26%20Packaging.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/03%20Premium%20Media%20%26%20Sticker%20Guide.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/04%20Premium%20Lamination%20Finish%20Options.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/05%20Custom%20Floral%20Packaging%20Solutions.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/06%20Precision%20Cutting%20Services%20Infographic.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/Custom%20Paper%20Prints%20Showcase%20(1).jpg"
+      ],
+      "customization_available": true,
+      "requires_photo": true,
+      "required_photos_count": 1,
+      "custom_text_allowed": true,
+      "active": true,
+      "featured": true,
+      "costs": {
+        "material_cost": 4,
+        "print_cost": 3,
+        "labor_cost": 1,
+        "packaging_cost": 1,
+        "shipping_cost": 0
+      },
+      "custom_options": {
+        "sizes": [
+          {
+            "name": "12 × 18 inch (Single Side)",
+            "price_adj": 0,
+            "default": true
+          },
+          {
+            "name": "12 × 18 inch (Both Side)",
+            "price_adj": 3
+          },
+          {
+            "name": "13 × 19 inch (Single Side)",
+            "price_adj": 1
+          },
+          {
+            "name": "13 × 19 inch (Both Side)",
+            "price_adj": 4
+          },
+          {
+            "name": "A3 Single Side",
+            "price_adj": 0.5
+          }
+        ],
+        "materials": [
+          {
+            "name": "300 GSM Premium Art Card",
+            "price_adj": 0,
+            "default": true
+          },
+          {
+            "name": "350 GSM Heavy Board",
+            "price_adj": 1
+          },
+          {
+            "name": "250 GSM Art Card",
+            "price_adj": -1
+          },
+          {
+            "name": "210 GSM Art Paper",
+            "price_adj": -1.5
+          },
+          {
+            "name": "170 GSM Art Paper",
+            "price_adj": -2
+          },
+          {
+            "name": "130 GSM Paper",
+            "price_adj": -3
+          },
+          {
+            "name": "Self-Adhesive Sticker Sheet",
+            "price_adj": 0
+          },
+          {
+            "name": "Opaque / Transparent Film",
+            "price_adj": 4
+          }
+        ],
+        "finishes": [
+          {
+            "name": "Without Lamination (Natural)",
+            "price_adj": 0,
+            "default": true
+          },
+          {
+            "name": "Thermal Gloss Lamination",
+            "price_adj": 4.5
+          },
+          {
+            "name": "Thermal Matte Lamination",
+            "price_adj": 4.5
+          },
+          {
+            "name": "Both Side Gloss Lamination",
+            "price_adj": 6
+          },
+          {
+            "name": "Both Side Matte Lamination",
+            "price_adj": 6
+          }
+        ],
+        "frames": [],
+        "quantity_tiers": [
+          {
+            "min": 1,
+            "max": 24,
+            "discount_percent": 0
+          },
+          {
+            "min": 25,
+            "max": 99,
+            "discount_percent": 5
+          },
+          {
+            "min": 100,
+            "max": 499,
+            "discount_percent": 10
+          },
+          {
+            "min": 500,
+            "max": 9999,
+            "discount_percent": 20
+          }
+        ],
+        "extras": [
+          {
+            "id": "half_cut",
+            "name": "Computer Half-Cut Kiss Cutting (Per Sheet)",
+            "price_adj": 8
+          },
+          {
+            "id": "full_cut",
+            "name": "Guillotine Precision Trimming",
+            "price_adj": 2
+          }
+        ]
+      },
+      "created_at": "2026-11-26T13:36:46.065Z",
+      "updated_at": "2026-11-26T13:38:50.796Z"
+    }
+  ],
+  "orders": [],
+  "payments": [],
+  "production_jobs": [],
+  "qc_records": [],
+  "shipments": [],
+  "design_proofs": [],
+  "customers": [],
+  "audit_logs": [
+    {
+      "id": "log-1795700330798",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "1 products, 10 high-res images",
+      "timestamp": "2026-11-26T13:38:50.798Z"
+    },
+    {
+      "id": "log-1795700316999",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "1 products, 10 high-res images",
+      "timestamp": "2026-11-26T13:38:36.999Z"
+    },
+    {
+      "id": "log-1795700255488",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "1 products, 10 high-res images",
+      "timestamp": "2026-11-26T13:37:35.488Z"
+    },
+    {
+      "id": "log-1795700206077",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "1 products, 10 high-res images",
+      "timestamp": "2026-11-26T13:36:46.077Z"
+    },
+    {
+      "id": "log-1",
+      "user": "System",
+      "action": "Initialize Akshar PrintShop Pro Database",
+      "timestamp": "2026-11-26T13:36:08.834Z"
+    }
+  ]
+}

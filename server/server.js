@@ -850,14 +850,14 @@ function renderProductShareHtml(req, res, targetSku) {
     );
   }
 
-  let title = 'Craftique — Handmade & Custom Art | Bespoke Printing & Décor';
-  let description = 'Craftique Production — Handmade & Custom Art, Bespoke Printing, Museum Canvas Wall Art, Floating Acrylic Frames, and Personalized Gifts.';
+  let title = 'Akshar PrintShop Pro — Commercial Digital Printing & Finishing';
+  let description = 'Akshar PrintShop Pro — High-Speed Commercial Digital Printing, 12x18 & 13x19 Sheets, Stickers, Visiting Cards, Flyers & Finishing.';
   let imageUrl = `${baseUrl}/logo.png`;
   let canonicalUrl = baseUrl;
 
   if (product) {
-    title = `${product.name} — Craftique Custom Studio`;
-    description = `Starting at ₹${product.selling_price.toLocaleString('en-IN')}. Customise sizes, archival finishes & upload your photos online at Craftique.`;
+    title = `${product.name} — Akshar PrintShop Pro`;
+    description = `Starting at ₹${product.selling_price.toLocaleString('en-IN')}. Customise sizes, archival finishes & upload your photos online at Akshar PrintShop Pro.`;
 
     if (product.images && product.images.length > 0) {
       const img = product.images[0];
@@ -910,7 +910,7 @@ function renderProductShareHtml(req, res, targetSku) {
   <meta property="og:description" content="${description}"/>
   <meta http-equiv="refresh" content="0;url=${canonicalUrl}"/>
 </head>
-<body>Redirecting to Craftique...</body>
+<body>Redirecting to Akshar PrintShop Pro...</body>
 </html>`);
   }
 
@@ -929,7 +929,7 @@ function renderProductShareHtml(req, res, targetSku) {
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:alt" content="${product ? product.name : 'Craftique'}" />`;
+    <meta property="og:image:alt" content="${product ? product.name : 'Akshar PrintShop Pro'}" />`;
 
   // Clean up any existing Open Graph image tags to prevent conflicts
   html = html.replace(/<meta\s+property=["']og:image:secure_url["'][^>]*>/gi, '');

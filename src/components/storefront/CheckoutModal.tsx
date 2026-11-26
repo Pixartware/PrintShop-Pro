@@ -71,7 +71,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
     try {
       const orderPayload = {
         customer_name: customerName.trim(),
-        customer_email: customerEmail.trim() || `${customerPhone.replace(/[^0-9]/g, '')}@customer.creaftique.in`,
+        customer_email: customerEmail.trim() || `${customerPhone.replace(/[^0-9]/g, '')}@customer.printshoppro.in`,
         customer_phone: customerPhone.trim(),
         shipping_address: {
           street: street.trim(),

@@ -341,7 +341,7 @@ class CatalogSyncService {
           .filter(Boolean)
           .join('_')
           .toUpperCase();
-        const sku = skuBase || `CRQ_PROD_${Date.now()}`;
+        const sku = skuBase || `APP_PROD_${Date.now()}`;
         const prodId = `prod-sync-${sku.toLowerCase()}`;
         syncedProductIds.add(prodId);
 
@@ -361,11 +361,11 @@ class CatalogSyncService {
 
         // Descriptions
         const fullDesc = item.txtDetails?.description || item.excelDetails?.description ||
-          `Elevate your spaces with Creaftique's handcrafted ${productName}. Printed using high-fidelity archival pigment inks for true color vibrancy and longevity.`;
+          `Elevate your spaces with Akshar PrintShop Pro's commercial grade ${productName}. Printed using high-fidelity archival pigment inks for true color vibrancy and longevity.`;
         const firstSentence = fullDesc.split('. ')[0] + '.';
         const shortDesc = firstSentence.length > 20 && firstSentence.length < 200
           ? firstSentence
-          : `Handcrafted ${productName} customized to perfection with premium finishes.`;
+          : `High-grade commercial digital ${productName} printed with vivid pigment sharpness.`;
 
         // Materials
         const material = item.txtDetails?.material || item.excelDetails?.material || 'Archival Substrate';
@@ -391,7 +391,7 @@ class CatalogSyncService {
           tax: 18,
           stock: 250,
           production_time: pricing.production,
-          tags: [item.category, item.subcategory, 'Creaftique', 'Custom Print', 'Bespoke'].filter(Boolean),
+          tags: [item.category, item.subcategory, 'Akshar PrintShop Pro', 'Digital Print', 'Commercial'].filter(Boolean),
           keywords: [item.category.toLowerCase(), productName.toLowerCase(), sku.toLowerCase(), 'customized', 'photo print'],
           images: item.images,
           customization_available: true,
@@ -470,6 +470,22 @@ class CatalogSyncService {
       };
 
       db.updateSettings({ sync_status: syncResult });
+
+      // Save static fallback to public/data/catalog.json for instant static frontend hydration
+      try {
+        const staticCatalogPath = path.join(__dirname, '..', 'public', 'data', 'catalog.json');
+        if (!fs.existsSync(path.dirname(staticCatalogPath))) {
+          fs.mkdirSync(path.dirname(staticCatalogPath), { recursive: true });
+        }
+        fs.writeFileSync(
+          staticCatalogPath,
+          JSON.stringify({ categories: db.getCategories(), products: db.getProducts() }, null, 2),
+          'utf8'
+        );
+      } catch (staticErr) {
+        console.warn('[CatalogSync] Notice on writing public/data/catalog.json:', staticErr.message);
+      }
+
       db.logAudit({
         user: "Automatic Catalog Sync",
         action: "Synchronized Product Catalog",

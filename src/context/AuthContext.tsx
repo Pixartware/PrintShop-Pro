@@ -22,7 +22,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(() => {
     try {
-      const saved = localStorage.getItem('creaftique_auth');
+      const saved = localStorage.getItem('printshop_auth');
       return saved ? JSON.parse(saved) : null;
     } catch {
       return null;
@@ -40,13 +40,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       role: assignedRole
     };
     setUser(newUser);
-    localStorage.setItem('creaftique_auth', JSON.stringify(newUser));
+    localStorage.setItem('printshop_auth', JSON.stringify(newUser));
     return true;
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('creaftique_auth');
+    localStorage.removeItem('printshop_auth');
   };
 
   const switchRole = (newRole: UserRole) => {
@@ -61,7 +61,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       role: newRole
     };
     setUser(updatedUser);
-    localStorage.setItem('creaftique_auth', JSON.stringify(updatedUser));
+    localStorage.setItem('printshop_auth', JSON.stringify(updatedUser));
   };
 
   return (
