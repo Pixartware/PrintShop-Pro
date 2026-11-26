@@ -1,16 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Akshar PrintShop Pro - Professional & AI-Enhanced Printing</title>
-    <meta name="description" content="Online printing service for custom prints, flyers, cards, stickers, and premium finishing at Akshar PrintShop Pro." />
+    <title>Akshar PrintShop Pro — Commercial Digital Printing & Precision Finishing</title>
+    <meta name="description" content="Akshar PrintShop Pro — Studio-grade commercial digital printing for 100 to 350 GSM cardstock, die-cut stickers, visiting cards, flyers, and boutique packaging." />
+    <link rel="canonical" href="https://printshop.vercel.app/" />
+
     <!-- html2pdf.js bundle for reliable PDF invoice generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://printshop.vercel.app/" />
+    <meta property="og:title" content="Akshar PrintShop Pro — Commercial Digital Printing & Precision Finishing" />
+    <meta property="og:description" content="Akshar PrintShop Pro — Studio-grade commercial digital printing for 100 to 350 GSM cardstock, die-cut stickers, visiting cards, flyers, and boutique packaging." />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="og:image:secure_url" content="/logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:domain" content="printshop.vercel.app" />
+    <meta name="twitter:url" content="https://printshop.vercel.app/" />
+    <meta name="twitter:title" content="Akshar PrintShop Pro — Commercial Digital Printing & Precision Finishing" />
+    <meta name="twitter:description" content="Akshar PrintShop Pro — Studio-grade commercial digital printing for 100 to 350 GSM cardstock, die-cut stickers, visiting cards, flyers, and boutique packaging." />
+    <meta name="twitter:image" content="/logo.png" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Dark Mode Immediate Initialization (Auto System detection) -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('craftique_theme') || 'system';
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || (saved === 'system' && prefersDark)) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.style.colorScheme = 'dark';
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.style.colorScheme = 'light';
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+  <body class="bg-[#FAF7F2] dark:bg-[#121110] text-slate-800 dark:text-stone-100 antialiased font-sans selection:bg-amber-200 selection:text-amber-900 min-h-screen transition-colors duration-200">
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -1,0 +1,902 @@
+{
+  "settings": {
+    "business_name": "Craftique",
+    "brand_title": "Creaftique",
+    "tagline": "Create. Customize. Print. Cherish.",
+    "upi_id": "aksharstudio-3@okisbii",
+    "whatsapp_number": "916354871446",
+    "script_url": "https://script.google.com/macros/s/AKfycbw2SIchIvwh55FhbrHsnGnWGzFtC1fajbQSK7nQD_P7nof9fXJ7lDOvDShhttMZsAfdwQ/exec",
+    "admin_emails": [
+      "admin@craftique.in"
+    ],
+    "gst_rate": 18,
+    "shipping_fee": 80,
+    "free_shipping_threshold": 1500,
+    "order_prefix": "CRQ",
+    "catalog_source_path": "/Volumes/STUDIO/AKSHAR/AKSHAR 1TB/AKSHAR SALES/|| Craftique Products",
+    "sync_status": {
+      "connected": true,
+      "last_sync": "2026-11-26T13:28:18.804Z",
+      "products_found": 1,
+      "new_products": 0,
+      "updated_products": 1,
+      "images_count": 10,
+      "source_dir": "/Volumes/STUDIO/AKSHAR/AKSHAR 1TB/AKSHAR SALES/|| Akshar PrintShop Pro",
+      "auto_watch_enabled": true
+    }
+  },
+  "categories": [
+    {
+      "id": "decor",
+      "name": "Décor",
+      "slug": "decor",
+      "description": "Handcrafted wall art, personalized frames & artisanal home accents.",
+      "icon": "Frame",
+      "subcategories": [
+        {
+          "id": "paintings",
+          "name": "Paintings",
+          "slug": "paintings"
+        },
+        {
+          "id": "wall-art",
+          "name": "Wall Art",
+          "slug": "wall-art"
+        },
+        {
+          "id": "hanging",
+          "name": "Hanging",
+          "slug": "hanging"
+        },
+        {
+          "id": "posters",
+          "name": "Posters",
+          "slug": "posters"
+        },
+        {
+          "id": "photo-frames",
+          "name": "Photo Frames",
+          "slug": "photo-frames"
+        },
+        {
+          "id": "customized-frames",
+          "name": "Customized Frames",
+          "slug": "customized-frames"
+        },
+        {
+          "id": "decorative-products",
+          "name": "Decorative Products",
+          "slug": "decorative-products"
+        }
+      ]
+    },
+    {
+      "id": "printing",
+      "name": "Printing Services",
+      "slug": "printing",
+      "description": "High-definition archival commercial & personal printing solutions.",
+      "icon": "Printer",
+      "subcategories": [
+        {
+          "id": "photo-albums",
+          "name": "Photo Albums",
+          "slug": "photo-albums"
+        },
+        {
+          "id": "magazines",
+          "name": "Magazines",
+          "slug": "magazines"
+        },
+        {
+          "id": "photo-collage",
+          "name": "Photo Collage",
+          "slug": "photo-collage"
+        },
+        {
+          "id": "cards",
+          "name": "Cards",
+          "slug": "cards"
+        },
+        {
+          "id": "invitations",
+          "name": "Invitations",
+          "slug": "invitations"
+        },
+        {
+          "id": "stickers",
+          "name": "Stickers",
+          "slug": "stickers"
+        },
+        {
+          "id": "tags",
+          "name": "Tags",
+          "slug": "tags"
+        },
+        {
+          "id": "packaging",
+          "name": "Packaging",
+          "slug": "packaging"
+        },
+        {
+          "id": "brochures",
+          "name": "Brochures",
+          "slug": "brochures"
+        },
+        {
+          "id": "flyers",
+          "name": "Flyers",
+          "slug": "flyers"
+        },
+        {
+          "id": "business-cards",
+          "name": "Business Cards",
+          "slug": "business-cards"
+        },
+        {
+          "id": "certificates",
+          "name": "Certificates",
+          "slug": "certificates"
+        },
+        {
+          "id": "photo-prints",
+          "name": "Photo Prints",
+          "slug": "photo-prints"
+        }
+      ]
+    },
+    {
+      "id": "customized-products",
+      "name": "Customized Products",
+      "slug": "customized-products",
+      "description": "Bespoke gifts, photo magnets, customized backdrops and party supplies.",
+      "icon": "Sparkles",
+      "subcategories": [
+        {
+          "id": "photo-magnets",
+          "name": "Photo Magnets",
+          "slug": "photo-magnets"
+        },
+        {
+          "id": "insta-photo-cards",
+          "name": "Insta Photo Cards",
+          "slug": "insta-photo-cards"
+        },
+        {
+          "id": "party-supplies",
+          "name": "Party Supplies & Cutouts",
+          "slug": "party-supplies"
+        },
+        {
+          "id": "custom-labels",
+          "name": "Custom Book & Bottle Labels",
+          "slug": "custom-labels"
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-sync-personalized_print_service",
+      "sku": "PERSONALIZED_PRINT_SERVICE",
+      "name": "Personalized Printing Service",
+      "category": "Personalized Print Service",
+      "category_slug": "personalized-print-service",
+      "subcategory": "Personalized Print Service",
+      "subcategory_slug": "personalized-print-service",
+      "short_description": "On-demand commercial digital printing on 100 to 350 GSM papers, sticker sheets, and party paper with thermal lamination, kiss cut & creasing.",
+      "full_description": "Experience commercial studio-grade digital printing for your brand, business, and celebrations. Choose from premium 100 GSM up to ultra-thick 350 GSM cardstock, waterproof sticker sheets, opaque/transparent sheets, and party papers. Fully customizable with Single or Double-sided printing, Thermal Lamination (Gloss / Matte), Half Cut (Sticker Kiss Cut), and Full Cut & Creasing. Instant live price calculation with Unit Cost × Quantity and dynamic UPI checkout.",
+      "material": "100 - 350 GSM Premium Cardstock & Sticker Sheets",
+      "default_size": "Custom Size / Specifications",
+      "base_price": 9,
+      "selling_price": 9,
+      "mrp": 15,
+      "discount": 40,
+      "tax": 18,
+      "stock": 250,
+      "production_time": "1-2 business days",
+      "tags": [
+        "Personalized Print Service",
+        "Creaftique",
+        "Custom Print",
+        "Bespoke"
+      ],
+      "keywords": [
+        "personalized print service",
+        "personalized print service",
+        "personalized_print_service",
+        "customized",
+        "photo print"
+      ],
+      "images": [
+        "/catalog-images/00%20Personalized%20Print%20Service/02%20Print%20Sheet%20Size%20Comparison-3.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/01%20Custom%20Printing%20Showcase_%20Flyers%2C%20Cards%20%26%20Stickers-5.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/01%20Personalised%20Print%20Services%20Infographic%20Grid.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/01%20Personalized%20Print%20Service%20Showcase-1.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/01%20Personalized%20Prints%2C%20Stickers%20%26%20Packaging.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/03%20Premium%20Media%20%26%20Sticker%20Guide.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/04%20Premium%20Lamination%20Finish%20Options.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/05%20Custom%20Floral%20Packaging%20Solutions.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/06%20Precision%20Cutting%20Services%20Infographic.jpg",
+        "/catalog-images/00%20Personalized%20Print%20Service/Custom%20Paper%20Prints%20Showcase%20(1).jpg"
+      ],
+      "customization_available": true,
+      "requires_photo": true,
+      "required_photos_count": 1,
+      "custom_text_allowed": true,
+      "active": true,
+      "featured": true,
+      "costs": {
+        "material_cost": 4,
+        "print_cost": 3,
+        "labor_cost": 1,
+        "packaging_cost": 1,
+        "shipping_cost": 0
+      },
+      "custom_options": {
+        "sizes": [
+          {
+            "name": "12 × 18 Inch (Single)",
+            "price_adj": 0,
+            "default": true
+          },
+          {
+            "name": "12 × 18 Inch (Both Side)",
+            "price_adj": 3
+          },
+          {
+            "name": "13 × 19 Inch (Single)",
+            "price_adj": 1
+          },
+          {
+            "name": "13 × 19 Inch (Both Side)",
+            "price_adj": 4
+          }
+        ],
+        "materials": [
+          {
+            "name": "300 Gsm Cardstock",
+            "price_adj": 0,
+            "default": true
+          },
+          {
+            "name": "350 Gsm Archival Cardstock",
+            "price_adj": 1
+          },
+          {
+            "name": "250 Gsm Cardstock",
+            "price_adj": -1
+          },
+          {
+            "name": "Sticker Sheet",
+            "price_adj": 0
+          },
+          {
+            "name": "100 / 130 Gsm Paper",
+            "price_adj": -3
+          }
+        ],
+        "finishes": [
+          {
+            "name": "Standard Print (No Lamination)",
+            "price_adj": 0,
+            "default": true
+          },
+          {
+            "name": "Thermal Gloss Lamination",
+            "price_adj": 4.5
+          },
+          {
+            "name": "Thermal Matte Lamination",
+            "price_adj": 4.5
+          }
+        ]
+      },
+      "updated_at": "2026-11-26T13:28:18.804Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord-demo-001",
+      "order_number": "CRQ-DEMO-001",
+      "customer_name": "Akshar Studio (Demo Test)",
+      "customer_phone": "916354871446",
+      "customer_email": "aksharstudio-3@okisbii",
+      "shipping_address": {
+        "street": "Akshar Studio, Near S.G. Highway",
+        "city": "Ahmedabad",
+        "state": "Gujarat",
+        "pincode": "380054",
+        "country": "India"
+      },
+      "items": [
+        {
+          "cart_item_id": "demo-item-1",
+          "product_id": "prod-sync-canvas_frame_12x18",
+          "sku": "CANVAS_FRAME_12X18",
+          "product_name": "Personalized Artisan Canvas Frame",
+          "image": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop&q=80",
+          "size": "12 × 18 inch",
+          "material": "Museum Grade Canvas",
+          "finish": "Satin Anti-Glare",
+          "quantity": 1,
+          "unit_price": 1250,
+          "total": 1250,
+          "customization": {
+            "text": "Craftique Artisan Studio — Demo Print",
+            "notes": "Premium gallery wrap with wooden floater frame",
+            "photos": [
+              {
+                "url": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=1200&auto=format&fit=crop&q=80",
+                "name": "Demo_Canvas_Print.jpg"
+              }
+            ]
+          },
+          "selected_extras": []
+        }
+      ],
+      "subtotal": 1250,
+      "discount": 0,
+      "tax": 225,
+      "shipping": 0,
+      "grand_total": 1475,
+      "order_status": "NEW",
+      "payment_status": "Verified",
+      "google_drive_folder": "Craftique Orders/2026/09/30/CRQ-DEMO-001 - Akshar Studio (Demo Test)",
+      "google_drive_folder_id": "1fSdaV7e67JTk1h1O7fIt7r4QNAuetOTx",
+      "google_drive_url": "https://drive.google.com/drive/folders/1fSdaV7e67JTk1h1O7fIt7r4QNAuetOTx",
+      "google_drive_status": "Synced with Google Apps Script",
+      "created_at": "2026-09-30T14:21:00.000Z",
+      "timeline": [
+        {
+          "status": "NEW",
+          "label": "Order Placed",
+          "date": "2026-09-30T14:21:00.000Z",
+          "completed": true,
+          "current": true
+        },
+        {
+          "status": "PAYMENT VERIFIED",
+          "label": "Payment Verified",
+          "date": "2026-09-30T14:21:00.000Z",
+          "completed": true
+        },
+        {
+          "status": "DESIGN APPROVAL",
+          "label": "Artwork Approved",
+          "completed": false
+        },
+        {
+          "status": "PRODUCTION",
+          "label": "In Production",
+          "completed": false
+        },
+        {
+          "status": "QUALITY CHECK",
+          "label": "Quality Inspection",
+          "completed": false
+        },
+        {
+          "status": "READY TO DISPATCH",
+          "label": "Ready for Dispatch",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "customer_name": "Priyank Shah",
+      "customer_phone": "9825123456",
+      "customer_email": "priyank@example.com",
+      "shipping_address": {
+        "street": "504, Galaxy Tower, Satellite",
+        "city": "Ahmedabad",
+        "state": "Gujarat",
+        "pincode": "380015",
+        "country": "India"
+      },
+      "items": [
+        {
+          "cart_item_id": "test-photo-item",
+          "product_id": "prod-sync-photo_albums",
+          "sku": "PHOTO_ALBUMS",
+          "product_name": "Premium Hardcover Photo Album",
+          "image": "/catalog-images/07.%20Photo%20Albums/Photo%20Albums%20(1).jpg",
+          "size": "12 × 18 inch",
+          "material": "Lustre Paper",
+          "finish": "Glossy",
+          "quantity": 1,
+          "unit_price": 2499,
+          "total": 2499,
+          "customization": {
+            "photos": [
+              {
+                "url": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800",
+                "name": "Family_Portrait.jpg"
+              },
+              {
+                "url": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800",
+                "name": "Vacation_Cover.jpg"
+              }
+            ],
+            "album_sheets": 5,
+            "album_pages": 10
+          },
+          "selected_extras": []
+        }
+      ],
+      "subtotal": 2499,
+      "discount": 0,
+      "tax": 0,
+      "shipping": 0,
+      "grand_total": 2499,
+      "id": "ord-1790758588831",
+      "order_number": "CRQ-20260930-0005",
+      "created_at": "2026-09-30T08:56:28.831Z",
+      "updated_at": "2026-09-30T08:56:33.845Z",
+      "order_status": "NEW",
+      "payment_status": "Pending",
+      "timeline": [
+        {
+          "status": "NEW",
+          "label": "Order Placed",
+          "date": "2026-09-30T08:56:28.831Z",
+          "completed": true,
+          "current": true
+        },
+        {
+          "status": "PAYMENT PENDING",
+          "label": "Payment Verification",
+          "completed": false
+        },
+        {
+          "status": "DESIGN APPROVAL",
+          "label": "Artwork Approval",
+          "completed": false
+        },
+        {
+          "status": "PRODUCTION",
+          "label": "In Production",
+          "completed": false
+        },
+        {
+          "status": "QUALITY CHECK",
+          "label": "Quality Inspection",
+          "completed": false
+        },
+        {
+          "status": "PACKING",
+          "label": "Packing & Boxing",
+          "completed": false
+        },
+        {
+          "status": "READY TO DISPATCH",
+          "label": "Shipping Manifest Ready",
+          "completed": false
+        },
+        {
+          "status": "DISPATCHED",
+          "label": "Dispatched with Tracking",
+          "completed": false
+        },
+        {
+          "status": "DELIVERED",
+          "label": "Delivered",
+          "completed": false
+        }
+      ],
+      "google_drive_folder": "Creaftique Orders/2026/09/30/CRQ-20260930-0005",
+      "google_drive_folder_id": "gdrive-fld-CRQ-20260930-0005",
+      "google_drive_status": "Local Fallback Storage Active",
+      "local_storage_path": "/Users/akshar/.gemini/antigravity/scratch/creaftique/server/storage/orders/2026/09/30/CRQ-20260930-0005"
+    },
+    {
+      "customer_name": "Akshar Patel",
+      "customer_phone": "9876543210",
+      "customer_email": "akshar@craftique.in",
+      "shipping_address": {
+        "street": "12, Ambience Heights, Bodakdev",
+        "city": "Ahmedabad",
+        "state": "Gujarat",
+        "pincode": "380054",
+        "country": "India"
+      },
+      "items": [
+        {
+          "cart_item_id": "test-1",
+          "product_id": "prod-sync-canvas_hanging_6x8",
+          "sku": "CANVAS_HANGING_6X8",
+          "product_name": "Elegant Personalized Canvas Scroll Wall Art",
+          "image": "/catalog-images/01.%20Canvas%20Hanging/6%20x%208/Canvas%20Hanging%206x8%20(1).jpg",
+          "size": "6 × 8 inch",
+          "material": "Canvas",
+          "finish": "Matte",
+          "quantity": 1,
+          "unit_price": 549,
+          "total": 549,
+          "customization": {
+            "photos": []
+          },
+          "selected_extras": []
+        }
+      ],
+      "subtotal": 549,
+      "discount": 0,
+      "tax": 0,
+      "shipping": 0,
+      "grand_total": 549,
+      "id": "ord-1790750290458",
+      "order_number": "CRQ-20260930-0004",
+      "created_at": "2026-09-30T06:38:10.458Z",
+      "updated_at": "2026-09-30T06:38:15.499Z",
+      "order_status": "NEW",
+      "payment_status": "Pending",
+      "timeline": [
+        {
+          "status": "NEW",
+          "label": "Order Placed",
+          "date": "2026-09-30T06:38:10.458Z",
+          "completed": true,
+          "current": true
+        },
+        {
+          "status": "PAYMENT PENDING",
+          "label": "Payment Verification",
+          "completed": false
+        },
+        {
+          "status": "DESIGN APPROVAL",
+          "label": "Artwork Approval",
+          "completed": false
+        },
+        {
+          "status": "PRODUCTION",
+          "label": "In Production",
+          "completed": false
+        },
+        {
+          "status": "QUALITY CHECK",
+          "label": "Quality Inspection",
+          "completed": false
+        },
+        {
+          "status": "PACKING",
+          "label": "Packing & Boxing",
+          "completed": false
+        },
+        {
+          "status": "READY TO DISPATCH",
+          "label": "Shipping Manifest Ready",
+          "completed": false
+        },
+        {
+          "status": "DISPATCHED",
+          "label": "Dispatched with Tracking",
+          "completed": false
+        },
+        {
+          "status": "DELIVERED",
+          "label": "Delivered",
+          "completed": false
+        }
+      ],
+      "google_drive_folder": "Creaftique Orders/2026/09/30/CRQ-20260930-0004",
+      "google_drive_folder_id": "gdrive-fld-CRQ-20260930-0004",
+      "google_drive_status": "Local Fallback Storage Active",
+      "local_storage_path": "/Users/akshar/.gemini/antigravity/scratch/creaftique/server/storage/orders/2026/09/30/CRQ-20260930-0004"
+    }
+  ],
+  "payments": [],
+  "production_jobs": [],
+  "qc_records": [
+    {
+      "order_number": "CRQ-20260929-0003",
+      "checklist": {
+        "product": true,
+        "size": true,
+        "material": true,
+        "quantity": true,
+        "photos": true,
+        "print_quality": true,
+        "cutting": true,
+        "packaging": true
+      },
+      "status": "QC Passed",
+      "notes": "Archival color balance perfect, corner brackets secure.",
+      "inspected_by": "lead-qc@creaftique.in",
+      "id": "qc-1790691450435",
+      "passed_at": "2026-09-29T14:17:30.435Z"
+    }
+  ],
+  "shipments": [
+    {
+      "order_number": "CRQ-20260929-0003",
+      "courier": "Delhivery",
+      "tracking_number": "DLH987654321",
+      "tracking_url": "https://www.delhivery.com/track/package/DLH987654321",
+      "weight": "1.4 kg",
+      "dimensions": "18 x 24 x 1.5 inch",
+      "shipping_cost": 90,
+      "id": "shp-1790691457603",
+      "dispatch_date": "2026-09-29T14:17:37.603Z"
+    }
+  ],
+  "design_proofs": [],
+  "customers": [
+    {
+      "id": "cust-1790750025738",
+      "name": "Hitesh Patel",
+      "phone": "9876543210",
+      "email": "9876543210@customer.craftique.in",
+      "saved_address": {
+        "street": "12, Ambience Heights, Bodakdev",
+        "city": "Ahmedabad",
+        "state": "Gujarat",
+        "pincode": "380054",
+        "country": "India"
+      },
+      "created_at": "2026-09-30T06:33:45.738Z",
+      "last_login": "2026-09-30T08:51:46.672Z",
+      "orders_count": 2,
+      "total_spent": 549,
+      "last_order_at": "2026-09-30T06:38:10.458Z"
+    },
+    {
+      "id": "cust-1790758588832",
+      "name": "Priyank Shah",
+      "email": "priyank@example.com",
+      "phone": "9825123456",
+      "saved_address": {
+        "street": "504, Galaxy Tower, Satellite",
+        "city": "Ahmedabad",
+        "state": "Gujarat",
+        "pincode": "380015",
+        "country": "India"
+      },
+      "orders_count": 1,
+      "total_spent": 2499,
+      "created_at": "2026-09-30T08:56:28.832Z",
+      "last_order_at": "2026-09-30T08:56:28.832Z"
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": "log-1795699698805",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "1 products, 10 high-res images",
+      "timestamp": "2026-11-26T13:28:18.805Z"
+    },
+    {
+      "id": "log-1795699476502",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "1 products, 10 high-res images",
+      "timestamp": "2026-11-26T13:24:36.503Z"
+    },
+    {
+      "id": "log-1790770713179",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-30T12:18:33.179Z"
+    },
+    {
+      "id": "log-1790758706383",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-30T08:58:26.383Z"
+    },
+    {
+      "id": "log-1790758588866",
+      "user": "Priyank Shah",
+      "action": "Placed New Order",
+      "entity_type": "Order",
+      "entity_id": "CRQ-20260930-0005",
+      "new_value": "₹2499",
+      "timestamp": "2026-09-30T08:56:28.866Z"
+    },
+    {
+      "id": "log-1790758569796",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-30T08:56:09.796Z"
+    },
+    {
+      "id": "log-1790758293611",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-30T08:51:33.611Z"
+    },
+    {
+      "id": "log-1790750290521",
+      "user": "Akshar Patel",
+      "action": "Placed New Order",
+      "entity_type": "Order",
+      "entity_id": "CRQ-20260930-0004",
+      "new_value": "₹549",
+      "timestamp": "2026-09-30T06:38:10.521Z"
+    },
+    {
+      "id": "log-1790750012312",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-30T06:33:32.312Z"
+    },
+    {
+      "id": "log-1790744437440",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-30T05:00:37.440Z"
+    },
+    {
+      "id": "log-1790744054794",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-30T04:54:14.794Z"
+    },
+    {
+      "id": "log-1790743495243",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-30T04:44:55.243Z"
+    },
+    {
+      "id": "log-1790743309026",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-30T04:41:49.026Z"
+    },
+    {
+      "id": "log-1790742977049",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-30T04:36:17.049Z"
+    },
+    {
+      "id": "log-1790742706459",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-30T04:31:46.459Z"
+    },
+    {
+      "id": "log-1790742326376",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-30T04:25:26.376Z"
+    },
+    {
+      "id": "log-1790702025203",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-29T17:13:45.203Z"
+    },
+    {
+      "id": "log-1790697629779",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-29T16:00:29.779Z"
+    },
+    {
+      "id": "log-1790697522715",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "21 products, 159 high-res images",
+      "timestamp": "2026-09-29T15:58:42.715Z"
+    },
+    {
+      "id": "log-1790695846430",
+      "user": "Catalog Sync Agent",
+      "action": "Synced Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "20 products, 149 images (0 empty folders skipped)",
+      "timestamp": "2026-09-29T15:30:46.430Z"
+    },
+    {
+      "id": "log-1790695666009",
+      "user": "Catalog Sync Agent",
+      "action": "Synced Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "30 products, 223 images (0 empty folders skipped)",
+      "timestamp": "2026-09-29T15:27:46.009Z"
+    },
+    {
+      "id": "log-1790695640778",
+      "user": "Catalog Sync Agent",
+      "action": "Synced Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "44 products, 79 images",
+      "timestamp": "2026-09-29T15:27:20.778Z"
+    },
+    {
+      "id": "log-1790691457605",
+      "user": "Dispatch Manager",
+      "action": "Dispatched Order",
+      "entity_type": "Order",
+      "entity_id": "CRQ-20260929-0003",
+      "new_value": "Delhivery - DLH987654321",
+      "timestamp": "2026-09-29T14:17:37.605Z"
+    },
+    {
+      "id": "log-1790691450437",
+      "user": "lead-qc@creaftique.in",
+      "action": "QC Inspection: QC Passed",
+      "entity_type": "Order",
+      "entity_id": "CRQ-20260929-0003",
+      "new_value": "QC Passed",
+      "timestamp": "2026-09-29T14:17:30.437Z"
+    },
+    {
+      "id": "log-1790691407119",
+      "user": "Test Verification Customer",
+      "action": "Placed New Order",
+      "entity_type": "Order",
+      "entity_id": "CRQ-20260929-0003",
+      "new_value": "₹1791",
+      "timestamp": "2026-09-29T14:16:47.119Z"
+    },
+    {
+      "id": "log-1790691323262",
+      "user": "Catalog Sync Agent",
+      "action": "Synced Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "44 products, 79 images",
+      "timestamp": "2026-09-29T14:15:23.262Z"
+    },
+    {
+      "id": "log-1",
+      "user": "System",
+      "action": "Initialize Database",
+      "timestamp": "2026-09-29T14:07:52.547Z"
+    }
+  ]
+}

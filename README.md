@@ -1,80 +1,133 @@
-# Akshar PrintShop Pro 🖨️✨
-> Professional & AI-Enhanced Digital Offset Printing Platform with Advanced Admin Suite
+# Creaftique — Customized Products & Printing Platform
+> *Create. Customize. Print. Cherish.*
 
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
-![React](https://img.shields.io/badge/React-18.3-blue)
-![TailwindCSS](https://img.shields.io/badge/Tailwind-3.4-cyan)
-![Vite](https://img.shields.io/badge/Vite-6.0-purple)
+A modern, production-ready, responsive fullstack web application for personalized products, commercial printing, museum-grade canvas wall art, bespoke invitations, and artisanal décor.
 
-**Akshar PrintShop Pro** is a modern commercial printing platform designed for high-resolution sheet printing, stickers, flyers, business cards, and custom packaging.
+**Live Production URL:** [https://craftique-art.vercel.app](https://craftique-art.vercel.app)  
+**GitHub Repository:** [https://github.com/Akshar3375/Craftique](https://github.com/Akshar3375/Craftique)
 
 ---
 
-## 🌟 Key Features
+## 🚀 Key Features
 
-### 🛍️ Customer Storefront (`/printshop`)
-1. **Interactive Print Cost Calculator**:
-   - Instant calculation across all media types (350 GSM, 300 GSM, 250 GSM, 210 GSM, 170 GSM, 100/130 GSM, Sticker Sheet, Opaque / Transparent films, A3 Letterhead, Party Paper Printing).
-   - Dynamic Add-on selection: Thermal Gloss/Matte Lamination, Precision Half-Cutting (Kiss Cut), single & double-sided printing.
-2. **Multi-Format Design Upload**:
-   - Accepts `.zip`, `.rar`, `.cdr`, `.psd`, `.ai`, `.pdf`, `.jpg`, `.png`.
-3. **Instant UPI & QR Code Payments**:
-   - Auto-generated dynamic QR code for `aksharstudio-2@okicici` with animated scanner overlay.
-   - 1-click deep links for Google Pay, PhonePe, Paytm, and BHIM UPI apps.
-4. **Automated Order Slips & Invoices**:
-   - Client-side high-resolution PDF Invoice download powered by `html2pdf.js`.
-   - 1-Click WhatsApp Order dispatch with pre-filled Gujarati / English job order specs.
-5. **Visual Media & Sheet Size Guides**:
-   - High-definition infographics detailing 12x18 vs 13x19 inch sheet impositions, GSM thickness comparisons, and precision cutting options.
-6. **Live Order Tracking**:
-   - Track order progress from "Order Placed" → "In Production" → "Ready for Pickup / Dispatched".
+### 1. Brand & Aesthetic
+* **Modern Indian Craft + Contemporary Design:** Warm terracotta/amber accents, clean ivory/paper backgrounds, elegant Playfair Display serif typography, and tactile rounded surfaces.
+* **Mobile-First Responsive Interface:** Optimized for smooth customer shopping on mobile and comprehensive workstation management on desktop/tablet.
+
+### 2. Automatic Catalog Sync & Agent
+* **Local Folder Integration:** Directly scans and monitors the product folder at `/Volumes/STUDIO/AKSHAR/AKSHAR 1TB/AKSHAR SALES/|| Craftique Products` (with fallback to local `./catalog_source`).
+* **Intelligent Excel Column Mapper:** Automatically reads `product.xlsx` or `.csv` files inside product directories and flexibly normalizes variable column names (`Product Name`, `Title`, `MRP`, `Size`, `Material`, etc.).
+* **Desktop Sync Agent CLI:**
+  ```bash
+  # Run one-time scan and sync:
+  npm run sync
+
+  # Run continuous live folder watcher:
+  npm run sync:watch
+  ```
+* **Admin Catalog Sync Panel:** Live connection status, last sync timestamp, products found, and one-click manual synchronization.
+
+### 3. Product Customization Engine & Live Price Calculator
+* **Sizes:** Standard dimensions (`4×6`, `6×8`, `8×10`, `12×18`, `18×24`, `24×36`) + Custom Size (Width × Height with unit selector: mm / cm / inch / ft).
+* **Materials:** Archival Canvas (380 GSM), Glossy Fine Art Paper, Optical Cast Acrylic, Birch Wood, MDF, Sunboard, and Poly-Silk.
+* **Finishes:** Matte Anti-Glare, Glossy Lustre, UV Protective Varnish, Emboss, and Foil.
+* **Framing Options:** Gallery Wrap, Sleek Matte Black Floating Frame, Teak Wood Floating Frame, Opulent Golden Luxe Frame, and Modern White Frame.
+* **Dynamic Volume Pricing Tiers:** Instant tiered discounts (1-9, 10-49, 50-99, 100+).
+* **Live Dynamic Price Breakdown:** Real-time calculation:
+  $$\text{Final Price} = \text{Base Price} + \text{Size Adj.} + \text{Material Adj.} + \text{Finish Adj.} + \text{Customization} + \text{Express} - \text{Discount} + \text{Tax (GST 18\%)} + \text{Shipping}$$
+
+### 4. Customer Photo Upload & Quality Inspector
+* **Supported Formats:** JPG, JPEG, PNG, WEBP, HEIC, PDF.
+* **Real-time Client-side Image Analysis:** Analyzes image resolution (width × height px), aspect ratio, orientation, and print-suitability warnings:
+  * `✓ Good quality (Print Ready)`
+  * `⚠ Low resolution (Medium Print)`
+  * `⚠ Image may appear blurry when printed`
+* **Mandatory File Enforcement:** Prevents checkout if required photos are missing.
+
+### 5. Interactive Studio Simulation (Live Visual Preview)
+* Renders chosen frame/canvas with the customer's uploaded photo(s) placed inside.
+* Dynamic custom text inscription overlay with serif typography.
+* Toggle Front Preview and Back Preview (showing wooden subframe, hanging wire, and studio authenticity seal).
+* Zoom slider and orientation rotation.
+
+### 6. Dynamic UPI QR Code & Payment Verification Workflow
+* **Configuration:**
+  * `UPI_ID`: `aksharstudio-3@okisbii`
+  * `BUSINESS_NAME`: `Craftique`
+* **Dynamic UPI URI & Real-time QR Code:**
+  ```
+  upi://pay?pa=aksharstudio-3@okisbii&pn=Craftique&am=1230&cu=INR&tn=CRQ-20260929-0001
+  ```
+* **One-Click Mobile Deep Links:** Direct triggers for Google Pay, PhonePe, and Paytm.
+* **Payment States:** `Pending` → `Customer Claimed Paid` → `Verification Required` → `Verified`.
+* **Verification Panel:** Admin inspects UTR number, reviews uploaded payment screenshots in full lightbox zoom, and verifies or rejects with audit logs.
+
+### 7. Google Drive Storage & Apps Script Integration
+* **Hierarchical Organization:**
+  ```
+  Creaftique Orders/
+  └── YYYY/
+      └── MM/
+          └── DD/
+              └── CRQ-YYYYMMDD-XXXX/
+                  ├── Customer/
+                  ├── Product/
+                  ├── Uploaded Photos/
+                  ├── Design/
+                  └── Order Details.html (Printable invoice & production manifest)
+  ```
+* Connects to Google Apps Script Web App URL (`https://script.google.com/macros/s/AKfycbzRwtwNObuYTQXaZA9sOQW8mfArrfosgT2TqoK-s5w8FtYNYwDl6ZaeauhRD_Nz2cF_/exec`).
+* Saves Google Drive folder IDs in database without exposing private Drive links publicly.
+
+### 8. Full 10-Stage Studio Workflow & Customer Portal
+1. `NEW` (Order Created with unique ID `CRQ-YYYYMMDD-XXXX`)
+2. `PAYMENT PENDING`
+3. `PAYMENT VERIFIED`
+4. `DESIGN REQUIRED` / `DESIGN APPROVAL` (Designer uploads proof; customer approves or requests revisions)
+5. `PRODUCTION` (Work order queue, substrate specs, photo bundle downloads)
+6. `QUALITY CHECK` (Mandatory 8-point inspection checklist)
+7. `PACKING`
+8. `READY TO DISPATCH`
+9. `DISPATCHED` (Courier selection: Delhivery, BlueDart, DTDC, Shiprocket, tracking number, shipping label)
+10. `DELIVERED` / `COMPLETED`
+
+### 9. AI Product Listing Generator
+* Analyzes product titles, substrate materials, dimensions, and categories.
+* Generates: SEO-friendly titles, short descriptions, professional e-commerce storytelling descriptions, 5 bullet features, structured specifications, search tags, URL slugs, and image alt text.
+* Review workflow: Generate, Regenerate, Edit, Approve, and Save (with overwrite protection).
+
+### 10. Reports, Profit Analytics & Role-Based Permissions
+* **Profit Calculations:**
+  $$\text{Gross Profit} = \text{Selling Revenue} - (\text{Material} + \text{Print Ink} + \text{Labor} + \text{Packaging} + \text{Shipping})$$
+* **One-Click CSV Export:** Generates financial statements.
+* **Role-Based Access:** Super Admin, Admin, Production, Designer, QC, Dispatch, and Customer with quick evaluator switcher.
 
 ---
 
-### 🛡️ Dedicated Admin Suite
-Access via the Lock icon in the header or Admin credentials.
-- **Master PIN Code**: `1234` (configurable in store settings)
-- **Authorized Emails**: `admin@phototoolsai.com`, `hitesh@phototoolsai.com`, `pixartware@gmail.com`
+## 🛠️ Running the Application
 
-#### Admin Capabilities:
-- 📊 **Overview Analytics**: Real-time sales volume (₹), total print jobs queued, active paper media count, and registered clients.
-- 📦 **Product & Substrate Management**: Add, update, or remove paper categories, custom sheet sizes, and add-on rates.
-- 💰 **Price Matrix & Bulk Adjuster**: Update base costs, lamination, and cutting rates inline, or apply bulk percentage adjustments (e.g. +5% or -10%) across the entire catalog with one click.
-- 👥 **Customer Relationship CRM**: Comprehensive customer database automatically indexed from orders. Track total lifetime spend, orders count, preferred delivery mode, direct 1-click WhatsApp messaging, and export to CSV.
-- 📋 **Live Orders & Dispatch Tracking**: Real-time order fulfillment workflow with automated WhatsApp updates ("In Production", "Ready for Pickup", "Dispatched via Courier").
-- ⚙️ **Store & Payment Configuration**: Live customization of Business Name, UPI VPA, WhatsApp support number, Google Apps Script endpoint, courier charges, and announcement banner.
-
----
-
-## 🚀 Local Development
-
+### 1. Start Fullstack Server
 ```bash
-# Install dependencies
-npm install
-
-# Start Vite local development server
+cd /Users/akshar/.gemini/antigravity/scratch/creaftique
 npm run dev
-
-# Build production bundle
-npm run build
-
-# Preview production build
-npm run preview
 ```
+* **Frontend:** Accessible at `http://localhost:5173` (Vite dev) or `http://localhost:5001` (Unified Express server).
+* **Backend API:** Running on `http://localhost:5001/api`.
 
----
-
-## 🌐 Deployment to Vercel
-
+### 2. Run Catalog Sync Agent
 ```bash
-# Push to GitHub
-git add .
-git commit -m "Initial release of Akshar PrintShop Pro with Admin Suite"
-git push origin main
+# Scan and synchronize products from external volume:
+npm run sync
 
-# Deploy on Vercel
-npx vercel --prod
+# Keep watching directory continuously for file changes:
+npm run sync:watch
 ```
 
 ---
-*Developed for Hitesh Bhesaniya Production • Akshar PrintShop Pro*
+
+## 🔐 Configuration
+* **UPI ID:** `aksharstudio-3@okisbii`
+* **Business Name:** `Craftique`
+* **WhatsApp Number:** `916354871446`
+* **Admin Emails:** `admin@phototoolsai.com`, `hitesh@phototoolsai.com`
+* **Default Catalog Source:** `/Volumes/STUDIO/AKSHAR/AKSHAR 1TB/AKSHAR SALES/|| Craftique Products`
