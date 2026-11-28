@@ -39,7 +39,7 @@
     <script>
       (function() {
         try {
-          var saved = localStorage.getItem('craftique_theme') || 'system';
+          var saved = localStorage.getItem('printshop_theme') || localStorage.getItem('craftique_theme') || 'system';
           var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
           if (saved === 'dark' || (saved === 'system' && prefersDark)) {
             document.documentElement.classList.add('dark');

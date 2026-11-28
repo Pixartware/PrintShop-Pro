@@ -8,6 +8,7 @@ import { CategoryGrid } from './components/storefront/CategoryGrid';
 import { CategorySidebar } from './components/storefront/CategorySidebar';
 import { ProductCard } from './components/storefront/ProductCard';
 import { ProductCustomizer } from './components/storefront/ProductCustomizer';
+import { PrintingServiceCustomizer } from './components/storefront/PrintingServiceCustomizer';
 import { HowItWorks } from './components/storefront/HowItWorks';
 import { CheckoutModal } from './components/storefront/CheckoutModal';
 import { UpiPaymentModal } from './components/storefront/UpiPaymentModal';
@@ -309,7 +310,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] dark:bg-[#121110] flex flex-col text-slate-800 dark:text-stone-100 transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0B0F19] flex flex-col text-slate-900 dark:text-slate-100 transition-colors duration-200">
       {/* If in Admin view, render AdminLayout */}
       {currentView === 'admin' ? (
         <AdminLayout
@@ -345,94 +346,53 @@ export const App: React.FC = () => {
           <main className="flex-1">
             {currentView === 'home' && (
               <>
-                <Hero
-                  onExplore={() => {
-                    const el = document.getElementById('catalog-section');
-                    el?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  onCustomise={(sku) => {
-                    const targetSku = sku || 'PERSONALIZED_PRINT_SERVICE';
-                    const match = products.find(p => p.sku === targetSku) || products.find(p => p.sku === 'PERSONALIZED_PRINT_SERVICE') || products[0];
-                    if (match) handleSelectProduct(match);
-                  }}
-                  featuredProduct={products.find(p => p.sku === 'PERSONALIZED_PRINT_SERVICE') || products[0]}
-                />
-
-                <CategoryGrid
-                  categories={categories}
-                  selectedCategory={selectedCategorySlug}
-                  onSelectCategory={(slug) => {
-                    setSelectedCategorySlug(slug);
-                    const el = document.getElementById('catalog-section');
-                    el?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                />
-
-                {/* Catalog Products Section with Left Sidebar & Widescreen Grid */}
-                <section id="catalog-section" className="py-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
-                  <div className="flex flex-col lg:flex-row items-start gap-8">
-                    {/* Left Sticky Category & Filter Sidebar */}
-                    <CategorySidebar
-                      categories={categories}
-                      products={products}
-                      selectedCategory={selectedCategorySlug}
-                      onSelectCategory={(slug) => {
-                        setSelectedCategorySlug(slug);
-                        const el = document.getElementById('catalog-section');
-                        el?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      priceFilter={priceFilter}
-                      onPriceFilterChange={setPriceFilter}
-                      sortBy={sortBy}
-                      onSortByChange={setSortBy}
-                      onReset={handleResetFilters}
-                    />
-
-                    {/* Right Product Grid Area */}
-                    <div className="flex-1 w-full min-w-0">
-                      {/* Section Header Info Bar */}
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 bg-white dark:bg-[#1A1816] p-4 sm:p-5 rounded-2xl border border-slate-200/80 dark:border-stone-800 shadow-xs">
-                        <div>
-                          <div className="text-xs uppercase font-bold tracking-widest text-[#B45309] dark:text-amber-400">
-                            {selectedCategorySlug === 'all' ? 'All Handcrafted Collections' : selectedCategorySlug.replace(/-/g, ' ')}
-                          </div>
-                          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 dark:text-stone-100 mt-0.5">
-                            Bespoke Products & Custom Printing
-                          </h2>
+                {/* Top Announcement & Brand Highlights Bar */}
+                <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/70 via-slate-50 to-slate-50 dark:from-[#0B1528] dark:via-[#0B0F19] dark:to-[#0B0F19] pt-6 pb-2 border-b border-slate-200/80 dark:border-slate-800/80">
+                  <div className="w-full max-w-[1880px] 2xl:max-w-[2200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-3">
+                      <div className="space-y-1.5">
+                        <div className="inline-flex items-center gap-2 bg-blue-100/90 dark:bg-blue-950/70 border border-blue-200 dark:border-blue-800 px-3 py-1 rounded-full text-xs font-bold text-blue-900 dark:text-blue-300">
+                          <Sparkles className="w-3.5 h-3.5 text-orange-500" />
+                          <span>Direct Commercial Digital Press • Studio Production</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-semibold text-slate-500 dark:text-stone-400 bg-slate-50 dark:bg-stone-800 px-3.5 py-1.5 rounded-full border border-slate-200 dark:border-stone-700">
-                            Showing <span className="font-bold text-slate-800 dark:text-stone-100">{filteredProducts.length}</span> of {products.length} products
-                          </span>
-                        </div>
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                          Commercial Digital <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-orange-500 bg-clip-text text-transparent">Sheet Printing Hub</span>
+                        </h1>
+                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
+                          Studio-grade 100 to 350 GSM cardstock, precision CNC kiss-cut stickers, visiting cards, flyers, and boutique packaging with live real-time price calculation and instant dynamic UPI checkout.
+                        </p>
                       </div>
 
-                      {filteredProducts.length === 0 ? (
-                        <div className="text-center py-16 bg-white dark:bg-[#1A1816] rounded-3xl border border-slate-200 dark:border-stone-800 space-y-3">
-                          <p className="text-sm font-semibold text-slate-600 dark:text-stone-300">No products match your search or filter.</p>
-                          <button
-                            onClick={handleResetFilters}
-                            className="text-xs font-bold text-amber-800 dark:text-amber-400 underline hover:text-amber-900 dark:hover:text-amber-300 cursor-pointer"
-                          >
-                            Reset All Filters
-                          </button>
+                      {/* Key Quick Badges */}
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300 shrink-0">
+                        <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-xl shadow-xs">
+                          <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+                          <span>12-Color Archival</span>
                         </div>
-                      ) : (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-6">
-                          {filteredProducts.map((p) => (
-                            <ProductCard
-                              key={p.id}
-                              product={p}
-                              onSelect={handleSelectProduct}
-                              onShare={(prod) => setSharingProduct(prod)}
-                            />
-                          ))}
+                        <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-xl shadow-xs">
+                          <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                          <span>Live Sheet Pricing</span>
                         </div>
-                      )}
+                        <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-xl shadow-xs">
+                          <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                          <span>Dynamic UPI QR</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </section>
 
+                {/* Dedicated Custom Printing Configurator Workspace */}
+                <section id="customizer-section" className="w-full max-w-[1880px] 2xl:max-w-[2200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8">
+                  <PrintingServiceCustomizer
+                    product={products.find(p => p.sku === 'PERSONALIZED_PRINT_SERVICE') || products[0]}
+                    onAddedToCart={() => {}}
+                    onShare={(prod) => setSharingProduct(prod)}
+                    onInstantCheckout={() => setIsCheckoutOpen(true)}
+                  />
+                </section>
+
+                {/* How It Works & Workflow Guide */}
                 <HowItWorks />
               </>
             )}
@@ -443,10 +403,10 @@ export const App: React.FC = () => {
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <button
                     onClick={handleBackToCollections}
-                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-900 dark:text-amber-200 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 dark:hover:bg-amber-900/80 border border-amber-200/80 dark:border-amber-800 px-4 py-2 rounded-full transition-colors cursor-pointer shadow-xs"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 px-4 py-2 rounded-full transition-colors cursor-pointer shadow-xs"
                   >
-                    <ArrowLeft className="w-4 h-4" />
-                    <span>Back to Collections</span>
+                    <ArrowLeft className="w-4 h-4 text-blue-600" />
+                    <span>Back to Configurator</span>
                   </button>
 
                   <button
@@ -454,7 +414,7 @@ export const App: React.FC = () => {
                     className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 border border-emerald-300 dark:border-emerald-700/80 px-4 py-2 rounded-full transition-all cursor-pointer shadow-xs hover:shadow-sm"
                   >
                     <Share2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                    <span>Share This Product</span>
+                    <span>Share This Service</span>
                     <span className="hidden sm:inline text-[11px] bg-emerald-600 text-white px-2 py-0.5 rounded-full font-medium">WhatsApp / Link</span>
                   </button>
                 </div>

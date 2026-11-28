@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Search, Compass, ShieldCheck, MessageCircle, Menu, X, ArrowRight, User } from 'lucide-react';
+import { ShoppingBag, Compass, MessageCircle, Menu, X, ArrowRight, User, Sparkles, Printer } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import { useCustomerAuth } from '../../context/CustomerAuthContext';
@@ -31,95 +31,99 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const cleanPhone = String(settings.whatsapp_number || '916354871446').replace(/[^0-9]/g, '');
   const brandTitle = settings.brand_title || 'Akshar PrintShop Pro';
-  const freeShippingThreshold = settings.free_shipping_threshold || 1500;
-
-  const categories = [
-    { name: 'All Products', slug: 'all' },
-    { name: 'Décor', slug: 'decor' },
-    { name: 'Printing Services', slug: 'printing' },
-    { name: 'Customized Gifts', slug: 'customized-products' }
-  ];
+  const freeShippingThreshold = settings.free_shipping_threshold || 1000;
 
   return (
-    <header className="sticky top-0 z-40 bg-[#FAF7F2]/95 dark:bg-[#161412]/95 backdrop-blur-md border-b border-[#EBE3D5] dark:border-stone-800 transition-all">
+    <header className="sticky top-0 z-40 bg-white/95 dark:bg-[#0B0F19]/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all">
       {/* Top Announcement Bar */}
-      <div className="bg-[#B45309] dark:bg-amber-900 text-[#FFFDF9] text-xs py-1.5 px-4 text-center font-medium tracking-wide flex justify-center items-center gap-3">
-        <span>✨ Handcrafted Indian Craftsmanship • Free Shipping above ₹{freeShippingThreshold.toLocaleString('en-IN')} • Dynamic UPI Instant QR</span>
+      <div className="bg-slate-900 text-white text-xs py-2 px-4 text-center font-medium tracking-wide flex justify-center items-center gap-3">
+        <span className="flex items-center gap-1.5">
+          <Sparkles className="w-3.5 h-3.5 text-orange-400" />
+          <span>Professional Commercial Digital Printing • 100 to 350 GSM Sheets • Thermal Lamination & Precision Kiss-Cut</span>
+        </span>
         <a
-          href={`https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(brandTitle)}%2C%20I%20have%20an%20enquiry%20about%20customized%20products`}
+          href={`https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(brandTitle)}%2C%20I%20have%20an%20enquiry%20about%20custom%20sheet%20printing`}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden sm:inline-flex items-center gap-1 text-amber-200 hover:text-white underline font-semibold ml-2"
+          className="hidden sm:inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 underline font-semibold ml-2"
         >
           <MessageCircle className="w-3.5 h-3.5" /> WhatsApp Support
         </a>
       </div>
 
-
       <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <div className="flex items-center justify-between h-20 sm:h-22 gap-4">
-          {/* Logo */}
+          {/* Logo & Brand Identity */}
           <div
             onClick={() => onNavigate('home')}
             className="cursor-pointer flex items-center gap-3.5 group select-none shrink-0"
           >
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-1 bg-white dark:bg-stone-800 shadow-md shadow-amber-950/10 border border-slate-200/90 dark:border-stone-700 ring-2 ring-amber-600/30 group-hover:scale-105 group-hover:shadow-lg transition-all shrink-0 flex items-center justify-center">
+            <div className="w-13 h-13 sm:w-15 sm:h-15 rounded-2xl p-1.5 bg-white dark:bg-slate-800 shadow-md border border-slate-200 dark:border-slate-700 ring-2 ring-blue-600/20 group-hover:scale-105 group-hover:ring-blue-600/40 transition-all shrink-0 flex items-center justify-center">
               <img
-                src="/logo.png"
-                alt="Akshar PrintShop Pro Production Logo"
-                className="w-full h-full object-contain rounded-full"
+                src="/logo-mark.png"
+                alt="Akshar PrintShop Pro Logo"
+                className="w-full h-full object-contain"
               />
             </div>
             <div>
-              <span className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-stone-100 flex items-center">
-                Akshar PrintShop Pro
-              </span>
-              <span className="block text-[10px] sm:text-[11px] uppercase font-bold tracking-widest text-blue-600 dark:text-blue-400 -mt-0.5">
-                Commercial Digital Printing & Finishing
+              <div className="font-extrabold text-2xl sm:text-3xl tracking-tight text-slate-900 dark:text-white flex items-center leading-none">
+                <span>Akshar</span>
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-clip-text text-transparent ml-1.5">PrintShop</span>
+                <span className="text-orange-500 ml-1">Pro</span>
+              </div>
+              <span className="block text-[11px] sm:text-xs font-semibold tracking-wide text-slate-500 dark:text-slate-400 mt-1">
+                Print Smart. Impress More.
               </span>
             </div>
           </div>
 
-          {/* Desktop Search Bar */}
-          <div className="hidden md:flex flex-1 max-w-md mx-4">
-            <div className="relative w-full">
-              <input
-                type="text"
-                placeholder="Search 350 GSM prints, stickers, visiting cards, flyers, sheets..."
-                value={searchQuery}
-                onChange={(e) => onSearchChange(e.target.value)}
-                className="w-full bg-white/80 dark:bg-stone-900/80 border border-slate-200 dark:border-stone-700 rounded-full py-2.5 pl-10 pr-4 text-sm text-slate-800 dark:text-stone-100 placeholder-slate-400 dark:placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 transition-all shadow-xs"
-              />
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
-              {searchQuery && (
-                <button
-                  onClick={() => onSearchChange('')}
-                  className="absolute right-3 top-2.5 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-stone-200 bg-slate-100 dark:bg-stone-800 rounded-full w-5 h-5 flex items-center justify-center"
-                >
-                  ×
-                </button>
-              )}
-            </div>
-          </div>
+          {/* Quick Header Nav Links */}
+          <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-600 dark:text-slate-300">
+            <button
+              onClick={() => onNavigate('home')}
+              className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5 cursor-pointer"
+            >
+              <Printer className="w-4 h-4 text-blue-600" />
+              <span>Print Configurator</span>
+            </button>
+            <button
+              onClick={() => onNavigate('track')}
+              className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5 cursor-pointer ${
+                currentView === 'track' ? 'text-blue-600 dark:text-blue-400 font-bold' : ''
+              }`}
+            >
+              <Compass className="w-4 h-4 text-orange-500" />
+              <span>Track Order</span>
+            </button>
+            <a
+              href={`https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(brandTitle)}%2C%20I%20have%20an%20enquiry%20about%20custom%20printing`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-emerald-600 transition-colors flex items-center gap-1.5"
+            >
+              <MessageCircle className="w-4 h-4 text-emerald-500" />
+              <span>Direct WhatsApp</span>
+            </a>
+          </nav>
 
-          {/* Actions & Navigation Links */}
+          {/* Actions: Account, Track, Theme, Cart */}
           <div className="flex items-center gap-2 sm:gap-3.5">
             {/* Customer Login / My Account */}
             {isLoggedIn && customer ? (
               <button
                 type="button"
                 onClick={onOpenCustomerAccount}
-                className="flex items-center gap-1.5 sm:gap-2 text-xs font-semibold py-1.5 px-2.5 sm:px-3 rounded-full bg-amber-50 dark:bg-amber-950/50 border border-amber-300 dark:border-amber-800 text-amber-950 dark:text-amber-200 hover:bg-amber-100 dark:hover:bg-amber-900/60 transition-all shadow-xs cursor-pointer"
+                className="flex items-center gap-1.5 sm:gap-2 text-xs font-semibold py-2 px-3 sm:px-3.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-950 dark:text-blue-200 hover:bg-blue-100 transition-all shadow-xs cursor-pointer"
                 title="View My Orders and Account"
               >
-                <div className="w-5 h-5 rounded-full bg-amber-700 text-white text-[10px] flex items-center justify-center font-bold shrink-0">
+                <div className="w-5 h-5 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold shrink-0">
                   {customer.name ? customer.name[0].toUpperCase() : 'C'}
                 </div>
-                <span className="hidden sm:inline max-w-[85px] truncate font-bold">
+                <span className="hidden sm:inline max-w-[90px] truncate font-bold">
                   {customer.name || customer.phone.slice(-4)}
                 </span>
                 {orders.length > 0 && (
-                  <span className="bg-amber-700 text-white text-[10px] px-1.5 py-0.2 rounded-full font-bold">
+                  <span className="bg-orange-500 text-white text-[10px] px-1.5 py-0.2 rounded-full font-bold">
                     {orders.length}
                   </span>
                 )}
@@ -128,23 +132,23 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={onOpenCustomerAuth}
-                className="flex items-center gap-1.5 text-xs font-semibold py-1.5 px-3 rounded-full bg-white dark:bg-stone-800 border border-[#E2D8C9] dark:border-stone-700 text-slate-800 dark:text-stone-200 hover:bg-amber-50 dark:hover:bg-stone-700 hover:border-amber-400 transition-all shadow-xs cursor-pointer"
+                className="flex items-center gap-1.5 text-xs font-semibold py-2 px-3.5 rounded-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-blue-400 transition-all shadow-xs cursor-pointer"
               >
-                <User className="w-3.5 h-3.5 text-amber-700 dark:text-amber-400" />
+                <User className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                 <span>Login</span>
               </button>
             )}
 
             <button
               onClick={() => onNavigate('track')}
-              className={`hidden sm:flex items-center gap-1.5 text-xs font-semibold py-2 px-3.5 rounded-full transition-colors cursor-pointer ${
+              className={`hidden sm:flex lg:hidden items-center gap-1.5 text-xs font-semibold py-2 px-3.5 rounded-full transition-colors cursor-pointer ${
                 currentView === 'track'
-                  ? 'bg-amber-100 dark:bg-amber-950/80 text-amber-900 dark:text-amber-200 font-bold'
-                  : 'text-slate-600 dark:text-stone-300 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
+                  ? 'bg-blue-100 dark:bg-blue-950/80 text-blue-900 dark:text-blue-200 font-bold'
+                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
               }`}
             >
-              <Compass className="w-4 h-4 text-amber-700 dark:text-amber-400" />
-              <span>Track Order</span>
+              <Compass className="w-4 h-4 text-orange-500" />
+              <span>Track</span>
             </button>
 
             {/* Dark / Light / System Mode Toggle */}
@@ -153,12 +157,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Cart Button with Count Badge */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative p-2.5 rounded-full bg-amber-50 dark:bg-stone-800 border border-amber-200/80 dark:border-stone-700 text-amber-950 dark:text-stone-200 hover:bg-amber-100 dark:hover:bg-stone-700 transition-colors flex items-center justify-center shadow-xs cursor-pointer"
+              className="relative p-2.5 rounded-full bg-blue-50 dark:bg-slate-800 border border-blue-200 dark:border-slate-700 text-slate-900 dark:text-slate-200 hover:bg-blue-100 dark:hover:bg-slate-700 transition-colors flex items-center justify-center shadow-xs cursor-pointer"
               aria-label="Shopping Cart"
             >
-              <ShoppingBag className="w-5 h-5 text-amber-800 dark:text-amber-400" />
+              <ShoppingBag className="w-5 h-5 text-blue-600 dark:text-blue-400" />
               {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-amber-700 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm animate-scale-in">
+                <span className="absolute -top-1 -right-1 bg-gradient-to-r from-orange-500 to-red-600 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm animate-scale-in">
                   {itemCount}
                 </span>
               )}
@@ -167,119 +171,47 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Mobile menu toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-slate-600 dark:text-stone-300 hover:text-slate-900 dark:hover:text-white cursor-pointer"
+              className="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
-        {/* Categories Bar (Desktop) */}
-        <nav className="hidden md:flex items-center justify-between border-t border-[#EBE3D5]/70 dark:border-stone-800/80 py-2.5 text-xs font-medium">
-          <div className="flex items-center gap-6">
-            {categories.map((c) => (
-              <button
-                key={c.slug}
-                onClick={() => {
-                  onNavigate('category', c.slug);
-                }}
-                className={`py-1 transition-colors hover:text-amber-800 dark:hover:text-amber-400 ${
-                  currentView === 'category' && c.slug === 'all'
-                    ? 'text-amber-900 dark:text-amber-400 font-bold border-b-2 border-amber-800 dark:border-amber-500'
-                    : 'text-slate-600 dark:text-stone-400'
-                }`}
-              >
-                {c.name}
-              </button>
-            ))}
-          </div>
-
-          <div className="text-slate-500 dark:text-stone-400 text-[11px] flex items-center gap-4">
-            <span className="flex items-center gap-1 text-slate-600 dark:text-stone-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span> Studio Live: 10:00 AM – 8:00 PM
-            </span>
-            <span className="text-slate-300 dark:text-stone-700">|</span>
-            <a
-              href={`tel:+${cleanPhone}`}
-              className="text-amber-900 dark:text-amber-400 font-semibold hover:underline"
-            >
-              +{cleanPhone}
-            </a>
-          </div>
-        </nav>
-
-        {/* Mobile Search & Menu */}
+        {/* Mobile Navigation Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-[#EBE3D5] dark:border-stone-800 space-y-3">
-            <div className="relative w-full">
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={searchQuery}
-                onChange={(e) => onSearchChange(e.target.value)}
-                className="w-full bg-white dark:bg-stone-900 border border-[#E2D8C9] dark:border-stone-700 text-slate-800 dark:text-stone-100 rounded-lg py-2 pl-9 pr-3 text-sm"
-              />
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
-            </div>
+          <div className="lg:hidden py-4 border-t border-slate-200 dark:border-slate-800 space-y-2">
+            <button
+              onClick={() => {
+                onNavigate('home');
+                setMobileMenuOpen(false);
+              }}
+              className="w-full text-left py-2 px-3 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-800 flex items-center gap-2"
+            >
+              <Printer className="w-4 h-4 text-blue-600" />
+              <span>Custom Printing Configurator</span>
+            </button>
 
-            <div className="flex flex-col gap-2 pt-2">
-              {categories.map((c) => (
-                <button
-                  key={c.slug}
-                  onClick={() => {
-                    onNavigate('category', c.slug);
-                    setMobileMenuOpen(false);
-                  }}
-                  className="text-left py-2 px-3 rounded-md text-sm text-slate-700 dark:text-stone-300 hover:bg-amber-50 dark:hover:bg-stone-800 hover:text-amber-900 dark:hover:text-amber-300 font-medium"
-                >
-                  {c.name}
-                </button>
-              ))}
-              {isLoggedIn && customer ? (
-                <button
-                  onClick={() => {
-                    if (onOpenCustomerAccount) onOpenCustomerAccount();
-                    setMobileMenuOpen(false);
-                  }}
-                  className="text-left py-2 px-3 rounded-md text-sm bg-amber-50 dark:bg-amber-950/60 text-amber-900 dark:text-amber-200 font-bold flex items-center justify-between"
-                >
-                  <div className="flex items-center gap-2">
-                    <User className="w-4 h-4 text-amber-700 dark:text-amber-400" />
-                    <span>My Account ({customer.name || customer.phone})</span>
-                  </div>
-                  <span className="bg-amber-700 text-white text-[10px] px-2 py-0.5 rounded-full">
-                    {orders.length} orders
-                  </span>
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    if (onOpenCustomerAuth) onOpenCustomerAuth();
-                    setMobileMenuOpen(false);
-                  }}
-                  className="text-left py-2 px-3 rounded-md text-sm text-slate-700 dark:text-stone-300 hover:bg-amber-50 dark:hover:bg-stone-800 font-medium flex items-center justify-between"
-                >
-                  <div className="flex items-center gap-2">
-                    <User className="w-4 h-4 text-amber-700 dark:text-amber-400" />
-                    <span>Customer Login with OTP</span>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-amber-700 dark:text-amber-400" />
-                </button>
-              )}
-              <button
-                onClick={() => {
-                  onNavigate('track');
-                  setMobileMenuOpen(false);
-                }}
-                className="text-left py-2 px-3 rounded-md text-sm text-slate-700 dark:text-stone-300 hover:bg-amber-50 dark:hover:bg-stone-800 font-medium flex items-center justify-between"
-              >
-                <div className="flex items-center gap-2">
-                  <Compass className="w-4 h-4 text-amber-700 dark:text-amber-400" />
-                  <span>Track Your Order</span>
-                </div>
-                <ArrowRight className="w-4 h-4 text-amber-700 dark:text-amber-400" />
-              </button>
-            </div>
+            <button
+              onClick={() => {
+                onNavigate('track');
+                setMobileMenuOpen(false);
+              }}
+              className="w-full text-left py-2 px-3 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-800 flex items-center gap-2"
+            >
+              <Compass className="w-4 h-4 text-orange-500" />
+              <span>Track Your Order</span>
+            </button>
+
+            <a
+              href={`https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(brandTitle)}%2C%20I%20have%20an%20enquiry%20about%20custom%20printing`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full text-left py-2 px-3 rounded-xl text-sm font-semibold text-emerald-600 hover:bg-emerald-50 dark:hover:bg-slate-800 flex items-center gap-2"
+            >
+              <MessageCircle className="w-4 h-4 text-emerald-500" />
+              <span>WhatsApp Chat (+{cleanPhone})</span>
+            </a>
           </div>
         )}
       </div>
