@@ -71,6 +71,7 @@ export const App: React.FC = () => {
   const [isCustomerAuthOpen, setIsCustomerAuthOpen] = useState(false);
   const [isCustomerOrdersOpen, setIsCustomerOrdersOpen] = useState(false);
   const [sharingProduct, setSharingProduct] = useState<Product | null>(null);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   // Products and Categories data
   const [products, setProducts] = useState<Product[]>([]);
@@ -341,6 +342,7 @@ export const App: React.FC = () => {
             onSearchChange={setSearchQuery}
             onOpenCustomerAuth={() => setIsCustomerAuthOpen(true)}
             onOpenCustomerAccount={() => setIsCustomerOrdersOpen(true)}
+            onOpenShareModal={() => setIsShareModalOpen(true)}
           />
 
           <main className="flex-1">
@@ -363,8 +365,16 @@ export const App: React.FC = () => {
                         </p>
                       </div>
 
-                      {/* Key Quick Badges */}
-                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300 shrink-0">
+                      {/* Key Quick Badges & Share Banner Button */}
+                      <div className="flex flex-wrap items-center gap-2.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300 shrink-0">
+                        <button
+                          type="button"
+                          onClick={() => setIsShareModalOpen(true)}
+                          className="flex items-center gap-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white font-bold px-3.5 py-2 rounded-xl shadow-md shadow-blue-900/20 transition-all cursor-pointer"
+                        >
+                          <Share2 className="w-3.5 h-3.5" />
+                          <span>Promo Banners & Share</span>
+                        </button>
                         <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-xl shadow-xs">
                           <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
                           <span>12-Color Archival</span>
@@ -441,7 +451,7 @@ export const App: React.FC = () => {
             )}
           </main>
 
-          <Footer onNavigate={handleNavigate} />
+          <Footer onNavigate={handleNavigate} onOpenShareModal={() => setIsShareModalOpen(true)} />
         </>
       )}
 
@@ -512,11 +522,14 @@ export const App: React.FC = () => {
         }}
       />
 
-      {/* Share Product Modal */}
+      {/* Share Product & Promo Banners Modal */}
       <ShareProductModal
-        isOpen={Boolean(sharingProduct)}
+        isOpen={isShareModalOpen || Boolean(sharingProduct)}
         product={sharingProduct}
-        onClose={() => setSharingProduct(null)}
+        onClose={() => {
+          setIsShareModalOpen(false);
+          setSharingProduct(null);
+        }}
       />
     </div>
   );
