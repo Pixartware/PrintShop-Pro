@@ -347,15 +347,26 @@ export const App: React.FC = () => {
             {currentView === 'home' && (
               <>
                 {/* Top Announcement Bar */}
-                <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/70 via-slate-50 to-slate-50 dark:from-[#0B1528] dark:via-[#0B0F19] dark:to-[#0B0F19] py-4 border-b border-slate-200/80 dark:border-slate-800/80">
+                <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/70 via-slate-50 to-slate-50 dark:from-[#0B1528] dark:via-[#0B0F19] dark:to-[#0B0F19] py-5 border-b border-slate-200/80 dark:border-slate-800/80">
                   <div className="w-full max-w-[1880px] 2xl:max-w-[2200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
-                    <div className="space-y-1">
-                      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                        Commercial Digital <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-orange-500 bg-clip-text text-transparent">Sheet Printing Hub</span>
-                      </h1>
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
-                        Studio-grade 100 to 350 GSM cardstock, precision CNC kiss-cut stickers, visiting cards, flyers, and boutique packaging with live real-time price calculation and instant dynamic UPI checkout.
-                      </p>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <div className="space-y-1">
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                          Commercial Digital <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-orange-500 bg-clip-text text-transparent">Sheet Printing Hub</span>
+                        </h1>
+                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
+                          Professional printing for stickers, business cards, flyers & custom packaging with instant online pricing.
+                        </p>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => setSharingProduct(products.find(p => p.sku === 'PERSONALIZED_PRINT_SERVICE') || products[0])}
+                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 px-4 py-2.5 rounded-full transition-all cursor-pointer shadow-xs hover:shadow-sm shrink-0 self-start sm:self-auto"
+                      >
+                        <Share2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                        <span>Share Service</span>
+                      </button>
                     </div>
                   </div>
                 </section>

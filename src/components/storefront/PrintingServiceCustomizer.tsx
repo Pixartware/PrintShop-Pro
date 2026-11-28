@@ -19,7 +19,6 @@ import {
   ChevronLeft, 
   ChevronRight, 
   ShieldCheck, 
-  Share2,
   Maximize2,
   X
 } from 'lucide-react';
@@ -342,32 +341,6 @@ export const PrintingServiceCustomizer: React.FC<PrintingServiceCustomizerProps>
 
   return (
     <div className="w-full">
-      {/* Top Banner Header & Brand Pill */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-        <div>
-          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/70 px-3.5 py-1.5 rounded-full border border-blue-200 dark:border-blue-800 shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-            <span>Commercial Digital Printing Hub • Studio Press</span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mt-2 tracking-tight">
-            Personalized <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-orange-500 bg-clip-text text-transparent">Printing Service</span>
-          </h1>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-3xl">
-            High-speed commercial sheet printing on 100 to 350 GSM papers, sticker sheets & synthetic substrates with dynamic live pricing (Unit Cost × Qty).
-          </p>
-        </div>
-
-        {onShare && product && (
-          <button
-            onClick={() => onShare(product)}
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 px-4 py-2.5 rounded-full transition-all cursor-pointer shadow-xs hover:shadow-sm"
-          >
-            <Share2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-            <span>Share Service</span>
-          </button>
-        )}
-      </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-10 items-start">
         
         {/* ========================================================
