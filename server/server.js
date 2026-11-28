@@ -33,6 +33,13 @@ app.use('/uploads', express.static(uploadsDir));
 const localPublicCatalog = path.join(__dirname, '..', 'public', 'catalog-images');
 const defaultDrivePath = '/Volumes/STUDIO/AKSHAR/AKSHAR 1TB/AKSHAR SALES/|| Akshar PrintShop Pro';
 
+app.use('/catalog-images', (req, res, next) => {
+  if (req.url && (req.url.includes('/00.%20Personalized%20Print%20Service') || req.url.includes('/00.%20'))) {
+    req.url = req.url.replace('/00.%20', '/00%20');
+  }
+  next();
+});
+
 if (fs.existsSync(localPublicCatalog)) {
   console.log('[Server] Serving catalog images from public/catalog-images:', localPublicCatalog);
   app.use('/catalog-images', express.static(localPublicCatalog));
@@ -892,7 +899,7 @@ function renderProductShareHtml(req, res, targetSku) {
 
   for (const cand of candidatePaths) {
     try {
-      if (fs.existsSync(cand)) {
+      if (fs.existsSync(cand) && fs.statSync(cand).isFile()) {
         html = fs.readFileSync(cand, 'utf8');
         if (html && html.includes('<!DOCTYPE html>')) break;
       }

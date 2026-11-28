@@ -22,61 +22,61 @@ interface HeroProps {
 
 const PRINT_SERVICE_HERO_SLIDES = [
   {
-    url: "/catalog-images/00. Personalized Print Service/01 Custom Printing Showcase_ Flyers, Cards & Stickers-5.jpg",
+    url: "/catalog-images/00 Personalized Print Service/01 Custom Printing Showcase_ Flyers, Cards & Stickers-5.jpg",
     title: "Flyers, Cards & Custom Stickers",
     subtitle: "Commercial & Custom Bulk Print Hub",
     badge: "Showcase 1 of 10"
   },
   {
-    url: "/catalog-images/00. Personalized Print Service/01 Personalised Print Services Infographic Grid.jpg",
+    url: "/catalog-images/00 Personalized Print Service/01 Personalised Print Services Infographic Grid.jpg",
     title: "Complete Media & Finishing Guide",
     subtitle: "100 GSM to 350 GSM Paper, Lamination & Cutting",
     badge: "Infographic 2 of 10"
   },
   {
-    url: "/catalog-images/00. Personalized Print Service/01 Personalized Print Service Showcase-1.jpg",
+    url: "/catalog-images/00 Personalized Print Service/01 Personalized Print Service Showcase-1.jpg",
     title: "Studio-Grade Archival Printing",
     subtitle: "High-Density Pigment & True Color Fidelity",
     badge: "Print Quality 3 of 10"
   },
   {
-    url: "/catalog-images/00. Personalized Print Service/01 Personalized Prints, Stickers & Packaging.jpg",
+    url: "/catalog-images/00 Personalized Print Service/01 Personalized Prints, Stickers & Packaging.jpg",
     title: "Bespoke Packaging & Stickers",
     subtitle: "Waterproof Polymeric Vinyl & Paper Decals",
     badge: "Packaging 4 of 10"
   },
   {
-    url: "/catalog-images/00. Personalized Print Service/02 Print Sheet Size Comparison-3.jpg",
+    url: "/catalog-images/00 Personalized Print Service/02 Print Sheet Size Comparison-3.jpg",
     title: "Print Sheet Size Comparison",
     subtitle: "12×18, 13×19 & A3 Formats (Single & Double Sided)",
     badge: "Sheet Sizes 5 of 10"
   },
   {
-    url: "/catalog-images/00. Personalized Print Service/03 Premium Media & Sticker Guide.jpg",
+    url: "/catalog-images/00 Personalized Print Service/03 Premium Media & Sticker Guide.jpg",
     title: "Premium Media & Substrates",
     subtitle: "Cardstocks, Opaque/Transparent & Adhesive Sheets",
     badge: "Media Guide 6 of 10"
   },
   {
-    url: "/catalog-images/00. Personalized Print Service/04 Premium Lamination Finish Options.jpg",
+    url: "/catalog-images/00 Personalized Print Service/04 Premium Lamination Finish Options.jpg",
     title: "Thermal Gloss & Matte Lamination",
     subtitle: "Scratch-Resistant & Waterproof Protective Shield",
     badge: "Lamination 7 of 10"
   },
   {
-    url: "/catalog-images/00. Personalized Print Service/05 Custom Floral Packaging Solutions.jpg",
+    url: "/catalog-images/00 Personalized Print Service/05 Custom Floral Packaging Solutions.jpg",
     title: "Precision Packaging & Cards",
     subtitle: "Fold Scoring, Luxury Boxes & Product Hangtags",
     badge: "Packaging 8 of 10"
   },
   {
-    url: "/catalog-images/00. Personalized Print Service/06 Precision Cutting Services Infographic.jpg",
+    url: "/catalog-images/00 Personalized Print Service/06 Precision Cutting Services Infographic.jpg",
     title: "Precision Kiss-Cut (Half Cut)",
     subtitle: "Machine Contour Kiss-Cut & Guillotine Trimming",
     badge: "Cutting Guide 9 of 10"
   },
   {
-    url: "/catalog-images/00. Personalized Print Service/Custom Paper Prints Showcase (1).jpg",
+    url: "/catalog-images/00 Personalized Print Service/Custom Paper Prints Showcase (1).jpg",
     title: "Commercial Digital Print Hub",
     subtitle: "Live Real-Time Price: Unit Cost × Quantity",
     badge: "Production 10 of 10"

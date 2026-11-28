@@ -377,14 +377,14 @@ class Database {
 
   init() {
     try {
-      if (fs.existsSync(DB_FILE)) {
+      if (fs.existsSync(DB_FILE) && fs.statSync(DB_FILE).isFile()) {
         const raw = fs.readFileSync(DB_FILE, 'utf-8');
         const parsed = JSON.parse(raw);
         this.data = { ...this.data, ...parsed };
         return;
       }
 
-      if (fs.existsSync(BUNDLED_DB_FILE)) {
+      if (fs.existsSync(BUNDLED_DB_FILE) && fs.statSync(BUNDLED_DB_FILE).isFile()) {
         const raw = fs.readFileSync(BUNDLED_DB_FILE, 'utf-8');
         const parsed = JSON.parse(raw);
         this.data = { ...this.data, ...parsed };

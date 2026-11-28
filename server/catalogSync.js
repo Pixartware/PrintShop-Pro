@@ -33,7 +33,7 @@ class CatalogSyncService {
 
   parseProductDetailsTxt(filePath) {
     try {
-      if (!fs.existsSync(filePath)) return null;
+      if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) return null;
       const content = fs.readFileSync(filePath, 'utf8');
 
       // Extract Product Title
@@ -94,6 +94,7 @@ class CatalogSyncService {
 
   parseExcelFile(filePath) {
     try {
+      if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) return null;
       const workbook = xlsx.readFile(filePath);
       const sheetName = workbook.SheetNames[0];
       const worksheet = workbook.Sheets[sheetName];
