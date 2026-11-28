@@ -19,7 +19,7 @@
     "catalog_source_path": "/Volumes/STUDIO/AKSHAR/AKSHAR 1TB/AKSHAR SALES/|| Akshar PrintShop Pro",
     "sync_status": {
       "connected": true,
-      "last_sync": "2026-11-26T13:38:50.797Z",
+      "last_sync": "2026-11-28T06:48:42.705Z",
       "products_found": 1,
       "new_products": 0,
       "updated_products": 1,
@@ -323,7 +323,7 @@
         ]
       },
       "created_at": "2026-11-26T13:36:46.065Z",
-      "updated_at": "2026-11-26T13:38:50.796Z"
+      "updated_at": "2026-11-28T06:48:42.704Z"
     }
   ],
   "orders": [],
@@ -334,6 +334,60 @@
   "design_proofs": [],
   "customers": [],
   "audit_logs": [
+    {
+      "id": "log-1795848522705",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "1 products, 10 high-res images",
+      "timestamp": "2026-11-28T06:48:42.705Z"
+    },
+    {
+      "id": "log-1795848304936",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "1 products, 10 high-res images",
+      "timestamp": "2026-11-28T06:45:04.936Z"
+    },
+    {
+      "id": "log-1795797501114",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "1 products, 10 high-res images",
+      "timestamp": "2026-11-27T16:38:21.114Z"
+    },
+    {
+      "id": "log-1795783711217",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "1 products, 10 high-res images",
+      "timestamp": "2026-11-27T12:48:31.217Z"
+    },
+    {
+      "id": "log-1795766819678",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "1 products, 10 high-res images",
+      "timestamp": "2026-11-27T08:06:59.678Z"
+    },
+    {
+      "id": "log-1795700420971",
+      "user": "Automatic Catalog Sync",
+      "action": "Synchronized Product Catalog",
+      "entity_type": "Catalog",
+      "entity_id": "All",
+      "new_value": "1 products, 10 high-res images",
+      "timestamp": "2026-11-26T13:40:20.971Z"
+    },
     {
       "id": "log-1795700330798",
       "user": "Automatic Catalog Sync",

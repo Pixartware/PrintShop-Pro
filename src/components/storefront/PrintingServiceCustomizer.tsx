@@ -1,27 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { Product } from '../../types';
+import React, { useState, useEffect, useRef } from 'react';
+import { Product, UploadedPhotoInfo } from '../../types';
 import { useCart } from '../../context/CartContext';
 import { 
-  Printer, Layers, Scissors, Sparkles, UploadCloud, Check, Plus, 
-  Trash2, FileText, Image as ImageIcon, AlertCircle, ShoppingBag, 
-  ArrowRight, CheckCircle2, ChevronLeft, ChevronRight, ShieldCheck, 
-  HelpCircle, Share2, Smartphone, IndianRupee, Download, Send, X, Lock
+  Printer, 
+  Layers, 
+  Scissors, 
+  Sparkles, 
+  UploadCloud, 
+  Check, 
+  Plus, 
+  Minus, 
+  Trash2, 
+  FileText, 
+  FileArchive, 
+  Image as ImageIcon, 
+  AlertCircle, 
+  ShoppingBag, 
+  ArrowRight, 
+  CheckCircle2, 
+  ChevronLeft, 
+  ChevronRight, 
+  ShieldCheck, 
+  HelpCircle,
+  Share2
 } from 'lucide-react';
 
 export interface PrintingServiceCustomizerProps {
-  product?: Product;
+  product: Product;
   onAddedToCart?: () => void;
   onShare?: (product: Product) => void;
   onInstantCheckout?: () => void;
 }
 
-// --- CONFIGURATION ---
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzRwtwNObuYTQXaZA9sOQW8mfArrfosgT2TqoK-s5w8FtYNYwDl6ZaeauhRD_Nz2cF_/exec";
-const UPI_ID = "aksharstudio-2@okicici"; 
-const BUSINESS_NAME = "Akshar PrintShop Pro";
-const WHATSAPP_NUMBER = "916354871446";
-
-// Complete pricing matrix provided by Akshar PrintShop Pro
+// Complete pricing matrix from legacy online_print_order.tsx
 export const DEFAULT_PRINTING_PRICING = [
   {
     media: "350 Gsm",
@@ -69,8 +80,8 @@ export const DEFAULT_PRINTING_PRICING = [
   },
   {
     media: "170 Gsm",
-    tagline: "Smooth coated paper",
-    desc: "Lightweight art paper suitable for multi-page magazine inserts, marketing leaflets, newsletters, and folded flyers.",
+    tagline: "Smooth medium art paper",
+    desc: "High-resolution smooth art paper for art catalog inners, photo posters, and premium marketing brochures.",
     sizes: [
       { name: "12x18 (Single)", lamination: 4.5, cutting: null, baseCost: 11 },
       { name: "12x18 (Both side)", lamination: 6, cutting: null, baseCost: 14 },
@@ -80,8 +91,8 @@ export const DEFAULT_PRINTING_PRICING = [
   },
   {
     media: "100 /130 Gsm",
-    tagline: "Budget everyday light paper",
-    desc: "Thin, cost-effective sheets for bulk instructional leaflets, daily invoices, parcel inserts, and lightweight posters.",
+    tagline: "Lightweight commercial bond & flyers",
+    desc: "Crisp white stationery paper for bulk corporate invoices, letterheads, instruction pamphlets, and manuals.",
     sizes: [
       { name: "12x18 (Single)", lamination: 4.5, cutting: null, baseCost: 10 },
       { name: "12x18 (Both side)", lamination: 6, cutting: null, baseCost: 13 },
@@ -91,8 +102,8 @@ export const DEFAULT_PRINTING_PRICING = [
   },
   {
     media: "Sticker Sheet",
-    tagline: "Self-adhesive paper & vinyl with optional Half Cut",
-    desc: "High-tack self-adhesive label stock. Optional CNC kiss-cut / half-cut lets you easily peel round, square, or custom shapes.",
+    tagline: "Self-adhesive paper & vinyl stickers",
+    desc: "Peel-and-stick adhesive sheets with optional precision machine kiss-cut (half-cut) around each sticker contour.",
     sizes: [
       { name: "12x18 (Single)", lamination: 4.5, cutting: 8, baseCost: 13 },
       { name: "13x19 (Single)", lamination: 4.75, cutting: 9, baseCost: 16 },
@@ -100,8 +111,8 @@ export const DEFAULT_PRINTING_PRICING = [
   },
   {
     media: "OPEQUE / TRANSPRENT",
-    tagline: "Specialty synthetic non-tear film",
-    desc: "Waterproof synthetic polymer film in Opaque White or Crystal Clear. Perfect for boutique cosmetic jars, beverage labels, and frost overlays.",
+    tagline: "Synthetic tearproof & waterproof film",
+    desc: "Specialized synthetic tear-proof transparent or opaque film for luxury waterproof tags, overlays, and badges.",
     sizes: [
       { name: "12x18 (Single)", lamination: null, cutting: null, baseCost: 17 },
       { name: "13x19 (Single)", lamination: null, cutting: null, baseCost: 20 },
@@ -109,21 +120,82 @@ export const DEFAULT_PRINTING_PRICING = [
   },
   {
     media: "A3 Letter Head",
-    tagline: "Executive bond paper",
-    desc: "Premium bond sheet specially calibrated for corporate stationery, official contracts, certificates, and header documents.",
+    tagline: "Official executive letterhead substrate",
+    desc: "Finely textured executive letterhead paper calibrated for sharp text rendering and laser/inkjet printer compatibility.",
     sizes: [
       { name: "A3 (Single)", lamination: null, cutting: null, baseCost: 9.5 },
     ]
   },
   {
     media: "PARTY PAPER PRINTING",
-    tagline: "Vibrant high-contrast party banner sheet",
-    desc: "Ultra-vibrant color density stock optimized for birthday party decorations, event welcome signage, and photo banners.",
+    tagline: "Vibrant high-contrast celebration paper",
+    desc: "Specialty high-gamut party paper engineered for party banners, birthday bunting flags, photo booth props, and toppers.",
     sizes: [
       { name: "13*19 (Single)", lamination: null, cutting: null, baseCost: 9 },
     ]
   }
 ];
+
+export const PRINT_SERVICE_SLIDES = [
+  {
+    url: "/catalog-images/00. Personalized Print Service/01 Custom Printing Showcase_ Flyers, Cards & Stickers-5.jpg",
+    title: "Flyers, Cards & Custom Stickers",
+    subtitle: "Commercial & Custom Bulk Print Hub"
+  },
+  {
+    url: "/catalog-images/00. Personalized Print Service/01 Personalised Print Services Infographic Grid.jpg",
+    title: "Personalized Print Service",
+    subtitle: "Complete Media, Lamination & Cutting Grid"
+  },
+  {
+    url: "/catalog-images/00. Personalized Print Service/01 Personalized Print Service Showcase-1.jpg",
+    title: "Vibrant Archival Color Printing",
+    subtitle: "100 GSM to 350 GSM Studio Cardstocks"
+  },
+  {
+    url: "/catalog-images/00. Personalized Print Service/01 Personalized Prints, Stickers & Packaging.jpg",
+    title: "Bespoke Packaging & Stickers",
+    subtitle: "Waterproof Vinyl & Paper Stickers"
+  },
+  {
+    url: "/catalog-images/00. Personalized Print Service/02 Print Sheet Size Comparison-3.jpg",
+    title: "Print Sheet Size Comparison",
+    subtitle: "12×18, 13×19 & A3 Formats (Single / Both Side)"
+  },
+  {
+    url: "/catalog-images/00. Personalized Print Service/03 Premium Media & Sticker Guide.jpg",
+    title: "Premium Media & Substrates",
+    subtitle: "Opaque, Transparent, Cardstock & Sticker Sheets"
+  },
+  {
+    url: "/catalog-images/00. Personalized Print Service/04 Premium Lamination Finish Options.jpg",
+    title: "Thermal Gloss & Matte Lamination",
+    subtitle: "Waterproof, Anti-Scratch Protective Shield"
+  },
+  {
+    url: "/catalog-images/00. Personalized Print Service/05 Custom Floral Packaging Solutions.jpg",
+    title: "Precision Packaging & Cards",
+    subtitle: "Folded Creasing, Boxes & Luxury Branding"
+  },
+  {
+    url: "/catalog-images/00. Personalized Print Service/06 Precision Cutting Services Infographic.jpg",
+    title: "Half Cut (Kiss Cut) & Full Die-Cut",
+    subtitle: "Precision Machine Contour Cutting & Creasing"
+  },
+  {
+    url: "/catalog-images/00. Personalized Print Service/Custom Paper Prints Showcase (1).jpg",
+    title: "Commercial Digital Printing",
+    subtitle: "Dynamic Live Pricing: Unit Cost × Qty"
+  }
+];
+
+export interface UploadedDesignFile {
+  name: string;
+  size: number;
+  type: string;
+  extension: string;
+  previewUrl?: string;
+}
 
 export const PrintingServiceCustomizer: React.FC<PrintingServiceCustomizerProps> = ({
   product,
@@ -132,822 +204,839 @@ export const PrintingServiceCustomizer: React.FC<PrintingServiceCustomizerProps>
   onInstantCheckout
 }) => {
   const { addToCart } = useCart();
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Workflow Step (1: Form/Specs, 2: UPI Payment, 3: Confirmed / Receipt)
-  const [step, setStep] = useState<1 | 2 | 3>(1);
-  const [orderId, setOrderId] = useState('ORD-DATE-SN');
-  const [formData, setFormData] = useState({
-    name: '',
-    mobile: '',
-    email: '',
-    deliveryMode: 'Door Pickup'
-  });
+  // Slideshow State
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [isAutoSlidePaused, setIsAutoSlidePaused] = useState(false);
 
-  // Print items state (multi-item calculator)
-  const [printItems, setPrintItems] = useState([
-    {
-      id: 1,
-      media: DEFAULT_PRINTING_PRICING[0].media,
-      size: DEFAULT_PRINTING_PRICING[0].sizes[0].name,
-      lamination: false,
-      cutting: false,
-      qty: 1
-    }
-  ]);
-
-  const [files, setFiles] = useState<File[]>([]);
-  const [paymentScreenshot, setPaymentScreenshot] = useState<File | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
+  // Customizer Configuration State
+  const [selectedMediaName, setSelectedMediaName] = useState<string>("300 Gsm");
+  const [selectedSizeName, setSelectedSizeName] = useState<string>("12x18 (Single)");
+  const [hasLamination, setHasLamination] = useState<boolean>(false);
+  const [laminationType, setLaminationType] = useState<'Gloss' | 'Matte'>('Gloss');
+  const [hasHalfCut, setHasHalfCut] = useState<boolean>(false);
+  const [hasFullCutCreasing, setHasFullCutCreasing] = useState<boolean>(false);
+  const [quantity, setQuantity] = useState<number>(10);
+  const [notes, setNotes] = useState<string>('');
+  
+  // Design Files State
+  const [uploadedFiles, setUploadedFiles] = useState<UploadedDesignFile[]>([]);
+  const [fileError, setFileError] = useState<string | null>(null);
   const [successToast, setSuccessToast] = useState(false);
-  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
-  // Gallery active index for product showcase images
-  const showcaseImages = product?.images && product.images.length > 0 ? product.images : [
-    "/catalog-images/00.%20Personalized%20Print%20Service/01%20Custom%20Printing%20Showcase_%20Flyers,%20Cards%20&%20Stickers-5.jpg",
-    "/catalog-images/00.%20Personalized%20Print%20Service/01%20Personalised%20Print%20Services%20Infographic%20Grid.jpg",
-    "/catalog-images/00.%20Personalized%20Print%20Service/01%20Personalized%20Print%20Service%20Showcase-1.jpg",
-    "/catalog-images/00.%20Personalized%20Print%20Service/02%20Print%20Sheet%20Size%20Comparison-3.jpg",
-    "/catalog-images/00.%20Personalized%20Print%20Service/03%20Premium%20Media%20&%20Sticker%20Guide.jpg",
-    "/catalog-images/00.%20Personalized%20Print%20Service/04%20Premium%20Lamination%20Finish%20Options.jpg"
-  ];
-  const [activeImageIdx, setActiveImageIdx] = useState(0);
-
-  // Sequential Order ID Generator YYYYMMDD-001
+  // Auto Slideshow Effect (every 3.5s)
   useEffect(() => {
-    if (step === 1 && orderId === 'ORD-DATE-SN') {
-      const now = new Date();
-      const dateStr = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
-      const localSeq = parseInt(localStorage.getItem(`seq_${dateStr}`) || '0', 10) + 1;
-      localStorage.setItem(`seq_${dateStr}`, String(localSeq));
-      setOrderId(`ORD-${dateStr}-${String(localSeq).padStart(3, '0')}`);
-    }
-  }, [step, orderId]);
+    if (isAutoSlidePaused) return;
+    const interval = setInterval(() => {
+      setActiveImageIndex(prev => (prev + 1) % PRINT_SERVICE_SLIDES.length);
+    }, 3800);
+    return () => clearInterval(interval);
+  }, [isAutoSlidePaused]);
 
-  // Pricing Calculation
-  const calculatedItems = printItems.map(item => {
-    const mediaDef = DEFAULT_PRINTING_PRICING.find(m => m.media === item.media) || DEFAULT_PRINTING_PRICING[0];
-    const sizeDef = mediaDef.sizes.find(s => s.name === item.size) || mediaDef.sizes[0] || { baseCost: 0, lamination: null, cutting: null };
+  // Derived Media & Size Definitions
+  const currentMediaDef = DEFAULT_PRINTING_PRICING.find(m => m.media === selectedMediaName) || DEFAULT_PRINTING_PRICING[1];
+  const currentSizeDef = currentMediaDef.sizes.find(s => s.name === selectedSizeName) || currentMediaDef.sizes[0];
 
-    let unitCost = sizeDef.baseCost;
-    if (item.lamination && sizeDef.lamination !== null) unitCost += sizeDef.lamination;
-    if (item.cutting && sizeDef.cutting !== null) unitCost += sizeDef.cutting;
-
-    return {
-      ...item,
-      unitCost,
-      total: unitCost * item.qty,
-      canLaminate: sizeDef.lamination !== null,
-      canCut: sizeDef.cutting !== null,
-      mediaDef
-    };
-  });
-
-  const totalAmount = calculatedItems.reduce((sum, item) => sum + item.total, 0);
-  const totalQuantity = calculatedItems.reduce((sum, item) => sum + Number(item.qty), 0);
-
-  const upiLink = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(BUSINESS_NAME)}&am=${totalAmount}&cu=INR`;
-  const gpayLink = `gpay://upi/pay?pa=${UPI_ID}&pn=${encodeURIComponent(BUSINESS_NAME)}&am=${totalAmount}&cu=INR`;
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiLink)}`;
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleItemChange = (id: number, field: string, value: any) => {
-    setPrintItems(items => items.map(item => {
-      if (item.id !== id) return item;
-      const updated = { ...item, [field]: value };
-      if (field === 'media') {
-        const newMediaDef = DEFAULT_PRINTING_PRICING.find(m => m.media === value);
-        if (newMediaDef && newMediaDef.sizes.length > 0) {
-          updated.size = newMediaDef.sizes[0].name;
-          updated.lamination = false;
-          updated.cutting = false;
-        }
-      }
-      return updated;
-    }));
-  };
-
-  const addItem = () => {
-    setPrintItems([
-      ...printItems,
-      {
-        id: Date.now(),
-        media: DEFAULT_PRINTING_PRICING[0].media,
-        size: DEFAULT_PRINTING_PRICING[0].sizes[0].name,
-        lamination: false,
-        cutting: false,
-        qty: 1
-      }
-    ]);
-  };
-
-  const removeItem = (id: number) => {
-    if (printItems.length > 1) {
-      setPrintItems(items => items.filter(item => item.id !== id));
+  // When Media changes, update Size & Reset incompatible options
+  const handleSelectMedia = (mediaName: string) => {
+    setSelectedMediaName(mediaName);
+    const media = DEFAULT_PRINTING_PRICING.find(m => m.media === mediaName);
+    if (media && media.sizes.length > 0) {
+      setSelectedSizeName(media.sizes[0].name);
+      if (media.sizes[0].lamination === null) setHasLamination(false);
+      if (media.sizes[0].cutting === null) setHasHalfCut(false);
     }
   };
 
+  // Price Calculation Engine: Unit Cost × Quantity
+  const baseCost = currentSizeDef.baseCost;
+  const laminationCost = (hasLamination && currentSizeDef.lamination !== null) ? currentSizeDef.lamination : 0;
+  const halfCutCost = (hasHalfCut && currentSizeDef.cutting !== null) ? currentSizeDef.cutting : 0;
+  const fullCutCost = hasFullCutCreasing ? 1.5 : 0;
+
+  const unitCost = Number((baseCost + laminationCost + halfCutCost + fullCutCost).toFixed(2));
+  const totalAmount = Math.round(unitCost * quantity);
+
+  // Handle File Uploads (ZIP, RAR, PDF, CDR, PSD, AI, JPG, PNG)
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const selectedFiles = Array.from(e.target.files);
-      const allowedExtensions = ['.zip', '.rar', '.jpg', '.jpeg', '.pdf', '.cdr', '.psd', '.png', '.ai'];
-      
-      const validFiles = selectedFiles.filter(f => 
-        allowedExtensions.some(ext => f.name.toLowerCase().endsWith(ext))
-      );
-      
-      if (validFiles.length !== selectedFiles.length) {
-        setErrorMsg("Some files were skipped. Supported: ZIP, RAR, CDR, PSD, AI, PDF, JPG, PNG.");
+    if (!e.target.files || e.target.files.length === 0) return;
+    const files = Array.from(e.target.files);
+    const allowed = ['.zip', '.rar', '.pdf', '.cdr', '.psd', '.ai', '.jpg', '.jpeg', '.png'];
+    
+    const valid: UploadedDesignFile[] = [];
+    let hasInvalid = false;
+
+    files.forEach(file => {
+      const ext = '.' + file.name.split('.').pop()?.toLowerCase();
+      if (allowed.includes(ext)) {
+        let preview: string | undefined = undefined;
+        if (['.jpg', '.jpeg', '.png'].includes(ext)) {
+          preview = URL.createObjectURL(file);
+        }
+        valid.push({
+          name: file.name,
+          size: file.size,
+          type: file.type,
+          extension: ext,
+          previewUrl: preview
+        });
       } else {
-        setErrorMsg("");
+        hasInvalid = true;
       }
-      setFiles(prev => [...prev, ...validFiles]);
+    });
+
+    if (hasInvalid) {
+      setFileError('Supported formats: ZIP, RAR, PDF, CDR, PSD, AI, JPG, PNG');
+    } else {
+      setFileError(null);
     }
+
+    setUploadedFiles(prev => [...prev, ...valid]);
     e.target.value = '';
   };
 
-  const removeSelectedFile = (idx: number) => {
-    setFiles(prev => prev.filter((_, i) => i !== idx));
+  const removeFile = (index: number) => {
+    setUploadedFiles(prev => prev.filter((_, i) => i !== index));
   };
 
-  const validateStep1 = () => {
-    if (!formData.name.trim() || !formData.mobile.trim() || !formData.email.trim() || files.length === 0) {
-      setErrorMsg("Please fill in customer details and upload at least one design file.");
-      return false;
-    }
-    if (formData.mobile.replace(/\D/g, '').length < 10) {
-      setErrorMsg("Please enter a valid 10-digit mobile number.");
-      return false;
-    }
-    setErrorMsg('');
-    return true;
-  };
-
-  // Add to Cart handler
+  // Add to Cart
   const handleAddToCart = () => {
-    if (!validateStep1()) return;
+    let sizeLabel = `${currentSizeDef.name} (${selectedMediaName})`;
+    if (hasLamination) sizeLabel += ` • ${laminationType} Thermal Lamination`;
+    if (hasHalfCut) sizeLabel += ` • Kiss-Cut Half Cut`;
+    if (hasFullCutCreasing) sizeLabel += ` • Full Cut & Creasing`;
 
-    calculatedItems.forEach(item => {
-      addToCart({
-        product: product || {
-          id: 'prod-sync-personalized_print_service',
-          sku: 'PERSONALIZED_PRINT_SERVICE',
-          name: `${item.media} Print Sheet`,
-          category: 'Personalized Print Service',
-          selling_price: item.unitCost,
-          mrp: item.unitCost * 1.4,
-          images: showcaseImages,
-          tags: ['Printing', item.media]
-        } as any,
-        selectedSize: { name: item.size, price_adj: 0 },
-        selectedMaterial: { name: item.media, price_adj: 0 },
-        selectedFinish: item.lamination ? { name: 'Thermal Lamination', price_adj: 0 } : undefined,
-        quantity: item.qty,
-        uploadedPhotos: files.map(f => ({
-          id: f.name,
-          previewUrl: URL.createObjectURL(f),
-          filename: f.name,
-          filesize: f.size
-        })),
-        customNotes: `Delivery: ${formData.deliveryMode}${item.cutting ? ' • Half Cut enabled' : ''}`,
-        calculatedPrice: item.total
-      });
+    const mappedPhotos: UploadedPhotoInfo[] = uploadedFiles.map(f => ({
+      url: f.previewUrl || '/catalog-images/00. Personalized Print Service/01 Personalised Print Services Infographic Grid.jpg',
+      name: f.name,
+      size: f.size,
+      quality: 'Good quality'
+    }));
+
+    addToCart({
+      product_id: product.id,
+      sku: product.sku,
+      product_name: `Personalized Printing Service - ${selectedMediaName}`,
+      image: PRINT_SERVICE_SLIDES[0].url,
+      size: sizeLabel,
+      material: `${selectedMediaName} (${currentMediaDef.tagline})`,
+      finish: hasLamination ? `${laminationType} Thermal Lamination` : 'Standard Matte Print (Unlaminated)',
+      quantity,
+      unit_price: unitCost,
+      total: totalAmount,
+      customization: {
+        text: `Job: ${selectedMediaName} | ${selectedSizeName}`,
+        notes: notes || undefined,
+        photos: mappedPhotos,
+        event_name: 'Commercial Digital Print',
+        contact_info: `Media: ${selectedMediaName}, Size: ${selectedSizeName}, Lam: ${hasLamination ? laminationType : 'No'}, KissCut: ${hasHalfCut ? 'Yes' : 'No'}, Files: ${uploadedFiles.length}`
+      },
+      selected_extras: []
     });
 
     setSuccessToast(true);
-    setTimeout(() => setSuccessToast(false), 4000);
+    setTimeout(() => setSuccessToast(false), 3000);
     if (onAddedToCart) onAddedToCart();
   };
 
-  // Submit Order via Google Apps Script & UPI Proof
-  const submitOrder = async () => {
-    if (!paymentScreenshot) {
-      setErrorMsg("Please upload your payment screenshot before submitting.");
-      return;
-    }
-
-    setIsSubmitting(true);
-    setErrorMsg("");
-
-    try {
-      const fileToBase64 = (f: File): Promise<string> => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(f);
-        reader.onload = () => resolve(String(reader.result).split(',')[1]);
-        reader.onerror = reject;
-      });
-
-      const processedFiles = await Promise.all(files.map(async f => ({
-        fileName: f.name,
-        mimeType: f.type,
-        fileBase64: await fileToBase64(f)
-      })));
-
-      const screenshotBase64 = await fileToBase64(paymentScreenshot);
-
-      const payload = {
-        orderId: orderId,
-        name: formData.name,
-        mobile: formData.mobile,
-        email: formData.email,
-        deliveryMode: formData.deliveryMode,
-        quantity: totalQuantity,
-        orderDetails: JSON.stringify(calculatedItems),
-        total: totalAmount,
-        files: processedFiles,
-        screenshotName: paymentScreenshot.name,
-        screenshotMimeType: paymentScreenshot.type,
-        screenshotBase64: screenshotBase64
-      };
-
-      try {
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          body: JSON.stringify(payload)
-        });
-      } catch (scriptErr) {
-        console.warn("Script endpoint warning:", scriptErr);
-      }
-
-      setStep(3);
-    } catch (err: any) {
-      setErrorMsg(`Error placing order: ${err.message}`);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  // PDF Generation with html2pdf
-  const triggerSaveAsPdf = () => {
-    const element = document.getElementById('receipt-content');
-    if (!element) return;
-
-    setIsGeneratingPdf(true);
-    const opt = {
-      margin: [10, 10, 10, 10],
-      filename: `Invoice_${orderId}.pdf`,
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, backgroundColor: '#FFFFFF' },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    };
-
-    if ((window as any).html2pdf) {
-      (window as any).html2pdf().from(element).set(opt).save().then(() => {
-        setIsGeneratingPdf(false);
-      }).catch((e: any) => {
-        console.error("PDF engine fallback:", e);
-        setIsGeneratingPdf(false);
-        window.print();
-      });
-    } else {
-      window.print();
-      setIsGeneratingPdf(false);
-    }
-  };
-
   return (
-    <div className="w-full max-w-7xl mx-auto space-y-8 animate-in fade-in duration-300">
-      
-      {/* Top Banner / Breadcrumb */}
-      <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-950 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="p-1.5 rounded-lg bg-blue-500/30 text-blue-300">
-                <Printer size={18} />
-              </span>
-              <span className="text-xs font-bold uppercase tracking-widest text-blue-300">Commercial Digital Print Engine</span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white">
-              Personalized Printing Service
-            </h1>
-            <p className="text-xs sm:text-sm text-blue-200 mt-1 max-w-2xl">
-              100 to 350 GSM Art Card, Sticker Sheet, Opaque/Clear Vinyl & Party Sheets with Thermal Lamination & CNC Kiss-Cutting.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            {onShare && product && (
-              <button
-                type="button"
-                onClick={() => onShare(product)}
-                className="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 text-white"
-              >
-                <Share2 size={14} /> Share
-              </button>
-            )}
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}`}
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 rounded-xl text-xs font-bold transition-all text-white flex items-center gap-1.5 shadow-md"
-            >
-              <Smartphone size={14} /> WhatsApp Assistance
-            </a>
-          </div>
+    <div className="w-full">
+      {/* Top Banner Navigation & Share */}
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+        <div>
+          <span className="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400 bg-amber-100/90 dark:bg-amber-950/60 px-3 py-1 rounded-full border border-amber-300 dark:border-amber-800">
+            00. Commercial Print Hub • Studio Production
+          </span>
+          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 dark:text-stone-100 mt-2">
+            Personalized Printing Service
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-stone-400 mt-1">
+            Commercial on-demand digital printing on 100-350 GSM papers, sticker sheets & party papers with live dynamic pricing.
+          </p>
         </div>
+
+        {onShare && (
+          <button
+            onClick={() => onShare(product)}
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 border border-emerald-300 dark:border-emerald-700/80 px-4 py-2 rounded-full transition-all cursor-pointer shadow-xs"
+          >
+            <Share2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <span>Share This Service</span>
+          </button>
+        )}
       </div>
 
-      {/* Main 2-Column Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-10 items-start">
         
-        {/* Left Column: Visual Showcase Carousel & Substrate Guide */}
-        <div className="lg:col-span-5 space-y-6">
-          <div className="bg-white dark:bg-gray-800 rounded-3xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
-              <ImageIcon size={15} className="text-blue-600" /> Print Quality & Imposition Standards
-            </h3>
-
-            {/* Main Visual Display */}
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-inner group">
+        {/* ========================================================
+            LEFT COLUMN: INTERACTIVE SLIDESHOW & SPECIFICATION GUIDES
+           ======================================================== */}
+        <div className="lg:col-span-5 xl:col-span-5 sticky top-24 space-y-4">
+          <div 
+            className="bg-white dark:bg-[#1A1816] rounded-3xl p-4 shadow-xl shadow-amber-900/10 dark:shadow-black/40 border border-[#E5DAC8] dark:border-stone-800 relative overflow-hidden group"
+            onMouseEnter={() => setIsAutoSlidePaused(true)}
+            onMouseLeave={() => setIsAutoSlidePaused(false)}
+          >
+            {/* Active Slideshow Viewer */}
+            <div className="aspect-4/3 rounded-2xl overflow-hidden bg-slate-100 dark:bg-stone-900 relative">
               <img
-                src={showcaseImages[activeImageIdx]}
-                alt="Print Spec"
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src={PRINT_SERVICE_SLIDES[activeImageIndex].url}
+                alt={PRINT_SERVICE_SLIDES[activeImageIndex].title}
+                className="w-full h-full object-cover transition-all duration-700 ease-out"
               />
-              <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/80 to-transparent text-white text-xs font-semibold">
-                Sheet Comparison & Print Specs ({activeImageIdx + 1} of {showcaseImages.length})
+
+              {/* Tag Header */}
+              <div className="absolute top-3 left-3 bg-amber-900/80 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+                <Sparkles className="w-3 h-3 text-amber-300" />
+                <span>Infographic {activeImageIndex + 1} of {PRINT_SERVICE_SLIDES.length}</span>
+              </div>
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => setActiveImageIndex((activeImageIndex - 1 + PRINT_SERVICE_SLIDES.length) % PRINT_SERVICE_SLIDES.length)}
+                className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-md flex items-center justify-center transition-all opacity-80 group-hover:opacity-100"
+                title="Previous image"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              <button
+                onClick={() => setActiveImageIndex((activeImageIndex + 1) % PRINT_SERVICE_SLIDES.length)}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-md flex items-center justify-center transition-all opacity-80 group-hover:opacity-100"
+                title="Next image"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+
+              {/* Bottom Caption Overlay */}
+              <div className="absolute bottom-3 left-3 right-3 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md p-3 rounded-xl border border-white/60 dark:border-stone-700 shadow-md">
+                <h4 className="font-serif font-bold text-xs sm:text-sm text-slate-900 dark:text-stone-100 truncate">
+                  {PRINT_SERVICE_SLIDES[activeImageIndex].title}
+                </h4>
+                <p className="text-[11px] text-slate-500 dark:text-stone-400 truncate">
+                  {PRINT_SERVICE_SLIDES[activeImageIndex].subtitle}
+                </p>
               </div>
             </div>
 
-            {/* Thumbnail Navigation */}
-            <div className="flex gap-2 overflow-x-auto pb-1">
-              {showcaseImages.map((img, idx) => (
+            {/* Thumbnail Strip */}
+            <div className="mt-3 flex gap-2 overflow-x-auto pb-1 scrollbar-thin">
+              {PRINT_SERVICE_SLIDES.map((slide, idx) => (
                 <button
                   key={idx}
-                  type="button"
-                  onClick={() => setActiveImageIdx(idx)}
-                  className={`w-16 h-12 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${
-                    activeImageIdx === idx ? 'border-blue-600 ring-2 ring-blue-500/20 scale-105' : 'border-transparent opacity-60 hover:opacity-100'
+                  onClick={() => setActiveImageIndex(idx)}
+                  className={`w-14 h-12 rounded-lg overflow-hidden shrink-0 border-2 transition-all ${
+                    activeImageIndex === idx 
+                      ? 'border-amber-600 dark:border-amber-400 ring-2 ring-amber-500/20 scale-105' 
+                      : 'border-transparent opacity-60 hover:opacity-100'
                   }`}
                 >
-                  <img src={img} alt="thumb" className="w-full h-full object-cover" />
+                  <img src={slide.url} alt={slide.title} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
 
-            {/* Substrate Highlights */}
-            <div className="pt-3 border-t border-gray-100 dark:border-gray-700 space-y-2 text-xs">
-              <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                <CheckCircle2 size={14} className="text-emerald-500 shrink-0" />
-                <span>Standard Sizes: <strong>12×18 Inch</strong> & <strong>13×19 Inch</strong></span>
+            {/* Quality Guarantees */}
+            <div className="mt-4 pt-3 border-t border-slate-100 dark:border-stone-800 grid grid-cols-2 gap-2 text-[11px] text-slate-600 dark:text-stone-400 px-1">
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                <span>12-Color Archival Pigment</span>
               </div>
-              <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                <CheckCircle2 size={14} className="text-emerald-500 shrink-0" />
-                <span>Thermal Lamination: <strong>Gloss / Velvet Matte</strong></span>
+              <div className="flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
+                <span>Precision Blade Kiss-Cut</span>
               </div>
-              <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                <CheckCircle2 size={14} className="text-emerald-500 shrink-0" />
-                <span>Die Finishing: <strong>CNC Plotter Half-Cut (Kiss Cut)</strong></span>
+              <div className="flex items-center gap-1.5">
+                <Layers className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
+                <span>Thermal Gloss / Matte Shield</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Printer className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400 shrink-0" />
+                <span>Heavy GSM 100 up to 350</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Right Column: The 3-Step Interactive Customizer */}
-        <div className="lg:col-span-7 space-y-6">
+        {/* ========================================================
+            RIGHT COLUMN: COMMERCIAL CONFIGURATOR & PRICING
+           ======================================================== */}
+        <div className="lg:col-span-7 xl:col-span-7 space-y-6">
           
-          {errorMsg && (
-            <div className="p-4 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 rounded-2xl flex items-start gap-2.5 text-xs font-semibold shadow-sm animate-in fade-in">
-              <AlertCircle size={18} className="shrink-0 mt-0.5" />
-              <span>{errorMsg}</span>
-              <button type="button" onClick={() => setErrorMsg('')} className="ml-auto text-red-500">
-                <X size={16} />
-              </button>
-            </div>
-          )}
-
-          {/* ================= STEP 1: CALCULATOR & FILES ================= */}
-          {step === 1 && (
-            <div className="space-y-6 animate-in fade-in duration-300">
-              
-              {/* Customer Details Box */}
-              <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm space-y-4">
-                <h3 className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 flex items-center justify-center text-xs font-black">1</span>
-                  Customer & Delivery Details
-                </h3>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-600 dark:text-gray-300 mb-1">Full Name *</label>
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="e.g. Ramesh Patel"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full p-2.5 text-xs rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-600 dark:text-gray-300 mb-1">WhatsApp Mobile *</label>
-                    <input
-                      type="tel"
-                      name="mobile"
-                      placeholder="10-digit number"
-                      value={formData.mobile}
-                      onChange={handleInputChange}
-                      className="w-full p-2.5 text-xs rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-600 dark:text-gray-300 mb-1">Email Address *</label>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="email@example.com"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full p-2.5 text-xs rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                </div>
-
-                <div className="pt-3 border-t border-gray-100 dark:border-gray-700 flex gap-6 text-xs">
-                  <label className="flex items-center gap-2 cursor-pointer font-bold text-gray-700 dark:text-gray-300">
-                    <input
-                      type="radio"
-                      name="deliveryMode"
-                      value="Door Pickup"
-                      checked={formData.deliveryMode === 'Door Pickup'}
-                      onChange={handleInputChange}
-                      className="text-blue-600"
-                    />
-                    Door Pickup (Store Counter)
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer font-bold text-gray-700 dark:text-gray-300">
-                    <input
-                      type="radio"
-                      name="deliveryMode"
-                      value="Courier"
-                      checked={formData.deliveryMode === 'Courier'}
-                      onChange={handleInputChange}
-                      className="text-blue-600"
-                    />
-                    Courier Shipping
-                  </label>
+          {/* STEP 1: PRINT MEDIA SELECTION */}
+          <div className="bg-white dark:bg-[#1A1816] rounded-3xl p-6 border border-[#E5DAC8] dark:border-stone-800 shadow-sm space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <span className="w-7 h-7 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-300 font-bold text-xs flex items-center justify-center">
+                  1
+                </span>
+                <div>
+                  <h3 className="font-serif font-bold text-base text-slate-900 dark:text-stone-100">
+                    Select Print Media (Substrate & GSM)
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-stone-400">
+                    Choose from standard paper, heavy cardstock, sticker vinyl, or synthetic sheets.
+                  </p>
                 </div>
               </div>
+              <span className="text-xs font-bold text-amber-800 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-3 py-1 rounded-full border border-amber-200 dark:border-amber-800">
+                {selectedMediaName}
+              </span>
+            </div>
 
-              {/* Dynamic Print Items Box */}
-              <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm space-y-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 flex items-center justify-center text-xs font-black">2</span>
-                    Paper & Finishing Specifications
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2">
+              {DEFAULT_PRINTING_PRICING.map((item) => {
+                const isSelected = selectedMediaName === item.media;
+                return (
+                  <button
+                    key={item.media}
+                    onClick={() => handleSelectMedia(item.media)}
+                    className={`p-3 rounded-2xl text-left border transition-all cursor-pointer relative ${
+                      isSelected
+                        ? 'bg-amber-50/80 dark:bg-amber-950/40 border-amber-500 dark:border-amber-500 shadow-xs ring-1 ring-amber-500'
+                        : 'bg-slate-50/50 dark:bg-stone-900/50 border-slate-200 dark:border-stone-700 hover:border-amber-300'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className={`font-bold text-xs sm:text-sm ${isSelected ? 'text-amber-900 dark:text-amber-300' : 'text-slate-800 dark:text-stone-200'}`}>
+                        {item.media}
+                      </span>
+                      {isSelected && <Check className="w-4 h-4 text-amber-600 dark:text-amber-400" />}
+                    </div>
+                    <p className="text-[10px] text-slate-500 dark:text-stone-400 line-clamp-1 leading-tight">
+                      {item.tagline}
+                    </p>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Media detail description */}
+            <div className="p-3 bg-slate-50 dark:bg-stone-900/60 rounded-xl border border-slate-200/80 dark:border-stone-800 text-xs text-slate-600 dark:text-stone-300 flex items-start gap-2">
+              <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+              <span>{currentMediaDef.desc}</span>
+            </div>
+          </div>
+
+          {/* STEP 2: PAPER SIZE & SIDES */}
+          <div className="bg-white dark:bg-[#1A1816] rounded-3xl p-6 border border-[#E5DAC8] dark:border-stone-800 shadow-sm space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <span className="w-7 h-7 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-300 font-bold text-xs flex items-center justify-center">
+                  2
+                </span>
+                <div>
+                  <h3 className="font-serif font-bold text-base text-slate-900 dark:text-stone-100">
+                    Paper Size & Print Sides
                   </h3>
-                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400">
-                    {printItems.length} item{printItems.length > 1 ? 's' : ''} in queue
-                  </span>
+                  <p className="text-xs text-slate-500 dark:text-stone-400">
+                    Available sheet dimensions for {selectedMediaName}.
+                  </p>
                 </div>
+              </div>
+              <span className="text-xs font-semibold text-slate-600 dark:text-stone-400">
+                Base ₹{currentSizeDef.baseCost} / sheet
+              </span>
+            </div>
 
-                <div className="space-y-4">
-                  {calculatedItems.map((item, idx) => (
-                    <div key={item.id} className="p-4 sm:p-5 rounded-2xl bg-gray-50 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-700 relative shadow-xs space-y-3">
-                      <div className="flex justify-between items-center">
-                        <span className="text-[11px] font-black uppercase px-2.5 py-0.5 rounded-full bg-gray-900 text-white dark:bg-gray-800">
-                          Item #{idx + 1}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              {currentMediaDef.sizes.map((size) => {
+                const isSelected = selectedSizeName === size.name;
+                const isBothSide = size.name.toLowerCase().includes('both side');
+                return (
+                  <button
+                    key={size.name}
+                    onClick={() => {
+                      setSelectedSizeName(size.name);
+                      if (size.lamination === null) setHasLamination(false);
+                      if (size.cutting === null) setHasHalfCut(false);
+                    }}
+                    className={`p-3.5 rounded-2xl text-left border transition-all cursor-pointer flex justify-between items-center ${
+                      isSelected
+                        ? 'bg-amber-50/80 dark:bg-amber-950/40 border-amber-500 dark:border-amber-500 ring-1 ring-amber-500 shadow-xs'
+                        : 'bg-slate-50/50 dark:bg-stone-900/50 border-slate-200 dark:border-stone-700 hover:border-amber-300'
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className={`font-bold text-sm ${isSelected ? 'text-amber-900 dark:text-amber-300' : 'text-slate-800 dark:text-stone-200'}`}>
+                          {size.name}
                         </span>
-                        {calculatedItems.length > 1 && (
-                          <button
-                            type="button"
-                            onClick={() => removeItem(item.id)}
-                            className="p-1.5 text-gray-400 hover:text-red-500 rounded-lg transition-colors"
-                          >
-                            <Trash2 size={16} />
-                          </button>
+                        {isBothSide && (
+                          <span className="text-[10px] bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 px-2 py-0.5 rounded-full font-medium">
+                            Double Side
+                          </span>
                         )}
                       </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                          <label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Paper Media</label>
-                          <select
-                            value={item.media}
-                            onChange={(e) => handleItemChange(item.id, 'media', e.target.value)}
-                            className="w-full p-2.5 text-xs font-bold rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                          >
-                            {DEFAULT_PRINTING_PRICING.map(m => (
-                              <option key={m.media} value={m.media}>{m.media} - {m.tagline}</option>
-                            ))}
-                          </select>
-                        </div>
-
-                        <div>
-                          <label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Sheet Size</label>
-                          <select
-                            value={item.size}
-                            onChange={(e) => handleItemChange(item.id, 'size', e.target.value)}
-                            className="w-full p-2.5 text-xs font-bold rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                          >
-                            {item.mediaDef.sizes.map(s => (
-                              <option key={s.name} value={s.name}>{s.name} (Base ₹{s.baseCost})</option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
-
-                      {/* Finishes: Lamination & Half Cut */}
-                      <div className="flex flex-wrap gap-4 p-3 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 text-xs">
-                        <label className={`flex items-center gap-2 font-bold ${item.canLaminate ? 'text-gray-800 dark:text-gray-200 cursor-pointer' : 'text-gray-400 cursor-not-allowed'}`}>
-                          <input
-                            type="checkbox"
-                            checked={item.lamination && item.canLaminate}
-                            disabled={!item.canLaminate}
-                            onChange={(e) => handleItemChange(item.id, 'lamination', e.target.checked)}
-                            className="rounded text-blue-600"
-                          />
-                          Thermal Lamination {!item.canLaminate && <span className="text-[10px] font-normal text-gray-400">(N/A)</span>}
-                        </label>
-
-                        <label className={`flex items-center gap-2 font-bold ${item.canCut ? 'text-gray-800 dark:text-gray-200 cursor-pointer' : 'text-gray-400 cursor-not-allowed'}`}>
-                          <input
-                            type="checkbox"
-                            checked={item.cutting && item.canCut}
-                            disabled={!item.canCut}
-                            onChange={(e) => handleItemChange(item.id, 'cutting', e.target.checked)}
-                            className="rounded text-blue-600"
-                          />
-                          Half Cut (Kiss Cut) {!item.canCut && <span className="text-[10px] font-normal text-gray-400">(N/A)</span>}
-                        </label>
-                      </div>
-
-                      {/* Item Total and Quantity */}
-                      <div className="grid grid-cols-3 gap-3 items-end pt-2 border-t border-gray-200 dark:border-gray-700">
-                        <div>
-                          <span className="block text-[10px] font-bold text-gray-400 uppercase">Unit Cost</span>
-                          <span className="text-xs font-bold text-gray-800 dark:text-gray-200">₹{item.unitCost.toFixed(2)}</span>
-                        </div>
-                        <div>
-                          <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Sheets Qty</label>
-                          <input
-                            type="number"
-                            min="1"
-                            value={item.qty}
-                            onChange={(e) => handleItemChange(item.id, 'qty', parseInt(e.target.value) || 1)}
-                            className="w-full p-2 text-xs font-bold rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-center"
-                          />
-                        </div>
-                        <div className="text-right">
-                          <span className="block text-[10px] font-bold text-blue-600 uppercase">Item Total</span>
-                          <span className="text-base font-black text-gray-900 dark:text-white">₹{item.total.toFixed(2)}</span>
-                        </div>
-                      </div>
+                      <p className="text-[11px] text-slate-500 dark:text-stone-400 mt-0.5">
+                        {size.lamination !== null ? `Thermal Lam: +₹${size.lamination}` : 'Lamination: N/A'}
+                        {size.cutting !== null ? ` • Half Cut: +₹${size.cutting}` : ''}
+                      </p>
                     </div>
-                  ))}
+
+                    <div className="text-right">
+                      <span className="font-bold text-sm text-[#B45309] dark:text-amber-400">
+                        ₹{size.baseCost}
+                      </span>
+                      <span className="text-[10px] text-slate-400 block">per sheet</span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* STEP 3: POST-PRESS ADDONS & FINISHING */}
+          <div className="bg-white dark:bg-[#1A1816] rounded-3xl p-6 border border-[#E5DAC8] dark:border-stone-800 shadow-sm space-y-4">
+            <div className="flex items-center gap-2.5">
+              <span className="w-7 h-7 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-300 font-bold text-xs flex items-center justify-center">
+                3
+              </span>
+              <div>
+                <h3 className="font-serif font-bold text-base text-slate-900 dark:text-stone-100">
+                  Finishing & Post-Press Addons
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-stone-400">
+                  Thermal lamination protective film, machine kiss-cutting, or creasing folds.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3 pt-2">
+              
+              {/* Option A: Thermal Lamination */}
+              <div className={`p-4 rounded-2xl border transition-all ${
+                hasLamination 
+                  ? 'bg-amber-50/60 dark:bg-amber-950/30 border-amber-400 dark:border-amber-600' 
+                  : 'bg-slate-50/50 dark:bg-stone-900/50 border-slate-200 dark:border-stone-700'
+              }`}>
+                <div className="flex items-center justify-between">
+                  <label className="flex items-center gap-3 cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={hasLamination}
+                      disabled={currentSizeDef.lamination === null}
+                      onChange={(e) => setHasLamination(e.target.checked)}
+                      className="w-5 h-5 rounded text-amber-600 border-slate-300 focus:ring-amber-500 cursor-pointer disabled:opacity-40"
+                    />
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold text-sm text-slate-900 dark:text-stone-100">
+                          Thermal Lamination Film
+                        </span>
+                        {currentSizeDef.lamination !== null ? (
+                          <span className="text-[11px] bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-300 px-2 py-0.5 rounded-full font-bold">
+                            +₹{currentSizeDef.lamination} / sheet
+                          </span>
+                        ) : (
+                          <span className="text-[10px] text-slate-400 italic">Not applicable for this size/media</span>
+                        )}
+                      </div>
+                      <p className="text-[11px] text-slate-500 dark:text-stone-400">
+                        Scratch-resistant, waterproof protective barrier that intensifies color saturation.
+                      </p>
+                    </div>
+                  </label>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={addItem}
-                  className="w-full py-3 border-2 border-dashed border-blue-300 dark:border-gray-700 hover:border-blue-500 rounded-2xl text-blue-600 dark:text-blue-400 font-bold text-xs flex items-center justify-center gap-2 bg-blue-50/40 hover:bg-blue-50 transition-colors"
-                >
-                  <Plus size={16} /> Add Another Paper Media / Size
-                </button>
+                {/* Sub-selector for Gloss vs Matte */}
+                {hasLamination && currentSizeDef.lamination !== null && (
+                  <div className="mt-3 pt-3 border-t border-amber-200 dark:border-amber-900/50 flex items-center gap-4">
+                    <span className="text-xs font-semibold text-slate-700 dark:text-stone-300">Lamination Finish:</span>
+                    <div className="flex gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setLaminationType('Gloss')}
+                        className={`px-3 py-1 text-xs font-bold rounded-lg border transition-all ${
+                          laminationType === 'Gloss'
+                            ? 'bg-amber-600 text-white border-amber-600 shadow-xs'
+                            : 'bg-white dark:bg-stone-800 text-slate-700 dark:text-stone-300 border-slate-200 dark:border-stone-700'
+                        }`}
+                      >
+                        ✨ Gloss (High Shine)
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setLaminationType('Matte')}
+                        className={`px-3 py-1 text-xs font-bold rounded-lg border transition-all ${
+                          laminationType === 'Matte'
+                            ? 'bg-amber-600 text-white border-amber-600 shadow-xs'
+                            : 'bg-white dark:bg-stone-800 text-slate-700 dark:text-stone-300 border-slate-200 dark:border-stone-700'
+                        }`}
+                      >
+                        💎 Matte (Velvety Anti-Glare)
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
 
-              {/* Upload Design Files */}
-              <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm space-y-4">
-                <h3 className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 flex items-center justify-center text-xs font-black">3</span>
-                  Upload Design Artwork
-                </h3>
+              {/* Option B: Half Cut (Sticker Kiss Cut) */}
+              <div className={`p-4 rounded-2xl border transition-all ${
+                hasHalfCut 
+                  ? 'bg-amber-50/60 dark:bg-amber-950/30 border-amber-400 dark:border-amber-600' 
+                  : 'bg-slate-50/50 dark:bg-stone-900/50 border-slate-200 dark:border-stone-700'
+              }`}>
+                <label className="flex items-center gap-3 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={hasHalfCut}
+                    disabled={currentSizeDef.cutting === null}
+                    onChange={(e) => setHasHalfCut(e.target.checked)}
+                    className="w-5 h-5 rounded text-amber-600 border-slate-300 focus:ring-amber-500 cursor-pointer disabled:opacity-40"
+                  />
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-sm text-slate-900 dark:text-stone-100">
+                        Half Cut (Sticker Kiss Cut)
+                      </span>
+                      {currentSizeDef.cutting !== null ? (
+                        <span className="text-[11px] bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 px-2 py-0.5 rounded-full font-bold">
+                          +₹{currentSizeDef.cutting} / sheet
+                        </span>
+                      ) : (
+                        <span className="text-[10px] text-slate-400 italic">Available on Sticker Sheet media</span>
+                      )}
+                    </div>
+                    <p className="text-[11px] text-slate-500 dark:text-stone-400">
+                      Machine kiss-cuts around sticker shapes while keeping the back release liner sheet intact for easy peeling.
+                    </p>
+                  </div>
+                </label>
+              </div>
 
-                {files.length > 0 && (
-                  <div className="space-y-2">
-                    {files.map((f, i) => (
-                      <div key={i} className="p-2.5 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 rounded-xl flex items-center justify-between text-xs">
-                        <span className="font-semibold text-gray-800 dark:text-gray-200 truncate pr-2">{f.name}</span>
-                        <button type="button" onClick={() => removeSelectedFile(i)} className="text-red-500 hover:bg-red-100 p-1 rounded">
-                          <Trash2 size={14} />
-                        </button>
-                      </div>
+              {/* Option C: Full Cut & Creasing */}
+              <div className={`p-4 rounded-2xl border transition-all ${
+                hasFullCutCreasing 
+                  ? 'bg-amber-50/60 dark:bg-amber-950/30 border-amber-400 dark:border-amber-600' 
+                  : 'bg-slate-50/50 dark:bg-stone-900/50 border-slate-200 dark:border-stone-700'
+              }`}>
+                <label className="flex items-center gap-3 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={hasFullCutCreasing}
+                    onChange={(e) => setHasFullCutCreasing(e.target.checked)}
+                    className="w-5 h-5 rounded text-amber-600 border-slate-300 focus:ring-amber-500 cursor-pointer"
+                  />
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-sm text-slate-900 dark:text-stone-100">
+                        Full Cut & Creasing / Scoring
+                      </span>
+                      <span className="text-[11px] bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 px-2 py-0.5 rounded-full font-bold">
+                        +₹1.50 / sheet
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-500 dark:text-stone-400">
+                      Machine guillotine trim to final dimensions and mechanical fold scoring for invitations, brochures, and cards.
+                    </p>
+                  </div>
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          {/* STEP 4: QUANTITY & DYNAMIC PRICING FORMULA */}
+          <div className="bg-white dark:bg-[#1A1816] rounded-3xl p-6 border border-[#E5DAC8] dark:border-stone-800 shadow-sm space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <span className="w-7 h-7 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-300 font-bold text-xs flex items-center justify-center">
+                  4
+                </span>
+                <div>
+                  <h3 className="font-serif font-bold text-base text-slate-900 dark:text-stone-100">
+                    Quantity & Live Pricing Breakdown
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-stone-400">
+                    Formula: Price = Unit Cost × Quantity (Instant live updates)
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center pt-2">
+              
+              {/* Quantity Stepper */}
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 dark:text-stone-300 mb-1.5">
+                  Order Quantity (Sheets)
+                </label>
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center border border-slate-300 dark:border-stone-700 rounded-xl overflow-hidden bg-slate-50 dark:bg-stone-900">
+                    <button
+                      type="button"
+                      onClick={() => setQuantity(Math.max(1, quantity - 5))}
+                      className="p-3 text-slate-600 dark:text-stone-300 hover:bg-slate-200 dark:hover:bg-stone-800 transition-colors"
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <input
+                      type="number"
+                      min="1"
+                      value={quantity}
+                      onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                      className="w-20 text-center font-bold text-slate-900 dark:text-stone-100 bg-transparent outline-none text-base"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setQuantity(quantity + 5)}
+                      className="p-3 text-slate-600 dark:text-stone-300 hover:bg-slate-200 dark:hover:bg-stone-800 transition-colors"
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                  {/* Preset chips */}
+                  <div className="flex gap-1">
+                    {[10, 25, 50, 100].map(cnt => (
+                      <button
+                        key={cnt}
+                        type="button"
+                        onClick={() => setQuantity(cnt)}
+                        className={`px-2.5 py-1.5 text-xs font-bold rounded-lg border transition-all ${
+                          quantity === cnt 
+                            ? 'bg-amber-600 text-white border-amber-600 shadow-xs' 
+                            : 'bg-white dark:bg-stone-800 text-slate-600 dark:text-stone-300 border-slate-200 dark:border-stone-700 hover:border-amber-300'
+                        }`}
+                      >
+                        {cnt}
+                      </button>
                     ))}
                   </div>
-                )}
-
-                <label className="flex flex-col items-center justify-center w-full h-28 border-2 border-dashed border-blue-400 dark:border-blue-600 rounded-2xl cursor-pointer bg-blue-50/30 hover:bg-blue-50 dark:bg-blue-950/20 transition-colors text-center px-4">
-                  <UploadCloud className="text-blue-600 mb-1" size={28} />
-                  <p className="text-xs text-gray-900 dark:text-white font-bold">Click to attach design files</p>
-                  <p className="text-[10px] text-gray-400 mt-0.5">CDR, PSD, AI, PDF, ZIP, RAR, JPG, PNG</p>
-                  <input type="file" multiple accept=".zip,.rar,.jpg,.jpeg,.pdf,.cdr,.psd,.png,.ai" onChange={handleFileChange} className="hidden" />
-                </label>
+                </div>
               </div>
 
-              {/* Total Summary Strip & Actions */}
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-6 text-white shadow-xl space-y-4 border border-gray-700">
-                <div className="flex justify-between items-center border-b border-gray-700 pb-3">
-                  <div>
-                    <span className="text-xs text-gray-400">Total Calculation</span>
-                    <div className="text-2xl sm:text-3xl font-black text-green-400 flex items-center">
-                      <IndianRupee size={24} /> {totalAmount.toFixed(2)}
+              {/* Dynamic Calculation Summary Card */}
+              <div className="bg-amber-50/70 dark:bg-amber-950/40 p-4 rounded-2xl border border-amber-300/80 dark:border-amber-800/80">
+                <div className="space-y-1.5 text-xs">
+                  <div className="flex justify-between text-slate-600 dark:text-stone-300">
+                    <span>Base Print Cost:</span>
+                    <span>₹{baseCost.toFixed(2)}</span>
+                  </div>
+                  {laminationCost > 0 && (
+                    <div className="flex justify-between text-slate-600 dark:text-stone-300">
+                      <span>{laminationType} Lamination:</span>
+                      <span>+₹{laminationCost.toFixed(2)}</span>
+                    </div>
+                  )}
+                  {halfCutCost > 0 && (
+                    <div className="flex justify-between text-slate-600 dark:text-stone-300">
+                      <span>Kiss-Cut (Half Cut):</span>
+                      <span>+₹{halfCutCost.toFixed(2)}</span>
+                    </div>
+                  )}
+                  {fullCutCost > 0 && (
+                    <div className="flex justify-between text-slate-600 dark:text-stone-300">
+                      <span>Full Cut & Creasing:</span>
+                      <span>+₹{fullCutCost.toFixed(2)}</span>
+                    </div>
+                  )}
+
+                  <div className="pt-2 border-t border-amber-200 dark:border-amber-900/60 flex justify-between items-baseline">
+                    <span className="font-bold text-slate-800 dark:text-stone-200">
+                      Unit Cost:
+                    </span>
+                    <span className="font-bold text-sm text-slate-900 dark:text-stone-100">
+                      ₹{unitCost.toFixed(2)} / sheet
+                    </span>
+                  </div>
+
+                  <div className="pt-1 flex justify-between items-baseline">
+                    <span className="font-serif font-bold text-sm sm:text-base text-amber-900 dark:text-amber-300">
+                      Total Order Amount:
+                    </span>
+                    <div className="text-right">
+                      <span className="font-bold text-lg sm:text-xl text-[#B45309] dark:text-amber-400">
+                        ₹{totalAmount.toLocaleString('en-IN')}
+                      </span>
+                      <span className="text-[10px] text-slate-400 block">
+                        ({unitCost.toFixed(2)} × {quantity} sheets)
+                      </span>
                     </div>
                   </div>
-                  <div className="text-right text-xs text-gray-300">
-                    <p><strong>{printItems.length}</strong> Item(s)</p>
-                    <p><strong>{totalQuantity}</strong> Total Sheets</p>
-                  </div>
                 </div>
-
-                <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                  <button
-                    type="button"
-                    onClick={handleAddToCart}
-                    className="flex-1 bg-white hover:bg-gray-100 text-gray-900 font-bold py-3.5 px-6 rounded-2xl text-xs transition-all flex items-center justify-center gap-2 shadow-sm"
-                  >
-                    <ShoppingBag size={16} /> Add to Cart Drawer
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (validateStep1()) setStep(2);
-                    }}
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 text-white font-bold py-3.5 px-6 rounded-2xl text-xs transition-all flex items-center justify-center gap-2 shadow-lg"
-                  >
-                    <span>Instant UPI Checkout</span>
-                    <ArrowRight size={16} />
-                  </button>
-                </div>
-
-                {successToast && (
-                  <div className="p-3 bg-emerald-950/80 border border-emerald-500 text-emerald-300 rounded-xl text-xs flex items-center gap-2 font-bold animate-in fade-in">
-                    <CheckCircle2 size={16} className="text-emerald-400" />
-                    <span>Print job added to cart! You can continue or checkout.</span>
-                  </div>
-                )}
               </div>
 
             </div>
-          )}
+          </div>
 
-          {/* ================= STEP 2: UPI PAYMENT ================= */}
-          {step === 2 && (
-            <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700 shadow-xl space-y-6 text-center animate-in zoom-in-95 duration-300">
-              <div className="p-4 bg-green-50 dark:bg-green-950/40 rounded-2xl border border-green-200 dark:border-green-800">
-                <span className="text-xs font-bold text-green-800 dark:text-green-300 uppercase tracking-widest block">Payable Amount</span>
-                <span className="text-3xl font-black text-green-700 dark:text-green-400 flex items-center justify-center mt-0.5">
-                  <IndianRupee size={26} /> {totalAmount.toFixed(2)}
+          {/* STEP 5: DESIGN FILE UPLOAD (ZIP, RAR, PDF, CDR, PSD, AI, JPG, PNG) */}
+          <div className="bg-white dark:bg-[#1A1816] rounded-3xl p-6 border border-[#E5DAC8] dark:border-stone-800 shadow-sm space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <span className="w-7 h-7 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-300 font-bold text-xs flex items-center justify-center">
+                  5
                 </span>
-              </div>
-
-              {/* Dynamic QR with scanning line */}
-              <div className="flex justify-center my-4">
-                <div className="p-4 bg-white rounded-3xl shadow-lg border border-gray-200 inline-block relative overflow-hidden">
-                  <div className="absolute top-4 left-4 right-4 h-0.5 bg-blue-500 opacity-60 shadow-[0_0_8px_#3b82f6] animate-scan-line"></div>
-                  <img src={qrUrl} alt="UPI QR" className="w-52 h-52 rounded-xl relative z-10" />
+                <div>
+                  <h3 className="font-serif font-bold text-base text-slate-900 dark:text-stone-100">
+                    Upload Print Design Files
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-stone-400">
+                    Accepts ZIP, RAR, PDF, CDR, PSD, AI, JPG, PNG (Max 100MB per file)
+                  </p>
                 </div>
               </div>
-
-              <p className="text-xs text-gray-500 font-mono">
-                UPI ID: <strong>{UPI_ID}</strong>
-              </p>
-
-              <div className="grid grid-cols-2 gap-3">
-                <a href={gpayLink} className="p-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-xs font-bold hover:bg-gray-100 flex items-center justify-center gap-2">
-                  <Smartphone size={16} className="text-blue-500" /> GPay App
-                </a>
-                <a href={upiLink} className="p-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-xs font-bold hover:bg-gray-100 flex items-center justify-center gap-2">
-                  <Smartphone size={16} className="text-purple-600" /> Any UPI App
-                </a>
-              </div>
-
-              {/* Payment Screenshot */}
-              <div className="text-left pt-4 border-t border-gray-100 dark:border-gray-700">
-                <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-2">Attach Payment Screenshot *</label>
-                <label className={`flex items-center justify-center w-full p-4 border-2 border-dashed rounded-xl cursor-pointer transition-colors ${paymentScreenshot ? 'border-green-500 bg-green-50 dark:bg-green-950/20' : 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900'}`}>
-                  <div className="flex flex-col items-center gap-1.5 text-center">
-                    {paymentScreenshot ? (
-                      <>
-                        <CheckCircle2 size={22} className="text-green-500" />
-                        <span className="text-xs font-bold text-green-700 dark:text-green-400">{paymentScreenshot.name}</span>
-                      </>
-                    ) : (
-                      <>
-                        <UploadCloud size={22} className="text-gray-400" />
-                        <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Tap to upload receipt image</span>
-                      </>
-                    )}
-                  </div>
-                  <input type="file" accept="image/*" className="hidden" onChange={(e) => setPaymentScreenshot(e.target.files?.[0] || null)} />
-                </label>
-              </div>
-
-              <div className="pt-2 flex flex-col gap-2">
-                <button
-                  type="button"
-                  onClick={submitOrder}
-                  disabled={isSubmitting || !paymentScreenshot}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-60"
-                >
-                  {isSubmitting ? 'Submitting Order...' : <><Check size={18} /> I have Paid, Submit Order</>}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setStep(1)}
-                  disabled={isSubmitting}
-                  className="text-xs text-gray-400 hover:text-gray-700 font-bold uppercase tracking-wider py-2"
-                >
-                  Wait, Go Back
-                </button>
-              </div>
+              <span className="text-xs font-semibold text-slate-500 dark:text-stone-400">
+                {uploadedFiles.length} {uploadedFiles.length === 1 ? 'file' : 'files'} attached
+              </span>
             </div>
-          )}
 
-          {/* ================= STEP 3: ORDER CONFIRMED / PDF INVOICE ================= */}
-          {step === 3 && (
-            <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700 shadow-xl space-y-6 text-center animate-in zoom-in-95 duration-300">
-              <div className="w-20 h-20 bg-green-100 dark:bg-green-950/60 rounded-full flex items-center justify-center mx-auto text-green-500">
-                <CheckCircle2 size={40} />
+            {/* Hidden file input */}
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleFileChange}
+              multiple
+              accept=".zip,.rar,.pdf,.cdr,.psd,.ai,.jpg,.jpeg,.png"
+              className="hidden"
+            />
+
+            {/* Dropzone button */}
+            <div
+              onClick={() => fileInputRef.current?.click()}
+              className="border-2 border-dashed border-amber-300/80 dark:border-stone-700 hover:border-amber-500 dark:hover:border-amber-400 bg-amber-50/30 dark:bg-stone-900/40 rounded-2xl p-6 text-center cursor-pointer transition-all hover:scale-[1.005]"
+            >
+              <UploadCloud className="w-10 h-10 text-amber-600 dark:text-amber-400 mx-auto mb-2" />
+              <p className="font-bold text-sm text-slate-800 dark:text-stone-200">
+                Click here or drag & drop design files to upload
+              </p>
+              <p className="text-xs text-slate-500 dark:text-stone-400 mt-1">
+                Supported formats: <span className="font-semibold text-amber-800 dark:text-amber-300">.ZIP, .RAR, .PDF, .CDR, .PSD, .AI, .JPG, .PNG</span>
+              </p>
+              <p className="text-[11px] text-slate-400 mt-0.5">
+                Ensure fonts in vector files (CDR, AI) are converted to curves/outlines.
+              </p>
+            </div>
+
+            {fileError && (
+              <div className="p-3 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 rounded-xl text-red-600 dark:text-red-400 text-xs flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0" />
+                <span>{fileError}</span>
               </div>
-              <h2 className="text-2xl font-black text-gray-900 dark:text-white">Order Confirmed!</h2>
-              <p className="text-xs text-gray-500">Your design files are uploaded securely and queued on our digital press.</p>
+            )}
 
-              {/* Printable Receipt */}
-              <div id="receipt-content" className="p-6 bg-white border border-gray-200 text-left rounded-2xl text-gray-900 text-xs space-y-3 shadow-xs">
-                <div className="flex justify-between items-center border-b pb-3">
-                  <div>
-                    <h3 className="text-base font-black uppercase tracking-tight">{BUSINESS_NAME}</h3>
-                    <p className="text-[10px] text-gray-400 uppercase">Print Job Receipt</p>
-                  </div>
-                  <div className="text-right">
-                    <span className="font-mono font-bold text-blue-600">{orderId}</span>
-                    <span className="block text-[10px] text-gray-400">{new Date().toLocaleString()}</span>
-                  </div>
-                </div>
+            {/* Uploaded Files List */}
+            {uploadedFiles.length > 0 && (
+              <div className="space-y-2 pt-1">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-stone-400">
+                  Attached Files ({uploadedFiles.length})
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {uploadedFiles.map((file, idx) => {
+                    const sizeMb = (file.size / (1024 * 1024)).toFixed(2);
+                    return (
+                      <div
+                        key={idx}
+                        className="flex items-center justify-between p-3 rounded-xl border border-slate-200 dark:border-stone-800 bg-slate-50/80 dark:bg-stone-900/80"
+                      >
+                        <div className="flex items-center gap-2.5 overflow-hidden">
+                          {file.previewUrl ? (
+                            <img src={file.previewUrl} alt={file.name} className="w-8 h-8 rounded object-cover shrink-0" />
+                          ) : file.extension === '.pdf' ? (
+                            <div className="w-8 h-8 rounded bg-red-100 text-red-700 flex items-center justify-center font-bold text-[10px] shrink-0">
+                              PDF
+                            </div>
+                          ) : ['.zip', '.rar'].includes(file.extension) ? (
+                            <div className="w-8 h-8 rounded bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-[10px] shrink-0">
+                              ZIP
+                            </div>
+                          ) : ['.cdr', '.ai', '.psd'].includes(file.extension) ? (
+                            <div className="w-8 h-8 rounded bg-blue-100 text-blue-800 flex items-center justify-center font-bold text-[10px] shrink-0">
+                              {file.extension.replace('.', '').toUpperCase()}
+                            </div>
+                          ) : (
+                            <FileText className="w-6 h-6 text-slate-500 shrink-0" />
+                          )}
 
-                <div className="grid grid-cols-2 gap-2">
-                  <div>
-                    <span className="text-[10px] text-gray-400 uppercase font-bold block">Customer</span>
-                    <span className="font-bold">{formData.name}</span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-[10px] text-gray-400 uppercase font-bold block">Mobile</span>
-                    <span className="font-bold">{formData.mobile}</span>
-                  </div>
-                </div>
-
-                <div className="p-2.5 bg-blue-50 rounded-lg border border-blue-100 text-blue-900 font-bold">
-                  Delivery: {formData.deliveryMode}
-                </div>
-
-                <div className="space-y-1.5 pt-2">
-                  {calculatedItems.map((item, idx) => (
-                    <div key={idx} className="flex justify-between border-b border-gray-50 pb-1.5">
-                      <div>
-                        <span>{item.qty}× {item.media} ({item.size})</span>
-                        <div className="text-[10px] text-gray-400">
-                          {item.lamination && 'Thermal Lam • '}
-                          {item.cutting && 'Half Cut'}
+                          <div className="overflow-hidden">
+                            <p className="text-xs font-bold text-slate-800 dark:text-stone-200 truncate" title={file.name}>
+                              {file.name}
+                            </p>
+                            <span className="text-[10px] text-slate-400">{sizeMb} MB</span>
+                          </div>
                         </div>
-                      </div>
-                      <span className="font-bold">₹{item.total.toFixed(2)}</span>
-                    </div>
-                  ))}
-                </div>
 
-                <div className="pt-3 border-t-2 border-gray-900 flex justify-between items-center text-sm font-black">
-                  <span>Total Paid</span>
-                  <span className="text-green-600">₹{totalAmount.toFixed(2)}</span>
+                        <button
+                          type="button"
+                          onClick={() => removeFile(idx)}
+                          className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 rounded-lg transition-colors"
+                          title="Remove file"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
+            )}
 
-              <div className="flex flex-col gap-2.5">
+            {/* Design Notes */}
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 dark:text-stone-300 mb-1">
+                Design & Printing Instructions (Optional)
+              </label>
+              <textarea
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                rows={2}
+                placeholder="e.g. Cut 3mm inside safe margin, maintain Pantone colors, package in sets of 50..."
+                className="w-full p-3 rounded-xl border border-slate-200 dark:border-stone-700 bg-slate-50 dark:bg-stone-900 text-xs text-slate-800 dark:text-stone-200 outline-none focus:border-amber-500"
+              />
+            </div>
+          </div>
+
+          {/* ACTION BUTTONS & CHECKOUT STRIP */}
+          <div className="bg-white dark:bg-[#1A1816] rounded-3xl p-6 border border-[#E5DAC8] dark:border-stone-800 shadow-md space-y-4">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <span className="text-xs text-slate-500 dark:text-stone-400">Total Calculation:</span>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl sm:text-3xl font-serif font-bold text-[#B45309] dark:text-amber-400">
+                    ₹{totalAmount.toLocaleString('en-IN')}
+                  </span>
+                  <span className="text-xs text-slate-500">
+                    (₹{unitCost.toFixed(2)} × {quantity} sheets)
+                  </span>
+                </div>
+                <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium mt-0.5">
+                  ✓ Instant Dynamic UPI Verification supported
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3 w-full sm:w-auto">
                 <button
                   type="button"
-                  onClick={triggerSaveAsPdf}
-                  disabled={isGeneratingPdf}
-                  className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-md"
+                  onClick={handleAddToCart}
+                  className="flex-1 sm:flex-none bg-white dark:bg-stone-800 hover:bg-slate-50 dark:hover:bg-stone-700 text-slate-800 dark:text-stone-100 font-bold py-3.5 px-6 rounded-2xl border border-slate-300 dark:border-stone-700 shadow-xs text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <Download size={16} /> Save Receipt as PDF
+                  <ShoppingBag className="w-4 h-4 text-amber-700 dark:text-amber-400" />
+                  <span>Add to Cart</span>
                 </button>
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`*New Print Order: ${orderId}*\n*Name:* ${formData.name}\n*Amount:* ₹${totalAmount.toFixed(2)}\n\n*Specs:*\n${calculatedItems.map(it => `- ${it.qty}x ${it.media} (${it.size})`).join('\n')}`)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-md"
-                >
-                  <Send size={16} /> Send Order Alert on WhatsApp
-                </a>
+
                 <button
                   type="button"
                   onClick={() => {
-                    setStep(1);
-                    setFiles([]);
-                    setPaymentScreenshot(null);
-                    setPrintItems([{ id: 1, media: DEFAULT_PRINTING_PRICING[0].media, size: DEFAULT_PRINTING_PRICING[0].sizes[0].name, lamination: false, cutting: false, qty: 1 }]);
+                    handleAddToCart();
+                    if (onInstantCheckout) onInstantCheckout();
                   }}
-                  className="text-xs text-blue-600 font-bold uppercase tracking-wider hover:underline py-2"
+                  className="flex-1 sm:flex-none bg-[#B45309] hover:bg-[#92400E] dark:bg-amber-600 dark:hover:bg-amber-700 text-white font-bold py-3.5 px-7 rounded-2xl shadow-lg shadow-amber-900/20 text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  Configure another job
+                  <span>Proceed to UPI Checkout</span>
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
-          )}
+
+            {successToast && (
+              <div className="p-3 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-700 text-emerald-800 dark:text-emerald-300 rounded-xl text-xs flex items-center gap-2 font-bold animate-in fade-in">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span>Job added to your cart! You can review or proceed directly to instant UPI checkout.</span>
+              </div>
+            )}
+          </div>
 
         </div>
 
