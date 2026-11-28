@@ -111,7 +111,7 @@ export const AdminSettings: React.FC = () => {
     upi_id: 'aksharstudio-2@okicici',
     whatsapp_number: '916354871446',
     script_url: 'https://script.google.com/macros/s/AKfycbzRwtwNObuYTQXaZA9sOQW8mfArrfosgT2TqoK-s5w8FtYNYwDl6ZaeauhRD_Nz2cF_/exec',
-    admin_emails: ['admin@craftique.in'],
+    admin_emails: ['admin@printshoppro.in'],
     gst_rate: 18,
     shipping_fee: 80,
     free_shipping_threshold: 1500,
@@ -136,7 +136,7 @@ export const AdminSettings: React.FC = () => {
         if (d.data) {
           setSettings(d.data);
           try {
-            localStorage.setItem('craftique_settings', JSON.stringify(d.data));
+            localStorage.setItem('printshoppro_settings', JSON.stringify(d.data));
           } catch (e) {}
         }
       })
@@ -163,8 +163,8 @@ export const AdminSettings: React.FC = () => {
     try {
       // Save locally to immediate localStorage cache
       try {
-        localStorage.setItem('craftique_settings', JSON.stringify(settings));
-        window.dispatchEvent(new Event('craftique_settings_updated'));
+        localStorage.setItem('printshoppro_settings', JSON.stringify(settings));
+        window.dispatchEvent(new Event('printshoppro_settings_updated'));
       } catch (e) {}
 
       const res = await fetch('/api/settings', {
@@ -246,7 +246,7 @@ export const AdminSettings: React.FC = () => {
           type="button"
           onClick={handleSave}
           disabled={loading}
-          className="bg-[#B45309] hover:bg-[#92400E] text-white font-bold py-2.5 px-5 rounded-xl text-xs flex items-center gap-2 shadow-xs transition-all cursor-pointer self-start sm:self-auto"
+          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-2.5 px-5 rounded-xl text-xs flex items-center gap-2 shadow-xs transition-all cursor-pointer self-start sm:self-auto"
         >
           <Save className="w-4 h-4" />
           <span>{loading ? 'Saving...' : 'Save Configuration'}</span>
@@ -269,7 +269,7 @@ export const AdminSettings: React.FC = () => {
         {/* Section 1: Business & Brand */}
         <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-xs space-y-4">
           <div className="flex items-center gap-2 pb-3 border-b border-slate-100">
-            <Sparkles className="w-4 h-4 text-amber-700" />
+            <Sparkles className="w-4 h-4 text-blue-700" />
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900">
               Brand & Storefront Identity
             </h3>
@@ -320,7 +320,7 @@ export const AdminSettings: React.FC = () => {
         {/* Section 2: UPI Gateway & Real-Time Dynamic QR */}
         <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-xs space-y-4">
           <div className="flex items-center gap-2 pb-3 border-b border-slate-100">
-            <CreditCard className="w-4 h-4 text-amber-700" />
+            <CreditCard className="w-4 h-4 text-blue-700" />
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900">
               Payment Gateway (Direct UPI & Dynamic QR)
             </h3>
@@ -337,10 +337,10 @@ export const AdminSettings: React.FC = () => {
                     type="text"
                     value={settings.upi_id || ''}
                     onChange={(e) => setSettings({ ...settings, upi_id: e.target.value })}
-                    className="w-full bg-white border-2 border-amber-300/80 rounded-xl p-3 text-sm font-mono font-bold text-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                    className="w-full bg-white border-2 border-blue-300/80 rounded-xl p-3 text-sm font-mono font-bold text-blue-950 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
                     placeholder="e.g. aksharstudio-2@okicici"
                   />
-                  <span className="absolute right-3 top-3 text-xs bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded">
+                  <span className="absolute right-3 top-3 text-xs bg-blue-100 text-blue-900 font-bold px-2 py-0.5 rounded">
                     Active UPI
                   </span>
                 </div>
@@ -376,8 +376,8 @@ export const AdminSettings: React.FC = () => {
             </div>
 
             {/* Dynamic Live QR Preview Card */}
-            <div className="bg-[#FAF7F2] p-4 rounded-2xl border border-[#EAE0D0] text-center flex flex-col items-center">
-              <span className="text-[10px] uppercase font-bold tracking-wider text-amber-900 block mb-2 flex items-center gap-1">
+            <div className="bg-[#F8FAFC] p-4 rounded-2xl border border-[#E2E8F0] text-center flex flex-col items-center">
+              <span className="text-[10px] uppercase font-bold tracking-wider text-blue-900 block mb-2 flex items-center gap-1">
                 <QrCode className="w-3.5 h-3.5" />
                 <span>Live QR Preview</span>
               </span>
@@ -395,7 +395,7 @@ export const AdminSettings: React.FC = () => {
               <span className="text-xs font-bold text-slate-900 truncate max-w-[180px] block">
                 {settings.business_name || 'Akshar PrintShop Pro'}
               </span>
-              <span className="text-[10px] font-mono text-amber-950 truncate max-w-[180px] block font-semibold">
+              <span className="text-[10px] font-mono text-blue-950 truncate max-w-[180px] block font-semibold">
                 {settings.upi_id || 'aksharstudio-2@okicici'}
               </span>
               <span className="text-[10px] text-emerald-700 font-bold mt-1 bg-emerald-100/80 px-2 py-0.5 rounded-full">
@@ -409,7 +409,7 @@ export const AdminSettings: React.FC = () => {
         <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-xs space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div className="flex items-center gap-2">
-              <FolderCheck className="w-4 h-4 text-amber-700" />
+              <FolderCheck className="w-4 h-4 text-blue-700" />
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900">
                 Google Drive Automated Folder Integration
               </h3>
@@ -418,7 +418,7 @@ export const AdminSettings: React.FC = () => {
             <button
               type="button"
               onClick={() => setShowScriptModal(!showScriptModal)}
-              className="text-xs font-bold text-amber-800 hover:text-amber-900 flex items-center gap-1 hover:underline cursor-pointer"
+              className="text-xs font-bold text-blue-800 hover:text-blue-900 flex items-center gap-1 hover:underline cursor-pointer"
             >
               <HelpCircle className="w-3.5 h-3.5" />
               <span>{showScriptModal ? 'સ્ક્રિપ્ટ ગાઇડ છુપાવો' : 'ગૂગલ સ્ક્રિપ્ટ કોડ જુઓ'}</span>
@@ -444,7 +444,7 @@ export const AdminSettings: React.FC = () => {
                 type="button"
                 onClick={handleTestDriveConnection}
                 disabled={testingDrive}
-                className="px-4 py-3 bg-amber-700 hover:bg-amber-800 disabled:opacity-50 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shrink-0 cursor-pointer shadow-xs"
+                className="px-4 py-3 bg-blue-700 hover:bg-blue-800 disabled:opacity-50 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shrink-0 cursor-pointer shadow-xs"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${testingDrive ? 'animate-spin' : ''}`} />
                 <span>{testingDrive ? 'ટેસ્ટ કરી રહ્યું છે...' : 'કનેક્શન ટેસ્ટ કરો'}</span>
@@ -486,7 +486,7 @@ export const AdminSettings: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleCopyCode}
-                  className="px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0"
+                  className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0"
                 >
                   <Copy className="w-3.5 h-3.5" />
                   <span>{copiedCode ? 'કોડ કોપી થયો!' : 'કોડ કોપી કરો'}</span>
@@ -580,7 +580,7 @@ export const AdminSettings: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="bg-[#B45309] hover:bg-[#92400E] text-white font-bold py-3.5 px-8 rounded-xl text-sm flex items-center gap-2 shadow-md transition-all cursor-pointer"
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3.5 px-8 rounded-xl text-sm flex items-center gap-2 shadow-md transition-all cursor-pointer"
           >
             <Save className="w-4 h-4" />
             <span>{loading ? 'સેવ થઈ રહ્યું છે...' : 'Save Configuration (સેવ કરો)'}</span>

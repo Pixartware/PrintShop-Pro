@@ -63,7 +63,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateTab })
       value: paymentPending,
       sub: "Pending UTR / Screenshot review",
       icon: <CreditCard className="w-5 h-5 text-amber-600" />,
-      bg: "bg-amber-50 border-amber-200",
+      bg: "bg-blue-50 border-blue-200",
       action: () => onNavigateTab('payments')
     },
     {
@@ -135,7 +135,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateTab })
           </div>
           <button
             onClick={() => onNavigateTab('orders')}
-            className="text-xs font-bold text-amber-800 hover:underline flex items-center gap-1"
+            className="text-xs font-bold text-blue-800 hover:underline flex items-center gap-1"
           >
             <span>Manage Orders</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -148,9 +148,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateTab })
             <span className="text-[11px] font-bold text-blue-900 uppercase">1. New Orders</span>
             <div className="text-xl font-bold text-blue-800 mt-0.5">{pendingOrders}</div>
           </div>
-          <div className="p-3 bg-amber-50/70 border border-amber-200 rounded-xl text-center">
-            <span className="text-[11px] font-bold text-amber-900 uppercase">2. Payments</span>
-            <div className="text-xl font-bold text-amber-800 mt-0.5">{paymentPending}</div>
+          <div className="p-3 bg-blue-50/70 border border-blue-200 rounded-xl text-center">
+            <span className="text-[11px] font-bold text-blue-900 uppercase">2. Payments</span>
+            <div className="text-xl font-bold text-blue-800 mt-0.5">{paymentPending}</div>
           </div>
           <div className="p-3 bg-indigo-50/70 border border-indigo-200 rounded-xl text-center">
             <span className="text-[11px] font-bold text-indigo-900 uppercase">3. Production</span>
@@ -175,7 +175,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateTab })
           </h3>
           <button
             onClick={() => onNavigateTab('orders')}
-            className="text-xs text-amber-800 font-bold hover:underline"
+            className="text-xs text-blue-800 font-bold hover:underline"
           >
             View All ({orders.length})
           </button>
@@ -219,7 +219,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateTab })
                   <td className="py-3 text-right">
                     <button
                       onClick={() => onNavigateTab('orders', ord.order_number)}
-                      className="text-xs text-amber-800 font-semibold hover:underline"
+                      className="text-xs text-blue-800 font-semibold hover:underline"
                     >
                       Inspect
                     </button>

@@ -555,10 +555,10 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
       </div>
 
       {/* Right Column: Customization Controls Form */}
-      <div className="lg:col-span-7 bg-white dark:bg-[#1A1816] rounded-3xl p-6 sm:p-8 lg:p-10 border border-[#E9E0D2] dark:border-stone-800 shadow-sm space-y-8 transition-colors">
+      <div className="lg:col-span-7 bg-white dark:bg-[#0F172A] rounded-3xl p-6 sm:p-8 lg:p-10 border border-[#E2E8F0] dark:border-slate-800 shadow-sm space-y-8 transition-colors">
         <div>
           <div className="flex items-center justify-between gap-3">
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-800 dark:text-amber-400 uppercase tracking-widest">
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">
               <Sparkles className="w-4 h-4" />
               Bespoke Customization Studio
             </div>
@@ -573,10 +573,10 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
               </button>
             )}
           </div>
-          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-stone-100 mt-1.5">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mt-1.5">
             Personalize Your {product.name}
           </h2>
-          <p className="text-xs sm:text-sm lg:text-base text-slate-500 dark:text-stone-400 mt-1.5 leading-relaxed">
+          <p className="text-xs sm:text-sm lg:text-base text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
             {isAlbum 
               ? 'Select your album dimensions, page capacity, archival paper finish, and upload your photo memories.'
               : isMagnets
@@ -590,10 +590,10 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
         {/* 1. Size Selection */}
         <div className="space-y-3.5">
           <div className="flex items-center justify-between">
-            <label className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-stone-200">
+            <label className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
               {sizeStepNumber}. Choose {isStickers ? 'Sticker Size (12×18 Sheet Basis)' : isAlbum ? 'Album Dimensions' : isMagnets ? 'Magnet Dimensions' : 'Size'}
             </label>
-            <span className="text-xs sm:text-sm font-semibold text-amber-900 dark:text-amber-400">
+            <span className="text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400">
               Selected: {isCustomSize ? `${customWidth} × ${customHeight} ${customUnit}` : selectedSize.name}
             </span>
           </div>
@@ -611,14 +611,14 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                     }}
                     className={`w-full min-w-0 min-h-[84px] p-3.5 rounded-2xl border transition-all flex flex-col justify-between items-center text-center gap-2 cursor-pointer ${
                       isCustomSize
-                        ? 'border-amber-700 dark:border-amber-500 bg-amber-50 dark:bg-amber-950/60 text-amber-900 dark:text-amber-200 ring-2 ring-amber-600/30 font-bold shadow-xs'
-                        : 'border-slate-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-slate-700 dark:text-stone-200 hover:border-amber-300 dark:hover:border-amber-500 hover:bg-slate-50 dark:hover:bg-stone-700 font-medium'
+                        ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/60 text-blue-900 dark:text-blue-200 ring-2 ring-blue-500/30 font-bold shadow-xs'
+                        : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:border-blue-300 dark:hover:border-blue-500 hover:bg-slate-50 dark:hover:bg-stone-700 font-medium'
                     }`}
                   >
                     <span className="w-full text-center text-xs sm:text-sm font-semibold leading-snug break-words">
                       Custom Size
                     </span>
-                    <span className="mt-auto shrink-0 text-[11px] sm:text-xs text-amber-800 dark:text-amber-400 font-medium">
+                    <span className="mt-auto shrink-0 text-[11px] sm:text-xs text-blue-600 dark:text-blue-400 font-medium">
                       {isStickers ? '12×18 Sheet • ₹125' : 'Enter W × H'}
                     </span>
                   </button>
@@ -646,8 +646,8 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                   }}
                   className={`w-full min-w-0 min-h-[84px] p-3.5 rounded-2xl border transition-all flex flex-col justify-between items-center text-center gap-2 cursor-pointer ${
                     isSelected
-                      ? 'border-amber-700 dark:border-amber-500 bg-amber-50 dark:bg-amber-950/60 text-amber-900 dark:text-amber-200 ring-2 ring-amber-600/30 font-bold shadow-xs'
-                      : 'border-slate-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-slate-700 dark:text-stone-200 hover:border-amber-300 dark:hover:border-amber-500 hover:bg-slate-50 dark:hover:bg-stone-700 font-medium'
+                      ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/60 text-blue-900 dark:text-blue-200 ring-2 ring-blue-500/30 font-bold shadow-xs'
+                      : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:border-blue-300 dark:hover:border-blue-500 hover:bg-slate-50 dark:hover:bg-stone-700 font-medium'
                   }`}
                 >
                   <span
@@ -659,10 +659,10 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                   <span
                     className={`mt-auto shrink-0 inline-flex items-center px-2.5 py-0.5 rounded-md text-[11px] sm:text-xs font-semibold ${
                       isStickers
-                        ? 'bg-amber-100 dark:bg-amber-900/60 text-amber-900 dark:text-amber-300'
+                        ? 'bg-blue-100 dark:bg-blue-900/60 text-blue-600 dark:text-blue-400'
                         : isSelected
-                        ? 'bg-amber-200/60 dark:bg-amber-800/60 text-amber-900 dark:text-amber-200'
-                        : 'text-slate-500 dark:text-stone-400 font-medium'
+                        ? 'bg-blue-200/60 dark:bg-blue-700/60 text-blue-900 dark:text-blue-200'
+                        : 'text-slate-500 dark:text-slate-400 font-medium'
                     }`}
                   >
                     {subtitle}
@@ -674,39 +674,39 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
 
           {/* Custom Size Dimension Inputs */}
           {isCustomSize && (
-            <div className="mt-3 bg-[#FAF8F5] dark:bg-[#141210] p-4 rounded-2xl border border-amber-200/80 dark:border-amber-800/80 space-y-3">
-              <span className="text-xs font-bold text-amber-900 dark:text-amber-300 block">
+            <div className="mt-3 bg-[#F8FAFC] dark:bg-[#0B0F19] p-4 rounded-2xl border border-blue-200/80 dark:border-blue-800/80 space-y-3">
+              <span className="text-xs font-bold text-blue-600 dark:text-blue-400 block">
                 {isStickers ? 'Enter Custom Dimensions (12×18 Sheet Basis • ₹0.50 / Sq. Inch):' : 'Enter Exact Dimensions (Studio Custom Sizing):'}
               </span>
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="text-[10px] text-slate-500 dark:text-stone-400 font-bold block mb-1">WIDTH</label>
+                  <label className="text-[10px] text-slate-500 dark:text-slate-400 font-bold block mb-1">WIDTH</label>
                   <input
                     type="number"
                     min="1"
                     max="120"
                     value={customWidth}
                     onChange={(e) => setCustomWidth(Math.max(1, parseFloat(e.target.value) || 1))}
-                    className="w-full bg-white dark:bg-stone-900 border border-slate-300 dark:border-stone-700 rounded-lg p-2 text-xs font-semibold text-slate-800 dark:text-stone-100 focus:outline-none focus:ring-1 focus:ring-amber-600"
+                    className="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2 text-xs font-semibold text-slate-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] text-slate-500 dark:text-stone-400 font-bold block mb-1">HEIGHT</label>
+                  <label className="text-[10px] text-slate-500 dark:text-slate-400 font-bold block mb-1">HEIGHT</label>
                   <input
                     type="number"
                     min="1"
                     max="120"
                     value={customHeight}
                     onChange={(e) => setCustomHeight(Math.max(1, parseFloat(e.target.value) || 1))}
-                    className="w-full bg-white dark:bg-stone-900 border border-slate-300 dark:border-stone-700 rounded-lg p-2 text-xs font-semibold text-slate-800 dark:text-stone-100 focus:outline-none focus:ring-1 focus:ring-amber-600"
+                    className="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2 text-xs font-semibold text-slate-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] text-slate-500 dark:text-stone-400 font-bold block mb-1">UNIT</label>
+                  <label className="text-[10px] text-slate-500 dark:text-slate-400 font-bold block mb-1">UNIT</label>
                   <select
                     value={customUnit}
                     onChange={(e) => setCustomUnit(e.target.value as any)}
-                    className="w-full bg-white dark:bg-stone-900 border border-slate-300 dark:border-stone-700 rounded-lg p-2 text-xs font-semibold text-slate-800 dark:text-stone-100 focus:outline-none focus:ring-1 focus:ring-amber-600"
+                    className="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2 text-xs font-semibold text-slate-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-500"
                   >
                     <option value="inch">Inches (in)</option>
                     <option value="cm">Centimeters (cm)</option>
@@ -717,13 +717,13 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
               </div>
 
               {isStickers && (
-                <div className="bg-amber-100/60 dark:bg-amber-950/60 p-3.5 rounded-2xl border border-amber-300/80 dark:border-amber-800 flex items-start gap-3 text-xs text-amber-950 dark:text-amber-200">
-                  <Sparkles className="w-4 h-4 shrink-0 text-amber-700 dark:text-amber-400 mt-0.5" />
+                <div className="bg-blue-100/60 dark:bg-blue-950/60 p-3.5 rounded-2xl border border-blue-300/80 dark:border-blue-800 flex items-start gap-3 text-xs text-blue-950 dark:text-blue-200">
+                  <Sparkles className="w-4 h-4 shrink-0 text-blue-600 dark:text-blue-400 mt-0.5" />
                   <div className="space-y-1">
-                    <div className="font-bold text-sm text-amber-950 dark:text-amber-100">
+                    <div className="font-bold text-sm text-blue-950 dark:text-blue-100">
                       12×18 Sheet Yield: ~{customStickersFitCount} Stickers / Sheet (Sheet Price: ₹{125 + shapeAdj})
                     </div>
-                    <p className="leading-relaxed text-amber-900/90 dark:text-amber-200/90">
+                    <p className="leading-relaxed text-blue-900/90 dark:text-blue-200/90">
                       At {customWidth} × {customHeight} {customUnit}, approximately <strong>{customStickersFitCount} custom stickers fit in a standard 12×18 sheet</strong>.
                       <br />
                       <strong>12×18 Sheet Price:</strong> {selectedShape === 'Custom Shape' ? '₹125 + ₹30 (Custom Shape) = ₹155' : '₹125 (Round / Square Shape Included)'}.
@@ -739,11 +739,11 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
         {isStickers && (
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <label className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-stone-200 flex items-center gap-1.5">
-                <Shapes className="w-4 h-4 text-amber-700 dark:text-amber-400" />
+              <label className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                <Shapes className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                 {stickerShapeStepNumber}. Choose Shape
               </label>
-              <span className="text-xs sm:text-sm font-semibold text-amber-900 dark:text-amber-400">
+              <span className="text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400">
                 Selected: {selectedShape} {selectedShape === 'Custom Shape' ? '(+₹30)' : '(Included)'}
               </span>
             </div>
@@ -758,8 +758,8 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                     onClick={() => setSelectedShape(sh.name)}
                     className={`p-4 rounded-2xl border text-xs sm:text-sm transition-all text-left flex flex-col justify-between cursor-pointer min-h-[86px] ${
                       isSelected
-                        ? 'border-amber-700 dark:border-amber-500 bg-amber-50 dark:bg-amber-950/60 text-amber-900 dark:text-amber-200 ring-2 ring-amber-600/30 font-bold shadow-xs'
-                        : 'border-slate-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-slate-700 dark:text-stone-200 hover:border-amber-300 dark:hover:border-amber-500 font-medium'
+                        ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/60 text-blue-900 dark:text-blue-200 ring-2 ring-blue-500/30 font-bold shadow-xs'
+                        : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:border-blue-300 dark:hover:border-blue-500 font-medium'
                     }`}
                   >
                     <div>
@@ -768,7 +768,7 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                           {sh.name}
                         </span>
                         {sh.price_adj > 0 ? (
-                          <span className="text-xs font-bold text-amber-800 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/60 px-2 py-0.5 rounded-md">
+                          <span className="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/60 px-2 py-0.5 rounded-md">
                             +₹{sh.price_adj}
                           </span>
                         ) : (
@@ -777,7 +777,7 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-slate-500 dark:text-stone-400 mt-1 leading-snug">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-snug">
                         {sh.desc}
                       </p>
                     </div>
@@ -790,7 +790,7 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
 
         {/* 3. Substrate Material Selection */}
         <div className="space-y-3.5">
-          <label className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-stone-200">
+          <label className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
             {materialStepNumber}. Choose {isAlbum ? 'Cover / Binding Material' : 'Substrate Material'}
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -803,12 +803,12 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                   onClick={() => setSelectedMaterial(m)}
                   className={`w-full min-w-0 overflow-hidden p-3.5 rounded-2xl border text-xs sm:text-sm transition-all flex flex-col justify-between text-left cursor-pointer min-h-[64px] ${
                     isSelected
-                      ? 'border-amber-700 dark:border-amber-500 bg-amber-50 dark:bg-amber-950/60 text-amber-900 dark:text-amber-200 ring-2 ring-amber-600/30 font-bold shadow-xs'
-                      : 'border-slate-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-slate-700 dark:text-stone-200 hover:border-amber-300 dark:hover:border-amber-500 font-medium'
+                      ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/60 text-blue-900 dark:text-blue-200 ring-2 ring-blue-500/30 font-bold shadow-xs'
+                      : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:border-blue-300 dark:hover:border-blue-500 font-medium'
                   }`}
                 >
                   <span className="w-full truncate font-semibold" title={m.name}>{m.name}</span>
-                  <span className="text-[11px] sm:text-xs text-slate-500 dark:text-stone-400 mt-1 shrink-0 font-medium">
+                  <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1 shrink-0 font-medium">
                     {m.price_adj === 0 ? 'Standard' : `+₹${m.price_adj}`}
                   </span>
                 </button>
@@ -820,7 +820,7 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
         {/* Surface Finish Selection (Hidden for Stickers) */}
         {!isStickers && customOptions.finishes.length > 0 && (
           <div className="space-y-3.5">
-            <label className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-stone-200">
+            <label className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
               {finishStepNumber}. Choose Surface Finish
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -833,12 +833,12 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                     onClick={() => setSelectedFinish(f)}
                     className={`w-full min-w-0 overflow-hidden p-3.5 rounded-2xl border text-xs sm:text-sm transition-all flex items-center justify-between text-left cursor-pointer gap-2 min-h-[58px] ${
                       isSelected
-                        ? 'border-amber-700 dark:border-amber-500 bg-amber-50 dark:bg-amber-950/60 text-amber-900 dark:text-amber-200 ring-2 ring-amber-600/30 font-bold shadow-xs'
-                        : 'border-slate-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-slate-700 dark:text-stone-200 hover:border-amber-300 dark:hover:border-amber-500 font-medium'
+                        ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/60 text-blue-900 dark:text-blue-200 ring-2 ring-blue-500/30 font-bold shadow-xs'
+                        : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:border-blue-300 dark:hover:border-blue-500 font-medium'
                     }`}
                   >
                     <span className="truncate flex-1 min-w-0 font-semibold" title={f.name}>{f.name}</span>
-                    <span className="text-[11px] sm:text-xs text-slate-500 dark:text-stone-400 shrink-0 font-medium">
+                    <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 shrink-0 font-medium">
                       {f.price_adj === 0 ? 'Included' : `+₹${f.price_adj}`}
                     </span>
                   </button>
@@ -850,20 +850,20 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
 
         {/* Included Presentation & Mounting Banner for Non-Framed Products */}
         {presentationNote && !isFramingApplicable && (
-          <div className="bg-gradient-to-r from-amber-50 to-orange-50/60 dark:from-amber-950/40 dark:to-stone-900/40 p-4 sm:p-5 rounded-2xl border border-amber-200/90 dark:border-amber-800/60 shadow-xs flex items-start gap-3.5">
-            <div className="p-2.5 rounded-xl bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-300 shrink-0 shadow-2xs">
+          <div className="bg-gradient-to-r from-amber-50 to-orange-50/60 dark:from-amber-950/40 dark:to-stone-900/40 p-4 sm:p-5 rounded-2xl border border-blue-200/90 dark:border-blue-800/60 shadow-xs flex items-start gap-3.5">
+            <div className="p-2.5 rounded-xl bg-blue-100 dark:bg-blue-900/60 text-blue-600 dark:text-blue-400 shrink-0 shadow-2xs">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 bg-white dark:bg-stone-800 px-2.5 py-0.5 rounded-full border border-amber-200 dark:border-amber-700 shadow-2xs">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-800 px-2.5 py-0.5 rounded-full border border-blue-200 dark:border-blue-600 shadow-2xs">
                   Included Presentation & Format
                 </span>
               </div>
-              <h4 className="text-sm font-bold text-slate-900 dark:text-stone-100 mt-1.5">
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white mt-1.5">
                 {presentationNote.title}
               </h4>
-              <p className="text-xs text-slate-600 dark:text-stone-300 mt-1 leading-relaxed">
+              <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
                 {presentationNote.desc}
               </p>
             </div>
@@ -876,13 +876,13 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
         
         {/* 4A. PHOTO ALBUMS & MAGAZINE ALBUMS: SHEETS & PAGES SELECTOR */}
         {isAlbum && (
-          <div className="space-y-3 bg-[#FAF8F5] dark:bg-[#141210] p-5 rounded-2xl border border-amber-200/90 dark:border-amber-800/80 shadow-2xs">
+          <div className="space-y-3 bg-[#F8FAFC] dark:bg-[#0B0F19] p-5 rounded-2xl border border-blue-200/90 dark:border-blue-800/80 shadow-2xs">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold uppercase tracking-wider text-amber-950 dark:text-amber-200 flex items-center gap-1.5">
-                <BookOpen className="w-4 h-4 text-amber-800 dark:text-amber-400" />
+              <label className="text-xs font-bold uppercase tracking-wider text-blue-950 dark:text-blue-200 flex items-center gap-1.5">
+                <BookOpen className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                 {middleStepNumber}. Select Album Sheets & Page Count
               </label>
-              <span className="text-xs font-bold text-amber-900 dark:text-amber-300 bg-white dark:bg-stone-800 px-2.5 py-1 rounded-full border border-amber-300 dark:border-amber-700 shadow-2xs font-mono">
+              <span className="text-xs font-bold text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-800 px-2.5 py-1 rounded-full border border-blue-300 dark:border-blue-600 shadow-2xs font-mono">
                 {selectedAlbumSheets} Sheets = {albumPages} Pages (Max {albumMaxPhotos} Photos)
               </span>
             </div>
@@ -898,20 +898,20 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                     onClick={() => setSelectedAlbumSheets(opt.sheets)}
                     className={`p-3 rounded-xl border text-xs transition-all flex flex-col justify-between text-left cursor-pointer ${
                       isSelected
-                        ? 'border-amber-700 dark:border-amber-500 bg-white dark:bg-stone-800 text-amber-950 dark:text-amber-200 ring-2 ring-amber-600/30 font-bold shadow-xs'
-                        : 'border-slate-200/90 dark:border-stone-700 bg-white/70 dark:bg-stone-800/50 text-slate-700 dark:text-stone-300 hover:border-amber-400 font-medium'
+                        ? 'border-blue-600 dark:border-blue-500 bg-white dark:bg-slate-800 text-blue-950 dark:text-blue-200 ring-2 ring-blue-500/30 font-bold shadow-xs'
+                        : 'border-slate-200/90 dark:border-slate-700 bg-white/70 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300 hover:border-blue-400 font-medium'
                     }`}
                   >
                     <div>
                       <span className="font-bold block text-sm">{opt.sheets} Sheets</span>
-                      <span className="text-[11px] text-amber-800 dark:text-amber-400 font-semibold block">
+                      <span className="text-[11px] text-blue-600 dark:text-blue-400 font-semibold block">
                         {opt.pages} Pages (Max {opt.maxPhotos} Photos)
                       </span>
-                      <span className="text-[10px] text-slate-400 dark:text-stone-500 block mt-0.5">
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 block mt-0.5">
                         1–4 photos per page
                       </span>
                     </div>
-                    <span className="text-[11px] text-amber-900 dark:text-amber-300 font-bold mt-2">
+                    <span className="text-[11px] text-blue-600 dark:text-blue-400 font-bold mt-2">
                       {opt.price_adj === 0 ? 'Standard' : `+₹${opt.price_adj}`}
                     </span>
                   </button>
@@ -920,26 +920,26 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
             </div>
 
             {/* Custom Sheets Stepper */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-amber-200/60 dark:border-stone-800 text-xs">
-              <span className="text-slate-600 dark:text-stone-400 font-medium">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-blue-200/60 dark:border-slate-800 text-xs">
+              <span className="text-slate-600 dark:text-slate-400 font-medium">
                 Need custom sheet count? (From 5 to 50 sheets):
               </span>
               <div className="flex items-center gap-2 self-start sm:self-auto">
                 <button
                   type="button"
                   onClick={() => setSelectedAlbumSheets(prev => Math.max(5, prev - 1))}
-                  className="p-1.5 rounded-lg bg-white dark:bg-stone-800 border border-slate-300 dark:border-stone-700 hover:bg-slate-50 dark:hover:bg-stone-700 text-slate-700 dark:text-stone-300 cursor-pointer shadow-2xs"
+                  className="p-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-stone-700 text-slate-700 dark:text-slate-300 cursor-pointer shadow-2xs"
                   title="Decrease 1 sheet"
                 >
                   <Minus className="w-3.5 h-3.5" />
                 </button>
-                <span className="font-bold text-slate-900 dark:text-stone-100 font-mono w-16 text-center bg-white dark:bg-stone-800 py-1 px-2 rounded-lg border border-slate-200 dark:border-stone-700">
+                <span className="font-bold text-slate-900 dark:text-white font-mono w-16 text-center bg-white dark:bg-slate-800 py-1 px-2 rounded-lg border border-slate-200 dark:border-slate-700">
                   {selectedAlbumSheets} Sheets
                 </span>
                 <button
                   type="button"
                   onClick={() => setSelectedAlbumSheets(prev => Math.min(50, prev + 1))}
-                  className="p-1.5 rounded-lg bg-white dark:bg-stone-800 border border-slate-300 dark:border-stone-700 hover:bg-slate-50 dark:hover:bg-stone-700 text-slate-700 dark:text-stone-300 cursor-pointer shadow-2xs"
+                  className="p-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-stone-700 text-slate-700 dark:text-slate-300 cursor-pointer shadow-2xs"
                   title="Increase 1 sheet"
                 >
                   <Plus className="w-3.5 h-3.5" />
@@ -948,8 +948,8 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
             </div>
 
             {/* Informative Rule Note */}
-            <div className="bg-amber-100/60 dark:bg-amber-950/60 p-2.5 rounded-xl border border-amber-300/80 dark:border-amber-800 flex items-start gap-2 text-[11px] text-amber-900 dark:text-amber-200">
-              <Info className="w-3.5 h-3.5 shrink-0 text-amber-700 dark:text-amber-400 mt-0.5" />
+            <div className="bg-blue-100/60 dark:bg-blue-950/60 p-2.5 rounded-xl border border-blue-300/80 dark:border-blue-800 flex items-start gap-2 text-[11px] text-blue-900 dark:text-blue-200">
+              <Info className="w-3.5 h-3.5 shrink-0 text-blue-600 dark:text-blue-400 mt-0.5" />
               <span>
                 <strong>Capacity Rule:</strong> 1 sheet = 2 pages. 1 page can hold a maximum of 4 photos. For <strong>{selectedAlbumSheets} sheets ({albumPages} pages)</strong>, you can upload up to <strong>{albumMaxPhotos} photos</strong>.
               </span>
@@ -959,13 +959,13 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
 
         {/* 4B. PHOTO MAGNETS: PACK SIZE SELECTOR */}
         {isMagnets && (
-          <div className="space-y-3 bg-[#FAF8F5] dark:bg-[#141210] p-5 rounded-2xl border border-indigo-200/80 dark:border-indigo-900/80 shadow-2xs">
+          <div className="space-y-3 bg-[#F8FAFC] dark:bg-[#0B0F19] p-5 rounded-2xl border border-indigo-200/80 dark:border-indigo-900/80 shadow-2xs">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-stone-100 flex items-center gap-1.5">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white flex items-center gap-1.5">
                 <Box className="w-4 h-4 text-indigo-800 dark:text-indigo-400" />
                 {middleStepNumber}. Select Magnet Set Pack
               </label>
-              <span className="text-xs font-bold text-indigo-900 dark:text-indigo-300 bg-white dark:bg-stone-800 px-2.5 py-1 rounded-full border border-indigo-300 dark:border-indigo-700 shadow-2xs font-mono">
+              <span className="text-xs font-bold text-indigo-900 dark:text-indigo-300 bg-white dark:bg-slate-800 px-2.5 py-1 rounded-full border border-indigo-300 dark:border-indigo-700 shadow-2xs font-mono">
                 {selectedMagnetPackCount} Magnets = {magnetMaxPhotos} Photos
               </span>
             </div>
@@ -980,8 +980,8 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                     onClick={() => setSelectedMagnetPackCount(opt.count)}
                     className={`p-3 rounded-xl border text-xs transition-all flex flex-col justify-between text-left cursor-pointer ${
                       isSelected
-                        ? 'border-indigo-700 dark:border-indigo-500 bg-white dark:bg-stone-800 text-indigo-950 dark:text-indigo-200 ring-2 ring-indigo-600/30 font-bold shadow-xs'
-                        : 'border-slate-200/90 dark:border-stone-700 bg-white/70 dark:bg-stone-800/50 text-slate-700 dark:text-stone-300 hover:border-indigo-400 font-medium'
+                        ? 'border-indigo-700 dark:border-indigo-500 bg-white dark:bg-slate-800 text-indigo-950 dark:text-indigo-200 ring-2 ring-indigo-600/30 font-bold shadow-xs'
+                        : 'border-slate-200/90 dark:border-slate-700 bg-white/70 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300 hover:border-indigo-400 font-medium'
                     }`}
                   >
                     <div>
@@ -1009,13 +1009,13 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
 
         {/* 4C. MINI PRINTS / INSTA PHOTO CARDS: PRINT PACK SELECTOR */}
         {isMiniPrints && (
-          <div className="space-y-3 bg-[#FAF8F5] dark:bg-[#141210] p-5 rounded-2xl border border-emerald-200/80 dark:border-emerald-900/80 shadow-2xs">
+          <div className="space-y-3 bg-[#F8FAFC] dark:bg-[#0B0F19] p-5 rounded-2xl border border-emerald-200/80 dark:border-emerald-900/80 shadow-2xs">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-stone-100 flex items-center gap-1.5">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white flex items-center gap-1.5">
                 <Layers className="w-4 h-4 text-emerald-800 dark:text-emerald-400" />
                 {middleStepNumber}. Select Mini Print Set Pack
               </label>
-              <span className="text-xs font-bold text-emerald-900 dark:text-emerald-300 bg-white dark:bg-stone-800 px-2.5 py-1 rounded-full border border-emerald-300 dark:border-emerald-700 shadow-2xs font-mono">
+              <span className="text-xs font-bold text-emerald-900 dark:text-emerald-300 bg-white dark:bg-slate-800 px-2.5 py-1 rounded-full border border-emerald-300 dark:border-emerald-700 shadow-2xs font-mono">
                 {selectedMiniPrintCount} Prints = {miniPrintMaxPhotos} Photos
               </span>
             </div>
@@ -1030,8 +1030,8 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                     onClick={() => setSelectedMiniPrintCount(opt.count)}
                     className={`p-3 rounded-xl border text-xs transition-all flex flex-col justify-between text-left cursor-pointer ${
                       isSelected
-                        ? 'border-emerald-700 dark:border-emerald-500 bg-white dark:bg-stone-800 text-emerald-950 dark:text-emerald-200 ring-2 ring-emerald-600/30 font-bold shadow-xs'
-                        : 'border-slate-200/90 dark:border-stone-700 bg-white/70 dark:bg-stone-800/50 text-slate-700 dark:text-stone-300 hover:border-emerald-400 font-medium'
+                        ? 'border-emerald-700 dark:border-emerald-500 bg-white dark:bg-slate-800 text-emerald-950 dark:text-emerald-200 ring-2 ring-emerald-600/30 font-bold shadow-xs'
+                        : 'border-slate-200/90 dark:border-slate-700 bg-white/70 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300 hover:border-emerald-400 font-medium'
                     }`}
                   >
                     <div>
@@ -1060,7 +1060,7 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
         {/* 4D. STANDARD FRAMING / HARDWARE (ONLY FOR FRAMED PRODUCTS) */}
         {isFramingApplicable && customOptions.frames.length > 0 && (
           <div className="space-y-3.5">
-            <label className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-stone-200">
+            <label className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
               {middleStepNumber}. Choose Framing / Presentation
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -1073,12 +1073,12 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                     onClick={() => setSelectedFrame(fr)}
                     className={`w-full min-w-0 overflow-hidden p-3.5 rounded-2xl border text-xs sm:text-sm transition-all flex items-center justify-between text-left cursor-pointer gap-2 min-h-[58px] ${
                       isSelected
-                        ? 'border-amber-700 bg-amber-50 text-amber-900 ring-2 ring-amber-600/30 font-bold dark:border-amber-500 dark:bg-amber-950/40 dark:text-amber-300 shadow-xs'
-                        : 'border-slate-200 dark:border-stone-800 bg-white dark:bg-stone-900 text-slate-700 dark:text-stone-300 hover:border-amber-300 dark:hover:border-amber-700 font-medium'
+                        ? 'border-blue-600 bg-blue-50 text-blue-900 ring-2 ring-blue-500/30 font-bold dark:border-blue-500 dark:bg-blue-950/40 dark:text-blue-300 shadow-xs'
+                        : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-blue-600 font-medium'
                     }`}
                   >
                     <span className="truncate flex-1 min-w-0 font-semibold" title={fr.name}>{fr.name}</span>
-                    <span className="text-[11px] sm:text-xs text-slate-500 dark:text-stone-400 shrink-0 font-medium">
+                    <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 shrink-0 font-medium">
                       {fr.price_adj === 0 ? 'Standard' : `+₹${fr.price_adj}`}
                     </span>
                   </button>
@@ -1089,7 +1089,7 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
         )}
 
         {/* 5. Customer Photo Upload Component with Dynamic Capacity Enforcement */}
-        <div className="pt-2 border-t border-slate-100 dark:border-stone-800">
+        <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
           <CustomerPhotoUpload
             photos={photos}
             onPhotosChange={setPhotos}
@@ -1105,9 +1105,9 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
         </div>
 
         {/* 6. Customer Design Text & Event Information */}
-        <div className="space-y-4 pt-2 border-t border-slate-100 dark:border-stone-800">
-          <label className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-stone-200 flex items-center gap-1.5">
-            <FileText className="w-3.5 h-3.5 text-amber-700 dark:text-amber-400" />
+        <div className="space-y-4 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+            <FileText className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             {textStepNumber}. Custom Text & Personalization Message {isAlbum && '(Album Title / Inscription)'}
           </label>
 
@@ -1117,17 +1117,17 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
               placeholder={isAlbum ? "e.g. 'Our Wedding Memories — 2026' or 'Baby Aarav First Year'" : "e.g. 'Aarav & Maya — 24th December 2026' or Family Caption"}
               value={customText}
               onChange={(e) => setCustomText(e.target.value)}
-              className="w-full bg-[#FAF8F5] dark:bg-stone-900 border border-slate-300 dark:border-stone-700 rounded-xl p-3 text-xs text-slate-800 dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-amber-600/20 focus:border-amber-700 transition-all font-medium"
+              className="w-full bg-[#F8FAFC] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-3 text-xs text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all font-medium"
             />
-            <p className="text-[10px] text-slate-500 dark:text-stone-400 mt-1">
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
               Our typography artists will balance and kern this text on your layout before printing.
             </p>
           </div>
 
           {/* Invitation details if applicable */}
           {product.category === 'Printing' && (
-            <div className="bg-[#FAF7F2] dark:bg-stone-900/80 p-4 rounded-2xl border border-amber-200/60 dark:border-amber-900/40 space-y-3">
-              <span className="text-xs font-bold text-amber-900 dark:text-amber-300 block">
+            <div className="bg-[#F8FAFC] dark:bg-slate-900/80 p-4 rounded-2xl border border-blue-200/60 dark:border-amber-900/40 space-y-3">
+              <span className="text-xs font-bold text-blue-600 dark:text-blue-400 block">
                 Event / Card Details (Optional):
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -1136,20 +1136,20 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                   placeholder="Event Name (e.g. Wedding Reception)"
                   value={eventName}
                   onChange={(e) => setEventName(e.target.value)}
-                  className="bg-white dark:bg-stone-900 border border-slate-300 dark:border-stone-700 rounded-lg p-2 text-xs text-slate-800 dark:text-stone-200"
+                  className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2 text-xs text-slate-800 dark:text-slate-200"
                 />
                 <input
                   type="date"
                   value={eventDate}
                   onChange={(e) => setEventDate(e.target.value)}
-                  className="bg-white dark:bg-stone-900 border border-slate-300 dark:border-stone-700 rounded-lg p-2 text-xs text-slate-800 dark:text-stone-200"
+                  className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2 text-xs text-slate-800 dark:text-slate-200"
                 />
                 <input
                   type="text"
                   placeholder="Venue & City (e.g. Hyatt Regency, Ahmedabad)"
                   value={venue}
                   onChange={(e) => setVenue(e.target.value)}
-                  className="bg-white dark:bg-stone-900 border border-slate-300 dark:border-stone-700 rounded-lg p-2 text-xs text-slate-800 dark:text-stone-200 sm:col-span-2"
+                  className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2 text-xs text-slate-800 dark:text-slate-200 sm:col-span-2"
                 />
               </div>
             </div>
@@ -1161,15 +1161,15 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
               placeholder="Special instructions for studio master craftsmen (e.g. crop centering, color correction, matte borders)..."
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full bg-[#FAF8F5] dark:bg-stone-900 border border-slate-300 dark:border-stone-700 rounded-xl p-3 text-xs text-slate-800 dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-amber-600/20 focus:border-amber-700 transition-all font-medium"
+              className="w-full bg-[#F8FAFC] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl p-3 text-xs text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all font-medium"
             />
           </div>
         </div>
 
         {/* 7. Quantity & Tiered Volume Discounts */}
-        <div className="space-y-3 pt-2 border-t border-slate-100 dark:border-stone-800">
+        <div className="space-y-3 pt-2 border-t border-slate-100 dark:border-slate-800">
           <div className="flex items-center justify-between">
-            <label className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-stone-200">
+            <label className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
               {quantityStepNumber}. Quantity & Volume Studio Discount
             </label>
             {activeTier.discount_percent > 0 && (
@@ -1180,11 +1180,11 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="flex items-center border border-slate-300 dark:border-stone-700 rounded-xl overflow-hidden bg-white dark:bg-stone-900 shadow-xs">
+            <div className="flex items-center border border-slate-300 dark:border-slate-700 rounded-xl overflow-hidden bg-white dark:bg-slate-900 shadow-xs">
               <button
                 type="button"
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="px-3.5 py-2 bg-slate-50 dark:bg-stone-800 hover:bg-slate-100 dark:hover:bg-stone-700 text-slate-700 dark:text-stone-200 font-bold text-sm cursor-pointer transition-colors"
+                className="px-3.5 py-2 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-stone-700 text-slate-700 dark:text-slate-200 font-bold text-sm cursor-pointer transition-colors"
               >
                 -
               </button>
@@ -1194,12 +1194,12 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                 max="999"
                 value={quantity}
                 onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                className="w-14 text-center text-xs font-bold text-slate-900 dark:text-stone-100 bg-white dark:bg-stone-900 focus:outline-none py-2"
+                className="w-14 text-center text-xs font-bold text-slate-900 dark:text-white bg-white dark:bg-slate-900 focus:outline-none py-2"
               />
               <button
                 type="button"
                 onClick={() => setQuantity(quantity + 1)}
-                className="px-3.5 py-2 bg-slate-50 dark:bg-stone-800 hover:bg-slate-100 dark:hover:bg-stone-700 text-slate-700 dark:text-stone-200 font-bold text-sm cursor-pointer transition-colors"
+                className="px-3.5 py-2 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-stone-700 text-slate-700 dark:text-slate-200 font-bold text-sm cursor-pointer transition-colors"
               >
                 +
               </button>
@@ -1212,7 +1212,7 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                   className={`px-2.5 py-1 rounded-lg border whitespace-nowrap ${
                     quantity >= t.min && quantity <= t.max
                       ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-300 font-bold'
-                      : 'border-slate-200 dark:border-stone-800 bg-slate-50 dark:bg-stone-800/60 text-slate-500 dark:text-stone-400'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 text-slate-500 dark:text-slate-400'
                   }`}
                 >
                   {t.min}{t.max < 900 ? `–${t.max}` : '+'}: {t.discount_percent === 0 ? 'Regular Price' : `${t.discount_percent}% Off`}
@@ -1223,8 +1223,8 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
         </div>
 
         {/* 8. Studio Add-ons & Extras */}
-        <div className="space-y-3 pt-2 border-t border-slate-100 dark:border-stone-800">
-          <label className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-stone-200">
+        <div className="space-y-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
             {extrasStepNumber}. White-Glove Studio Services
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -1236,21 +1236,21 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
                   onClick={() => toggleExtra(ex.id)}
                   className={`p-3 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
                     isChecked
-                      ? 'border-amber-700 dark:border-amber-500 bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-300 font-semibold'
-                      : 'border-slate-200 dark:border-stone-800 hover:border-slate-300 dark:hover:border-stone-700 text-slate-700 dark:text-stone-300'
+                      ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 font-semibold'
+                      : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-stone-700 text-slate-700 dark:text-slate-300'
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
                     <div
                       className={`w-4 h-4 rounded border flex items-center justify-center ${
-                        isChecked ? 'bg-amber-700 border-amber-700 text-white' : 'border-slate-300 dark:border-stone-700 bg-white dark:bg-stone-800'
+                        isChecked ? 'bg-blue-600 border-blue-600 text-white' : 'border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800'
                       }`}
                     >
                       {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
                     </div>
                     <span className="text-xs">{ex.name}</span>
                   </div>
-                  <span className="text-xs font-bold text-amber-900 dark:text-amber-400">+₹{ex.price_adj}</span>
+                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400">+₹{ex.price_adj}</span>
                 </div>
               );
             })}
@@ -1274,11 +1274,11 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
         )}
 
         {/* 9. Final Add to Cart Button */}
-        <div className="pt-5 border-t border-slate-200 dark:border-stone-800">
+        <div className="pt-5 border-t border-slate-200 dark:border-slate-800">
           <button
             type="button"
             onClick={handleAddToCart}
-            className="w-full bg-[#B45309] hover:bg-amber-800 text-white font-bold py-4.5 sm:py-5 px-8 rounded-2xl transition-all shadow-xl shadow-amber-950/25 hover:shadow-2xl hover:scale-[1.01] flex items-center justify-center gap-3.5 cursor-pointer text-lg sm:text-xl"
+            className="w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:via-indigo-700 hover:to-blue-800 text-white font-bold py-4.5 sm:py-5 px-8 rounded-2xl transition-all shadow-xl shadow-blue-900/25 hover:shadow-2xl hover:scale-[1.01] flex items-center justify-center gap-3.5 cursor-pointer text-lg sm:text-xl"
           >
             <ShoppingBag className="w-6 h-6 text-amber-200" />
             <span className="font-bold">
@@ -1301,14 +1301,14 @@ export const ProductCustomizer: React.FC<ProductCustomizerProps> = ({ product, o
               <button
                 type="button"
                 onClick={() => onShare(product)}
-                className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-stone-300 hover:text-emerald-700 dark:hover:text-emerald-400 py-1.5 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-stone-800 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-400 py-1.5 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-stone-800 transition-colors cursor-pointer"
               >
                 <Share2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                 <span>Share this design link on WhatsApp / Social Media</span>
               </button>
             </div>
           )}
-          <p className="text-center text-xs text-slate-500 dark:text-stone-400 mt-2.5">
+          <p className="text-center text-xs text-slate-500 dark:text-slate-400 mt-2.5">
             ✨ Handcrafted Studio Quality • 100% Satisfaction Guarantee • Dynamic UPI Instant QR
           </p>
         </div>

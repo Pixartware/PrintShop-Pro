@@ -17,8 +17,8 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, type = 'order'
         dot = 'bg-emerald-500';
         break;
       case 'Customer Claimed Paid':
-        bg = 'bg-amber-50 text-amber-800 border-amber-200';
-        dot = 'bg-amber-500 animate-pulse';
+        bg = 'bg-blue-50 text-blue-800 border-blue-200';
+        dot = 'bg-blue-500 animate-pulse';
         break;
       case 'Verification Required':
         bg = 'bg-orange-50 text-orange-800 border-orange-200';
@@ -41,8 +41,8 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, type = 'order'
         dot = 'bg-blue-500';
         break;
       case 'PAYMENT PENDING':
-        bg = 'bg-amber-50 text-amber-800 border-amber-200';
-        dot = 'bg-amber-500';
+        bg = 'bg-blue-50 text-blue-800 border-blue-200';
+        dot = 'bg-blue-500';
         break;
       case 'PAYMENT VERIFIED':
         bg = 'bg-teal-50 text-teal-800 border-teal-200';
@@ -63,8 +63,8 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, type = 'order'
         break;
       case 'PACKING':
       case 'READY TO DISPATCH':
-        bg = 'bg-amber-50 text-amber-800 border-amber-200';
-        dot = 'bg-amber-500';
+        bg = 'bg-blue-50 text-blue-800 border-blue-200';
+        dot = 'bg-blue-500';
         break;
       case 'DISPATCHED':
         bg = 'bg-sky-50 text-sky-800 border-sky-200';

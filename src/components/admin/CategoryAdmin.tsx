@@ -93,7 +93,7 @@ export const CategoryAdmin: React.FC = () => {
 
         <button
           onClick={openNewCategory}
-          className="bg-[#B45309] hover:bg-[#92400E] text-white font-bold py-2 px-4 rounded-xl text-xs flex items-center gap-1.5 shadow-xs"
+          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-2 px-4 rounded-xl text-xs flex items-center gap-1.5 shadow-xs"
         >
           <Plus className="w-4 h-4" />
           <span>New Category</span>
@@ -109,7 +109,7 @@ export const CategoryAdmin: React.FC = () => {
           >
             <div>
               <div className="flex items-center justify-between">
-                <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-800 flex items-center justify-center font-bold">
                   <Layers className="w-5 h-5" />
                 </div>
                 <button
@@ -155,7 +155,7 @@ export const CategoryAdmin: React.FC = () => {
       {/* Edit Category Modal */}
       {isEditing && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
-          <div className="bg-[#FFFDF9] rounded-3xl border border-[#E8DFD0] shadow-2xl max-w-lg w-full p-6 space-y-5 animate-scale-in">
+          <div className="bg-[#FFFDF9] rounded-3xl border border-[#E2E8F0] shadow-2xl max-w-lg w-full p-6 space-y-5 animate-scale-in">
             <div className="flex justify-between items-center pb-3 border-b border-slate-200">
               <h3 className="font-serif font-bold text-lg text-slate-900">
                 {editingCategory.id ? `Edit: ${editingCategory.name || 'Category'}` : 'New Category'}
@@ -225,7 +225,7 @@ export const CategoryAdmin: React.FC = () => {
                   {editingCategory.subcategories?.map((s) => (
                     <span
                       key={s.id}
-                      className="bg-amber-50 border border-amber-200 text-amber-900 text-xs px-2.5 py-1 rounded-lg flex items-center gap-1.5"
+                      className="bg-blue-50 border border-blue-200 text-blue-900 text-xs px-2.5 py-1 rounded-lg flex items-center gap-1.5"
                     >
                       <span>{s.name}</span>
                       <button
@@ -250,7 +250,7 @@ export const CategoryAdmin: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-[#B45309] hover:bg-[#92400E] text-white rounded-xl text-xs font-bold shadow-xs flex items-center gap-1.5"
+                  className="px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl text-xs font-bold shadow-xs flex items-center gap-1.5"
                 >
                   <Check className="w-4 h-4" />
                   <span>Save Category</span>

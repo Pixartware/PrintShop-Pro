@@ -30,7 +30,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '', showLa
       mode: 'system',
       label: 'સિસ્ટમ મુજબ (System Auto)',
       sub: isDark ? 'Auto (Currently Dark)' : 'Auto (Currently Light)',
-      icon: <Monitor className="w-4 h-4 text-amber-700 dark:text-amber-400" />
+      icon: <Monitor className="w-4 h-4 text-blue-600 dark:text-blue-400" />
     },
     {
       mode: 'light',
@@ -51,13 +51,13 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '', showLa
       <button
         type="button"
         onClick={() => setIsOpen(prev => !prev)}
-        className="p-2 sm:p-2.5 rounded-full bg-white dark:bg-stone-800 border border-[#E2D8C9] dark:border-stone-700 text-slate-700 dark:text-stone-200 hover:bg-amber-50 dark:hover:bg-stone-700 hover:border-amber-400 dark:hover:border-amber-500 transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer group"
+        className="p-2 sm:p-2.5 rounded-full bg-white dark:bg-slate-800 border border-[#E2D8C9] dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-stone-700 hover:border-blue-400 dark:hover:border-blue-500 transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer group"
         title={`Theme: ${theme === 'system' ? `System Auto (${isDark ? 'Dark' : 'Light'})` : theme === 'dark' ? 'Dark Mode' : 'Light Mode'}`}
         aria-label="Toggle Dark / Light / System Mode"
       >
         {theme === 'system' ? (
           <div className="relative flex items-center justify-center">
-            <Monitor className="w-4 h-4 text-amber-800 dark:text-amber-400 group-hover:scale-110 transition-transform" />
+            <Monitor className="w-4 h-4 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform" />
             <span className="absolute -bottom-1 -right-1 w-2 h-2 rounded-full bg-emerald-500 ring-1 ring-white dark:ring-stone-900" />
           </div>
         ) : isDark ? (
@@ -75,9 +75,9 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '', showLa
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-white dark:bg-[#1A1816] border border-[#E8DFD0] dark:border-stone-800 shadow-xl py-1.5 z-50 animate-scale-in">
-          <div className="px-3 py-1.5 border-b border-slate-100 dark:border-stone-800/80 mb-1">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-stone-400">
+        <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-white dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-slate-800 shadow-xl py-1.5 z-50 animate-scale-in">
+          <div className="px-3 py-1.5 border-b border-slate-100 dark:border-slate-800/80 mb-1">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-400">
               થીમ પસંદગી (Theme Mode)
             </span>
           </div>
@@ -94,24 +94,24 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '', showLa
                 }}
                 className={`w-full px-3 py-2 text-left flex items-center justify-between text-xs transition-colors cursor-pointer ${
                   isSelected
-                    ? 'bg-amber-50 dark:bg-amber-950/40 text-amber-950 dark:text-amber-200 font-bold'
-                    : 'text-slate-700 dark:text-stone-300 hover:bg-slate-50 dark:hover:bg-stone-800'
+                    ? 'bg-blue-50 dark:bg-blue-950/40 text-blue-950 dark:text-blue-200 font-bold'
+                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-stone-800'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="w-6 h-6 rounded-lg bg-slate-100 dark:bg-stone-800 flex items-center justify-center shrink-0">
+                  <div className="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0">
                     {opt.icon}
                   </div>
                   <div>
                     <div className="text-xs font-semibold">{opt.label}</div>
-                    <div className="text-[10px] text-slate-400 dark:text-stone-500 font-normal">
+                    <div className="text-[10px] text-slate-400 dark:text-slate-500 font-normal">
                       {opt.sub}
                     </div>
                   </div>
                 </div>
 
                 {isSelected && (
-                  <Check className="w-3.5 h-3.5 text-amber-700 dark:text-amber-400 stroke-[3]" />
+                  <Check className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 stroke-[3]" />
                 )}
               </button>
             );

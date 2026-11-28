@@ -44,7 +44,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
     const clean = pinInput.trim().toLowerCase();
     // Authorized passcodes: 3375, akshar3375, craftique, admin
     if (clean === '3375' || clean === 'akshar3375' || clean === 'craftique' || clean === 'admin' || clean === 'akshar') {
-      login('admin@craftique.in', pinInput, 'Admin');
+      login('admin@printshoppro.in', pinInput, 'Admin');
       setPinError(false);
       setPinInput('');
     } else {
@@ -63,7 +63,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
           </div>
 
           <div>
-            <span className="text-[11px] uppercase font-bold tracking-widest text-amber-400 bg-amber-950/60 px-3 py-1 rounded-full border border-amber-600/40">
+            <span className="text-[11px] uppercase font-bold tracking-widest text-amber-400 bg-amber-950/60 px-3 py-1 rounded-full border border-blue-600/40">
               Studio Workspace
             </span>
             <h2 className="font-serif text-2xl font-bold text-white mt-3">
@@ -100,7 +100,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
 
             <button
               type="submit"
-              className="w-full bg-[#B45309] hover:bg-amber-700 text-white font-bold py-3 rounded-xl transition-all shadow-md cursor-pointer text-sm flex items-center justify-center gap-2"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-all shadow-md cursor-pointer text-sm flex items-center justify-center gap-2"
             >
               <Lock className="w-4 h-4" />
               <span>Unlock Studio Workspace</span>
@@ -168,7 +168,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
                 onClick={() => onTabChange(item.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-amber-600 text-white shadow-sm'
+                    ? 'bg-blue-600 text-white shadow-sm'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
                 }`}
               >
@@ -219,13 +219,13 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
 
           {/* Verified Studio Admin Badge & Profile */}
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5 bg-amber-50 px-3 py-1.5 rounded-xl border border-amber-200/80 shadow-xs">
-              <ShieldCheck className="w-4 h-4 text-amber-700" />
-              <span className="text-xs font-bold text-amber-950">Studio Admin</span>
+            <div className="flex items-center gap-1.5 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-200/80 shadow-xs">
+              <ShieldCheck className="w-4 h-4 text-blue-700" />
+              <span className="text-xs font-bold text-blue-950">Studio Admin</span>
             </div>
 
             <div className="flex items-center gap-2 pl-2 border-l border-slate-200">
-              <div className="w-8 h-8 rounded-full bg-amber-700 text-white font-bold flex items-center justify-center text-xs shadow-xs">
+              <div className="w-8 h-8 rounded-full bg-blue-700 text-white font-bold flex items-center justify-center text-xs shadow-xs">
                 A
               </div>
               <div className="hidden sm:block text-left text-xs">

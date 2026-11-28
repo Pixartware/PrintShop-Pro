@@ -168,16 +168,16 @@ export const CustomerPhotoUpload: React.FC<CustomerPhotoUploadProps> = ({
   return (
     <div className="space-y-4">
       {/* Category Specific Capacity Header */}
-      <div className="bg-[#FAF7F2] dark:bg-stone-900/90 p-4 rounded-2xl border border-[#E8DFD0] dark:border-stone-800 space-y-3">
+      <div className="bg-[#F8FAFC] dark:bg-slate-900/90 p-4 rounded-2xl border border-[#E2E8F0] dark:border-slate-800 space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
             <div className="flex items-center gap-2">
-              {categoryType === 'album' && <BookOpen className="w-4 h-4 text-amber-800 dark:text-amber-400" />}
+              {categoryType === 'album' && <BookOpen className="w-4 h-4 text-blue-600 dark:text-blue-400" />}
               {categoryType === 'magnets' && <Box className="w-4 h-4 text-indigo-800 dark:text-indigo-400" />}
               {categoryType === 'mini-prints' && <Layers className="w-4 h-4 text-emerald-800 dark:text-emerald-400" />}
-              {categoryType === 'standard' && <ImageIcon className="w-4 h-4 text-amber-800 dark:text-amber-400" />}
+              {categoryType === 'standard' && <ImageIcon className="w-4 h-4 text-blue-600 dark:text-blue-400" />}
               
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-stone-100">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
                 {stepNumber ? `${stepNumber}. ` : ''}
                 {categoryType === 'album' && `Upload Album Photos (${albumSheets} Sheets = ${albumPages} Pages)`}
                 {categoryType === 'magnets' && `Upload Magnet Photos (${packCount} Magnets)`}
@@ -187,7 +187,7 @@ export const CustomerPhotoUpload: React.FC<CustomerPhotoUploadProps> = ({
             </div>
 
             {/* Dynamic Rule Explainer */}
-            <p className="text-[11px] text-slate-600 dark:text-stone-300 mt-1">
+            <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1">
               {categoryType === 'album' && (
                 <span>
                   📖 <strong>{albumSheets} Sheets = {albumPages} Pages</strong>. Each page fits up to 4 images. You can upload up to <strong>{effectiveMax} photos</strong>.
@@ -218,8 +218,8 @@ export const CustomerPhotoUpload: React.FC<CustomerPhotoUploadProps> = ({
                 isMaxReached
                   ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-200 border-emerald-300 dark:border-emerald-800'
                   : photos.length > 0
-                  ? 'bg-amber-50 dark:bg-amber-950/60 text-amber-900 dark:text-amber-200 border-amber-300 dark:border-amber-800'
-                  : 'bg-slate-100 dark:bg-stone-800 text-slate-700 dark:text-stone-300 border-slate-200 dark:border-stone-700'
+                  ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-900 dark:text-blue-200 border-blue-300 dark:border-blue-800'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700'
               }`}
             >
               Uploaded: {photos.length} / {effectiveMax} Max
@@ -241,21 +241,21 @@ export const CustomerPhotoUpload: React.FC<CustomerPhotoUploadProps> = ({
 
         {/* Visual Capacity Fill Bar */}
         <div className="space-y-1">
-          <div className="flex justify-between text-[10px] font-semibold text-slate-500 dark:text-stone-400">
+          <div className="flex justify-between text-[10px] font-semibold text-slate-500 dark:text-slate-400">
             <span>Capacity Utilized</span>
             <span>
               {photos.length} of {effectiveMax} slots filled ({progressPct}%)
               {remainingSlots > 0 ? ` • ${remainingSlots} slots remaining` : ' • All slots full!'}
             </span>
           </div>
-          <div className="w-full bg-slate-200/80 dark:bg-stone-800 rounded-full h-2 overflow-hidden">
+          <div className="w-full bg-slate-200/80 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
             <div
               className={`h-full transition-all duration-300 rounded-full ${
                 isMaxReached 
                   ? 'bg-emerald-600' 
                   : progressPct > 60 
-                  ? 'bg-amber-600' 
-                  : 'bg-[#B45309]'
+                  ? 'bg-blue-600' 
+                  : 'bg-blue-600'
               }`}
               style={{ width: `${progressPct}%` }}
             />
@@ -265,8 +265,8 @@ export const CustomerPhotoUpload: React.FC<CustomerPhotoUploadProps> = ({
 
       {/* Warning Message Banner if exceeded */}
       {warningMsg && (
-        <div className="bg-amber-50 dark:bg-amber-950/50 border border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-200 text-xs p-3 rounded-xl flex items-start gap-2 shadow-2xs">
-          <AlertCircle className="w-4 h-4 text-amber-700 dark:text-amber-400 shrink-0 mt-0.5" />
+        <div className="bg-blue-50 dark:bg-blue-950/50 border border-blue-300 dark:border-blue-800 text-blue-900 dark:text-blue-200 text-xs p-3 rounded-xl flex items-start gap-2 shadow-2xs">
+          <AlertCircle className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
           <p className="flex-1">{warningMsg}</p>
         </div>
       )}
@@ -283,8 +283,8 @@ export const CustomerPhotoUpload: React.FC<CustomerPhotoUploadProps> = ({
           onClick={() => fileInputRef.current?.click()}
           className={`cursor-pointer rounded-2xl border-2 border-dashed p-6 text-center transition-all ${
             dragActive
-              ? 'border-amber-600 bg-amber-50/70 dark:bg-amber-950/40 ring-4 ring-amber-500/20'
-              : 'border-[#DECDBB] dark:border-stone-700 bg-[#FAF8F5] dark:bg-stone-900/60 hover:border-amber-500 hover:bg-amber-50/30 dark:hover:bg-amber-950/20'
+              ? 'border-blue-600 bg-blue-50/70 dark:bg-blue-950/40 ring-4 ring-blue-500/20'
+              : 'border-[#CBD5E1] dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-900/60 hover:border-blue-500 hover:bg-blue-50/30 dark:hover:bg-amber-950/20'
           }`}
         >
           <input
@@ -296,26 +296,26 @@ export const CustomerPhotoUpload: React.FC<CustomerPhotoUploadProps> = ({
             onChange={(e) => handleFiles(e.target.files)}
           />
 
-          <div className="w-12 h-12 rounded-full bg-white dark:bg-stone-800 shadow-xs border border-amber-200 dark:border-stone-700 mx-auto flex items-center justify-center text-amber-700 dark:text-amber-400 mb-3">
+          <div className="w-12 h-12 rounded-full bg-white dark:bg-slate-800 shadow-xs border border-blue-200 dark:border-slate-700 mx-auto flex items-center justify-center text-blue-600 dark:text-blue-400 mb-3">
             <UploadCloud className="w-6 h-6" />
           </div>
 
-          <p className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-stone-200">
+          <p className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">
             Click to upload or drag & drop up to {remainingSlots} more {remainingSlots === 1 ? 'photo' : 'photos'}
           </p>
-          <p className="text-[11px] text-slate-500 dark:text-stone-400 mt-1">
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
             Batch multi-select supported. Hold Shift or Ctrl/Cmd to select all {effectiveMax} photos together.
           </p>
 
           {uploadProgress !== null && (
             <div className="mt-4 max-w-xs mx-auto">
-              <div className="flex justify-between text-[10px] font-semibold text-amber-900 dark:text-amber-300 mb-1">
+              <div className="flex justify-between text-[10px] font-semibold text-blue-600 dark:text-blue-400 mb-1">
                 <span>Analyzing photo quality & DPI...</span>
                 <span>{uploadProgress}%</span>
               </div>
-              <div className="w-full bg-slate-200 dark:bg-stone-800 rounded-full h-1.5 overflow-hidden">
+              <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
                 <div
-                  className="bg-amber-700 h-1.5 rounded-full transition-all duration-200"
+                  className="bg-blue-600 h-1.5 rounded-full transition-all duration-200"
                   style={{ width: `${uploadProgress}%` }}
                 />
               </div>
@@ -336,11 +336,11 @@ export const CustomerPhotoUpload: React.FC<CustomerPhotoUploadProps> = ({
       {/* Uploaded Photos Grid with Quality Analysis and Slot Badges */}
       {photos.length > 0 && (
         <div className="space-y-2.5">
-          <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-stone-300 uppercase tracking-wider">
+          <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
             <span>
               Uploaded Photos List ({photos.length} / {effectiveMax})
             </span>
-            <span className="text-[10px] font-normal text-slate-500 dark:text-stone-400 normal-case">
+            <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400 normal-case">
               Arranged in printing order
             </span>
           </div>
@@ -349,10 +349,10 @@ export const CustomerPhotoUpload: React.FC<CustomerPhotoUploadProps> = ({
             {photos.map((p, idx) => (
               <div
                 key={idx}
-                className="bg-white dark:bg-stone-900 rounded-xl border border-slate-200 dark:border-stone-800 p-2.5 flex items-center gap-3 relative shadow-xs hover:border-amber-300 dark:hover:border-amber-700 transition-colors"
+                className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-2.5 flex items-center gap-3 relative shadow-xs hover:border-blue-300 dark:hover:border-blue-600 transition-colors"
               >
                 {/* Photo Thumbnail */}
-                <div className="w-14 h-14 rounded-lg bg-slate-100 dark:bg-stone-800 overflow-hidden shrink-0 border border-slate-200 dark:border-stone-700 relative">
+                <div className="w-14 h-14 rounded-lg bg-slate-100 dark:bg-slate-800 overflow-hidden shrink-0 border border-slate-200 dark:border-slate-700 relative">
                   <img src={p.url} alt={p.name} className="w-full h-full object-cover" />
                   <span className="absolute top-0.5 left-0.5 bg-black/75 text-white text-[9px] px-1 rounded font-bold font-mono">
                     #{idx + 1}
@@ -362,16 +362,16 @@ export const CustomerPhotoUpload: React.FC<CustomerPhotoUploadProps> = ({
                 {/* Details & Slot Allocation */}
                 <div className="flex-1 min-w-0 pr-6">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[10px] font-bold text-amber-900 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 border border-amber-200/80 dark:border-amber-800/80 px-1.5 py-0.5 rounded">
+                    <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-800/80 px-1.5 py-0.5 rounded">
                       {getSlotLabel(idx)}
                     </span>
                   </div>
 
-                  <p className="text-xs font-semibold text-slate-800 dark:text-stone-100 truncate mt-0.5" title={p.name}>
+                  <p className="text-xs font-semibold text-slate-800 dark:text-white truncate mt-0.5" title={p.name}>
                     {p.name}
                   </p>
 
-                  <p className="text-[10px] text-slate-400 dark:text-stone-500">
+                  <p className="text-[10px] text-slate-400 dark:text-slate-500">
                     {p.aspect_ratio || `${(p.size / (1024 * 1024)).toFixed(2)} MB`}
                   </p>
 
@@ -383,7 +383,7 @@ export const CustomerPhotoUpload: React.FC<CustomerPhotoUploadProps> = ({
                         Print Ready
                       </span>
                     ) : p.quality === 'Low resolution' ? (
-                      <span className="inline-flex items-center gap-1 text-[9px] font-bold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 px-1.5 py-0.5 rounded border border-amber-200 dark:border-amber-800">
+                      <span className="inline-flex items-center gap-1 text-[9px] font-bold text-blue-600 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 px-1.5 py-0.5 rounded border border-blue-200 dark:border-blue-800">
                         <AlertTriangle className="w-2.5 h-2.5" />
                         Low Res
                       </span>
@@ -400,7 +400,7 @@ export const CustomerPhotoUpload: React.FC<CustomerPhotoUploadProps> = ({
                 <button
                   type="button"
                   onClick={() => removePhoto(idx)}
-                  className="absolute top-2 right-2 text-slate-400 dark:text-stone-400 hover:text-rose-600 dark:hover:text-rose-400 p-1 rounded-full hover:bg-slate-100 dark:hover:bg-stone-800 cursor-pointer transition-colors"
+                  className="absolute top-2 right-2 text-slate-400 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 p-1 rounded-full hover:bg-slate-100 dark:hover:bg-stone-800 cursor-pointer transition-colors"
                   title="Remove photo"
                 >
                   <X className="w-4 h-4" />

@@ -104,10 +104,10 @@ export const CatalogSyncPanel: React.FC = () => {
           <span className="text-[10px] uppercase font-bold text-slate-400 block">
             New Detected
           </span>
-          <span className="font-serif text-3xl font-bold text-amber-800 mt-1 block">
+          <span className="font-serif text-3xl font-bold text-blue-800 mt-1 block">
             +{syncStatus.new_products || 0}
           </span>
-          <span className="text-[11px] text-amber-700">From folder changes</span>
+          <span className="text-[11px] text-blue-700">From folder changes</span>
         </div>
 
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
@@ -124,7 +124,7 @@ export const CatalogSyncPanel: React.FC = () => {
       {/* Source Path Controller & Manual Trigger */}
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-5">
         <h3 className="font-serif font-bold text-base text-slate-900 flex items-center gap-2">
-          <HardDrive className="w-5 h-5 text-amber-800" />
+          <HardDrive className="w-5 h-5 text-blue-800" />
           Local Folder Source Configuration
         </h3>
 
@@ -137,13 +137,13 @@ export const CatalogSyncPanel: React.FC = () => {
               type="text"
               value={customPath}
               onChange={(e) => setCustomPath(e.target.value)}
-              className="flex-1 bg-[#FAF8F5] border border-slate-300 rounded-xl p-3 text-xs font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-600/30"
+              className="flex-1 bg-[#F8FAFC] border border-slate-300 rounded-xl p-3 text-xs font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600/30"
             />
             <button
               type="button"
               disabled={isSyncing}
               onClick={handleSyncNow}
-              className="bg-[#B45309] hover:bg-[#92400E] disabled:bg-slate-400 text-white font-bold px-6 py-3 rounded-xl text-xs flex items-center gap-2 shadow-xs transition-all shrink-0"
+              className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:bg-slate-400 text-white font-bold px-6 py-3 rounded-xl text-xs flex items-center gap-2 shadow-xs transition-all shrink-0"
             >
               <RefreshCw className={`w-4 h-4 ${isSyncing ? 'animate-spin' : ''}`} />
               <span>{isSyncing ? 'Scanning & Parsing...' : 'SYNC CATALOG NOW'}</span>
@@ -155,7 +155,7 @@ export const CatalogSyncPanel: React.FC = () => {
         </div>
 
         {syncMessage && (
-          <div className="p-4 bg-amber-50 border border-amber-200 text-amber-950 rounded-2xl text-xs flex items-center gap-2">
+          <div className="p-4 bg-blue-50 border border-blue-200 text-blue-950 rounded-2xl text-xs flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
             <span>{syncMessage}</span>
           </div>

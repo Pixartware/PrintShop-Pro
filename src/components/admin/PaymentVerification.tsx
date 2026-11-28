@@ -124,7 +124,7 @@ export const PaymentVerification: React.FC = () => {
                           {ord?.customer_phone || ''}
                         </span>
                       </td>
-                      <td className="py-4 px-4 font-bold text-base text-amber-900">
+                      <td className="py-4 px-4 font-bold text-base text-blue-900">
                         ₹{p.amount?.toLocaleString('en-IN')}
                       </td>
                       <td className="py-4 px-4">
@@ -148,7 +148,7 @@ export const PaymentVerification: React.FC = () => {
                           <button
                             type="button"
                             onClick={() => setSelectedScreenshot(p.screenshot_url || null)}
-                            className="flex items-center gap-1.5 text-xs text-amber-800 hover:text-amber-950 font-semibold bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200"
+                            className="flex items-center gap-1.5 text-xs text-blue-800 hover:text-blue-950 font-semibold bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200"
                           >
                             <Eye className="w-3.5 h-3.5" />
                             <span>View Proof</span>
@@ -236,7 +236,7 @@ export const PaymentVerification: React.FC = () => {
               placeholder="e.g. UTR number not found in bank statement, or amount does not match..."
               value={rejectReason}
               onChange={(e) => setRejectReason(e.target.value)}
-              className="w-full bg-[#FAF8F5] border border-slate-300 rounded-xl p-3 text-xs"
+              className="w-full bg-[#F8FAFC] border border-slate-300 rounded-xl p-3 text-xs"
             />
             <div className="flex justify-end gap-2 pt-2">
               <button

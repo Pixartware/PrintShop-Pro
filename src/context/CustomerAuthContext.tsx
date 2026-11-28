@@ -16,8 +16,8 @@ interface CustomerAuthContextType {
 
 const CustomerAuthContext = createContext<CustomerAuthContextType | undefined>(undefined);
 
-const STORAGE_KEY = 'craftique_customer_session';
-const ORDERS_KEY = 'craftique_customer_orders';
+const STORAGE_KEY = 'printshoppro_customer_session';
+const ORDERS_KEY = 'printshoppro_customer_orders';
 
 export const CustomerAuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [customer, setCustomer] = useState<CustomerUser | null>(() => {

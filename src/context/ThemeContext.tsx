@@ -16,7 +16,7 @@ const THEME_STORAGE_KEY = 'printshop_theme';
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setThemeState] = useState<ThemeMode>(() => {
     try {
-      const saved = (localStorage.getItem(THEME_STORAGE_KEY) || localStorage.getItem('craftique_theme')) as ThemeMode | null;
+      const saved = (localStorage.getItem(THEME_STORAGE_KEY) || localStorage.getItem('printshoppro_theme')) as ThemeMode | null;
       if (saved === 'light' || saved === 'dark' || saved === 'system') {
         return saved;
       }

@@ -57,7 +57,7 @@ export const ReportsAnalytics: React.FC = () => {
 
         <button
           onClick={downloadCsv}
-          className="bg-[#B45309] hover:bg-[#92400E] text-white font-bold py-2.5 px-4 rounded-xl text-xs flex items-center gap-2 shadow-xs transition-all w-fit"
+          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs flex items-center gap-2 shadow-xs transition-all w-fit"
         >
           <Download className="w-4 h-4" />
           <span>Export Financial Report (CSV)</span>
@@ -99,7 +99,7 @@ export const ReportsAnalytics: React.FC = () => {
             Net Profit Margin
           </span>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="font-serif text-3xl font-bold text-amber-800">
+            <span className="font-serif text-3xl font-bold text-blue-800">
               {summary.profit?.profit_margin_percent}%
             </span>
           </div>
@@ -112,7 +112,7 @@ export const ReportsAnalytics: React.FC = () => {
       {/* Cost of Goods Sold (COGS) Breakdown */}
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6">
         <h3 className="font-serif font-bold text-lg text-slate-900 flex items-center gap-2">
-          <PieChart className="w-5 h-5 text-amber-800" />
+          <PieChart className="w-5 h-5 text-blue-800" />
           Production Cost Breakdown (COGS)
         </h3>
 

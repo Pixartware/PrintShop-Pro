@@ -113,9 +113,9 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onCustomise, featuredProd
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#F7F2EB] to-[#FAF7F2] dark:from-[#181614] dark:to-[#121110] pt-8 pb-16 border-b border-[#EBE3D5] dark:border-stone-800 transition-colors">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#F1F5F9] to-[#F8FAFC] dark:from-[#0B0F19] dark:to-[#020617] pt-8 pb-16 border-b border-[#E2E8F0] dark:border-slate-800 transition-colors">
       {/* Decorative ambient gradients */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-200/40 dark:bg-amber-900/10 rounded-full blur-3xl pointer-events-none -z-0" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-200/40 dark:bg-blue-900/10 rounded-full blur-3xl pointer-events-none -z-0" />
       <div className="absolute bottom-10 left-10 w-80 h-80 bg-orange-200/30 dark:bg-orange-950/10 rounded-full blur-3xl pointer-events-none -z-0" />
 
       <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 relative z-10">
@@ -129,12 +129,12 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onCustomise, featuredProd
               <span>Studio-Grade Digital Press • Same-Day Dispatch</span>
             </div>
 
-            <h1 className="font-serif text-3xl sm:text-4xl xl:text-5xl font-bold tracking-tight text-slate-900 dark:text-stone-100 leading-[1.18]">
+            <h1 className="font-serif text-3xl sm:text-4xl xl:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.18]">
               Commercial Digital <br />
               <span className="text-blue-600 dark:text-blue-400 italic font-normal">Print & Finishing Hub.</span>
             </h1>
 
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-stone-300 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed">
               Studio-grade 100 to 350 GSM cardstock, precision CNC kiss-cut stickers, visiting cards, flyers, and boutique packaging with live sheet price calculation, instant dynamic UPI payments, and automatic PDF receipts.
             </p>
 
@@ -151,14 +151,14 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onCustomise, featuredProd
 
               <button
                 onClick={onExplore}
-                className="w-full sm:w-auto bg-white dark:bg-stone-800 hover:bg-slate-50 dark:hover:bg-stone-700 text-slate-800 dark:text-stone-100 font-semibold py-3.5 px-6 rounded-full border border-slate-300 dark:border-stone-700 shadow-xs text-xs sm:text-sm transition-all cursor-pointer"
+                className="w-full sm:w-auto bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-stone-700 text-slate-800 dark:text-white font-semibold py-3.5 px-6 rounded-full border border-slate-300 dark:border-slate-700 shadow-xs text-xs sm:text-sm transition-all cursor-pointer"
               >
                 Browse Print Catalog
               </button>
             </div>
 
             {/* Feature trust badges */}
-            <div className="pt-3 grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-[11px] text-slate-600 dark:text-stone-400 max-w-lg mx-auto lg:mx-0">
+            <div className="pt-3 grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-[11px] text-slate-600 dark:text-slate-400 max-w-lg mx-auto lg:mx-0">
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                 <span>12-Color Archival Ink</span>
@@ -182,7 +182,7 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onCustomise, featuredProd
               <div 
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
-                className="bg-white dark:bg-[#1A1816] rounded-3xl p-4 sm:p-6 shadow-xl shadow-amber-900/10 dark:shadow-black/40 border border-[#E5DAC8] dark:border-stone-800 relative overflow-hidden transition-all"
+                className="bg-white dark:bg-[#0F172A] rounded-3xl p-4 sm:p-6 shadow-xl shadow-blue-900/10 dark:shadow-black/40 border border-[#E2E8F0] dark:border-slate-800 relative overflow-hidden transition-all"
               >
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                   
@@ -190,7 +190,7 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onCustomise, featuredProd
                   <div className="md:col-span-6 xl:col-span-6 relative">
                     <div 
                       onClick={handleCardClick}
-                      className="aspect-square w-full rounded-2xl overflow-hidden bg-[#121110] relative border border-slate-200/80 dark:border-stone-800 group cursor-pointer shadow-md flex items-center justify-center"
+                      className="aspect-square w-full rounded-2xl overflow-hidden bg-[#020617] relative border border-slate-200/80 dark:border-slate-800 group cursor-pointer shadow-md flex items-center justify-center"
                     >
                       {/* Fully uncropped 1:1 square display */}
                       <img
@@ -246,8 +246,8 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onCustomise, featuredProd
                           onClick={() => setCurrentSlide(idx)}
                           className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                             currentSlide === idx 
-                              ? 'w-6 bg-amber-600 dark:bg-amber-400' 
-                              : 'w-1.5 bg-slate-300 dark:bg-stone-700 hover:bg-amber-400'
+                              ? 'w-6 bg-blue-600 dark:bg-amber-400' 
+                              : 'w-1.5 bg-slate-300 dark:bg-stone-700 hover:bg-blue-400'
                           }`}
                           title={`Slide ${idx + 1}`}
                         />
@@ -258,82 +258,82 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onCustomise, featuredProd
                   {/* RIGHT (BAJUMA): PRINT SERVICE TEXT, HIGHLIGHTS, DETAILS & PRICING */}
                   <div className="md:col-span-6 xl:col-span-6 space-y-3.5">
                     {/* Header Tag */}
-                    <div className="inline-flex items-center gap-1.5 bg-amber-100/90 dark:bg-amber-950/70 border border-amber-300 dark:border-amber-800 px-3 py-1 rounded-full text-[11px] font-bold text-amber-900 dark:text-amber-300 shadow-xs">
-                      <Flame className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 animate-pulse" />
+                    <div className="inline-flex items-center gap-1.5 bg-orange-100/90 dark:bg-orange-950/70 border border-blue-300 dark:border-blue-800 px-3 py-1 rounded-full text-[11px] font-bold text-blue-600 dark:text-blue-400 shadow-xs">
+                      <Flame className="w-3.5 h-3.5 text-amber-600 dark:text-blue-400 animate-pulse" />
                       <span>Commercial Digital Print Hub</span>
                     </div>
 
                     {/* Service Title & Subtitle */}
                     <div>
-                      <h2 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 dark:text-stone-100 leading-tight">
+                      <h2 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight">
                         Personalized Printing Service
                       </h2>
-                      <p className="text-xs text-slate-500 dark:text-stone-400 mt-1 leading-relaxed">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
                         On-demand commercial digital printing on 100 to 350 GSM papers, sticker sheets, and party paper with live dynamic pricing.
                       </p>
                     </div>
 
                     {/* Feature Highlights Grid */}
-                    <div className="space-y-2 text-xs text-slate-700 dark:text-stone-300">
+                    <div className="space-y-2 text-xs text-slate-700 dark:text-slate-300">
                       <div className="flex items-start gap-2">
-                        <Printer className="w-4 h-4 text-amber-700 dark:text-amber-400 shrink-0 mt-0.5" />
+                        <Printer className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
                         <div>
-                          <span className="font-bold text-slate-900 dark:text-stone-100">10+ Premium Media:</span>{' '}
-                          <span className="text-[11px] text-slate-500 dark:text-stone-400">350, 300, 250, 210, 170, 100 GSM, Sticker Vinyl & Opaque/Transparent.</span>
+                          <span className="font-bold text-slate-900 dark:text-white">10+ Premium Media:</span>{' '}
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">350, 300, 250, 210, 170, 100 GSM, Sticker Vinyl & Opaque/Transparent.</span>
                         </div>
                       </div>
 
                       <div className="flex items-start gap-2">
                         <Layers className="w-4 h-4 text-blue-700 dark:text-blue-400 shrink-0 mt-0.5" />
                         <div>
-                          <span className="font-bold text-slate-900 dark:text-stone-100">Sheet Sizes & Sides:</span>{' '}
-                          <span className="text-[11px] text-slate-500 dark:text-stone-400">12×18, 13×19 & A3 (Single & Double Sided printing).</span>
+                          <span className="font-bold text-slate-900 dark:text-white">Sheet Sizes & Sides:</span>{' '}
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">12×18, 13×19 & A3 (Single & Double Sided printing).</span>
                         </div>
                       </div>
 
                       <div className="flex items-start gap-2">
                         <Sparkles className="w-4 h-4 text-purple-700 dark:text-purple-400 shrink-0 mt-0.5" />
                         <div>
-                          <span className="font-bold text-slate-900 dark:text-stone-100">Thermal Lamination:</span>{' '}
-                          <span className="text-[11px] text-slate-500 dark:text-stone-400">Gloss & Matte anti-scratch protective coating (+₹4.50 - +₹6.50).</span>
+                          <span className="font-bold text-slate-900 dark:text-white">Thermal Lamination:</span>{' '}
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">Gloss & Matte anti-scratch protective coating (+₹4.50 - +₹6.50).</span>
                         </div>
                       </div>
 
                       <div className="flex items-start gap-2">
                         <Scissors className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
                         <div>
-                          <span className="font-bold text-slate-900 dark:text-stone-100">Precision Cutting:</span>{' '}
-                          <span className="text-[11px] text-slate-500 dark:text-stone-400">Kiss-Cut (Half Cut) for stickers (+₹8 - +₹9) & Full Cut Creasing.</span>
+                          <span className="font-bold text-slate-900 dark:text-white">Precision Cutting:</span>{' '}
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">Kiss-Cut (Half Cut) for stickers (+₹8 - +₹9) & Full Cut Creasing.</span>
                         </div>
                       </div>
 
                       <div className="flex items-start gap-2">
                         <UploadCloud className="w-4 h-4 text-orange-700 dark:text-orange-400 shrink-0 mt-0.5" />
                         <div>
-                          <span className="font-bold text-slate-900 dark:text-stone-100">Supported Formats:</span>{' '}
-                          <span className="text-[11px] text-slate-500 dark:text-stone-400">Upload ZIP, RAR, PDF, CDR, PSD, AI, JPG, PNG design files.</span>
+                          <span className="font-bold text-slate-900 dark:text-white">Supported Formats:</span>{' '}
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">Upload ZIP, RAR, PDF, CDR, PSD, AI, JPG, PNG design files.</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Pricing & CTA Block */}
-                    <div className="p-3 bg-amber-50/80 dark:bg-amber-950/40 rounded-2xl border border-amber-300/80 dark:border-amber-800/80 flex items-center justify-between gap-3">
+                    <div className="p-3 bg-blue-50/80 dark:bg-blue-950/40 rounded-2xl border border-blue-300/80 dark:border-blue-800/80 flex items-center justify-between gap-3">
                       <div>
-                        <span className="text-[10px] text-slate-500 dark:text-stone-400 uppercase tracking-wider font-semibold block">
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold block">
                           Formula: Unit Cost × Qty
                         </span>
                         <div className="flex items-baseline gap-1.5">
                           <span className="text-[11px] text-slate-400 line-through">₹15</span>
-                          <span className="text-xl font-serif font-bold text-[#B45309] dark:text-amber-400">
+                          <span className="text-xl font-serif font-bold text-blue-600 dark:text-blue-400">
                             From ₹9
                           </span>
-                          <span className="text-[10px] text-slate-500 dark:text-stone-400">/ sheet</span>
+                          <span className="text-[10px] text-slate-500 dark:text-slate-400">/ sheet</span>
                         </div>
                       </div>
 
                       <button
                         onClick={handleCardClick}
-                        className="bg-[#B45309] hover:bg-[#92400E] dark:bg-amber-600 dark:hover:bg-amber-700 text-white font-bold py-2.5 px-5 rounded-xl shadow-md text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer group"
+                        className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:bg-blue-600 dark:hover:bg-blue-600 text-white font-bold py-2.5 px-5 rounded-xl shadow-md text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer group"
                       >
                         <span>Order Now</span>
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -341,7 +341,7 @@ export const Hero: React.FC<HeroProps> = ({ onExplore, onCustomise, featuredProd
                     </div>
 
                     {/* Trust badges footer */}
-                    <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-stone-400 pt-1 border-t border-slate-100 dark:border-stone-800">
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1 border-t border-slate-100 dark:border-slate-800">
                       <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-medium">
                         ✓ Dynamic UPI QR Instant Pay
                       </span>

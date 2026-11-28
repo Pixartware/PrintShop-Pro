@@ -43,14 +43,14 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({
 
   const getIcon = (catName: string) => {
     const l = catName.toLowerCase();
-    if (l.includes('hanging') || l.includes('scroll')) return <Layers className="w-3.5 h-3.5 text-amber-700" />;
+    if (l.includes('hanging') || l.includes('scroll')) return <Layers className="w-3.5 h-3.5 text-blue-600" />;
     if (l.includes('artwork')) return <Palette className="w-3.5 h-3.5 text-purple-700" />;
     if (l.includes('frame')) return <Frame className="w-3.5 h-3.5 text-indigo-700" />;
     if (l.includes('album') || l.includes('magazine')) return <BookOpen className="w-3.5 h-3.5 text-emerald-700" />;
     if (l.includes('sticker') || l.includes('label')) return <Tag className="w-3.5 h-3.5 text-rose-700" />;
     if (l.includes('party') || l.includes('birthday')) return <PartyPopper className="w-3.5 h-3.5 text-pink-700" />;
     if (l.includes('print') || l.includes('card') || l.includes('invitation') || l.includes('business')) return <Printer className="w-3.5 h-3.5 text-blue-700" />;
-    if (l.includes('magnet') || l.includes('shadow') || l.includes('miniature')) return <Box className="w-3.5 h-3.5 text-amber-700" />;
+    if (l.includes('magnet') || l.includes('shadow') || l.includes('miniature')) return <Box className="w-3.5 h-3.5 text-blue-600" />;
     return <Sparkles className="w-3.5 h-3.5 text-amber-600" />;
   };
 
@@ -156,8 +156,8 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({
         onClick={() => handleChipClick('all')}
         className={`flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 shadow-2xs ${
           selectedCategory === 'all'
-            ? 'bg-[#B45309] text-white shadow-xs font-bold ring-2 ring-amber-600/30'
-            : 'bg-[#FAF7F2] dark:bg-stone-800 border border-slate-200/80 dark:border-stone-700 text-slate-700 dark:text-stone-300 hover:border-amber-400 dark:hover:border-amber-500 hover:bg-amber-50/60 dark:hover:bg-stone-700'
+            ? 'bg-blue-600 text-white shadow-xs font-bold ring-2 ring-blue-500/30'
+            : 'bg-[#F8FAFC] dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50/60 dark:hover:bg-stone-700'
         }`}
       >
         <Sparkles className="w-3.5 h-3.5 text-amber-500" />
@@ -174,15 +174,15 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({
             onClick={() => handleChipClick(cat.slug)}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer shrink-0 shadow-2xs ${
               isSelected
-                ? 'bg-[#B45309] text-white shadow-xs font-bold ring-2 ring-amber-600/30'
-                : 'bg-[#FAF7F2] dark:bg-stone-800 border border-slate-200/80 dark:border-stone-700 text-slate-700 dark:text-stone-300 hover:border-amber-400 dark:hover:border-amber-500 hover:bg-amber-50/60 dark:hover:bg-stone-700'
+                ? 'bg-blue-600 text-white shadow-xs font-bold ring-2 ring-blue-500/30'
+                : 'bg-[#F8FAFC] dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50/60 dark:hover:bg-stone-700'
             }`}
           >
             <span>{getIcon(cat.name)}</span>
             <span>
               <span
                 className={`font-mono text-[10px] mr-1 ${
-                  isSelected ? 'text-amber-200' : 'text-amber-800 dark:text-amber-400 font-bold'
+                  isSelected ? 'text-amber-200' : 'text-blue-600 dark:text-blue-400 font-bold'
                 }`}
               >
                 {prefix}.
@@ -196,13 +196,13 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({
   );
 
   return (
-    <section className="bg-white dark:bg-[#161412] border-b border-[#EBE3D5] dark:border-stone-800 py-3.5 w-full select-none transition-colors">
+    <section className="bg-white dark:bg-[#161412] border-b border-[#E2E8F0] dark:border-slate-800 py-3.5 w-full select-none transition-colors">
       <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <div className="flex items-center justify-between gap-3 sm:gap-4">
           
           {/* Section label with live auto-scroll indicator & pause toggle */}
           <div className="shrink-0 flex items-center gap-2">
-            <span className="text-[11px] uppercase font-bold tracking-widest text-[#B45309] dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2.5 py-1 rounded-md border border-amber-200/70 dark:border-amber-800 hidden sm:inline-flex items-center gap-1.5 shadow-2xs">
+            <span className="text-[11px] uppercase font-bold tracking-widest text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2.5 py-1 rounded-md border border-blue-200/70 dark:border-blue-800 hidden sm:inline-flex items-center gap-1.5 shadow-2xs">
               <span>Categories</span>
               <span 
                 className={`inline-block w-1.5 h-1.5 rounded-full ${
@@ -215,19 +215,19 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({
             {/* Toggle play/pause button for auto-scrolling */}
             <button
               onClick={() => setIsAutoScrollPaused((prev) => !prev)}
-              className="p-1 px-2 rounded-md text-slate-500 dark:text-stone-400 hover:text-amber-800 dark:hover:text-amber-300 hover:bg-amber-50 dark:hover:bg-stone-800 transition-colors hidden sm:flex items-center gap-1 text-[10px] font-semibold border border-slate-200/80 dark:border-stone-700 cursor-pointer"
+              className="p-1 px-2 rounded-md text-slate-500 dark:text-slate-400 hover:text-blue-800 dark:hover:text-amber-300 hover:bg-blue-50 dark:hover:bg-stone-800 transition-colors hidden sm:flex items-center gap-1 text-[10px] font-semibold border border-slate-200/80 dark:border-slate-700 cursor-pointer"
               title={isAutoScrollPaused ? "Resume auto-scroll" : "Pause auto-scroll"}
               aria-label={isAutoScrollPaused ? "Resume auto-scroll" : "Pause auto-scroll"}
             >
               {isAutoScrollPaused ? (
                 <>
-                  <Play className="w-2.5 h-2.5 fill-current text-amber-700 dark:text-amber-400" />
-                  <span className="text-[10px] text-slate-700 dark:text-stone-300">Auto</span>
+                  <Play className="w-2.5 h-2.5 fill-current text-blue-600 dark:text-blue-400" />
+                  <span className="text-[10px] text-slate-700 dark:text-slate-300">Auto</span>
                 </>
               ) : (
                 <>
-                  <Pause className="w-2.5 h-2.5 fill-current text-slate-500 dark:text-stone-400" />
-                  <span className="text-[10px] text-slate-700 dark:text-stone-300">Pause</span>
+                  <Pause className="w-2.5 h-2.5 fill-current text-slate-500 dark:text-slate-400" />
+                  <span className="text-[10px] text-slate-700 dark:text-slate-300">Pause</span>
                 </>
               )}
             </button>
@@ -245,7 +245,7 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({
             {/* Scroll Left Button */}
             <button
               onClick={() => handleManualScroll('left')}
-              className="absolute left-0.5 z-20 p-1.5 rounded-full bg-white/95 dark:bg-stone-800/95 border border-slate-200/90 dark:border-stone-700 shadow-md text-slate-700 dark:text-stone-300 hover:bg-amber-50 dark:hover:bg-stone-700 hover:text-amber-800 dark:hover:text-amber-400 cursor-pointer hidden md:flex items-center justify-center transition-all hover:scale-105"
+              className="absolute left-0.5 z-20 p-1.5 rounded-full bg-white/95 dark:bg-slate-800/95 border border-slate-200/90 dark:border-slate-700 shadow-md text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-stone-700 hover:text-blue-800 dark:hover:text-amber-400 cursor-pointer hidden md:flex items-center justify-center transition-all hover:scale-105"
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -292,7 +292,7 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({
             {/* Scroll Right Button */}
             <button
               onClick={() => handleManualScroll('right')}
-              className="absolute right-0.5 z-20 p-1.5 rounded-full bg-white/95 border border-slate-200/90 shadow-md text-slate-700 hover:bg-amber-50 hover:text-amber-800 cursor-pointer hidden md:flex items-center justify-center transition-all hover:scale-105"
+              className="absolute right-0.5 z-20 p-1.5 rounded-full bg-white/95 border border-slate-200/90 shadow-md text-slate-700 hover:bg-blue-50 hover:text-blue-800 cursor-pointer hidden md:flex items-center justify-center transition-all hover:scale-105"
               aria-label="Scroll right"
             >
               <ChevronRight className="w-4 h-4" />

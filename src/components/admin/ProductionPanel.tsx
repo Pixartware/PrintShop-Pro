@@ -108,7 +108,7 @@ export const ProductionPanel: React.FC = () => {
                     <a
                       href={`/api/orders/${ord.order_number}/download-photos`}
                       download={`${ord.order_number}_Customer_Photos.zip`}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
                       title="Download All Photos for this order as ZIP"
                     >
                       <Download className="w-3.5 h-3.5" />
@@ -120,7 +120,7 @@ export const ProductionPanel: React.FC = () => {
                     <span className="text-[10px] text-slate-400 uppercase font-bold block">
                       Studio Target
                     </span>
-                    <span className="text-xs font-bold text-amber-900">
+                    <span className="text-xs font-bold text-blue-900">
                       24-48 Hours
                     </span>
                   </div>
@@ -132,14 +132,14 @@ export const ProductionPanel: React.FC = () => {
                 {ord.items.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-3.5 rounded-2xl bg-[#FAF8F5] border border-[#EBE3D5] space-y-2"
+                    className="p-3.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-2"
                   >
                     <div className="flex justify-between items-start">
                       <div>
                         <h4 className="font-bold text-xs text-slate-900">{item.product_name}</h4>
                         <span className="font-mono text-[10px] text-slate-400">SKU: {item.sku}</span>
                       </div>
-                      <span className="bg-amber-100 text-amber-900 font-bold text-xs px-2 py-0.5 rounded-full">
+                      <span className="bg-blue-100 text-blue-900 font-bold text-xs px-2 py-0.5 rounded-full">
                         Qty: {item.quantity}
                       </span>
                     </div>
@@ -165,7 +165,7 @@ export const ProductionPanel: React.FC = () => {
 
                     {item.customization?.text && (
                       <div className="bg-white p-2 rounded-lg border border-slate-200 text-xs">
-                        <span className="text-[9px] font-bold text-amber-800 uppercase block">Print Inscription</span>
+                        <span className="text-[9px] font-bold text-blue-800 uppercase block">Print Inscription</span>
                         <span className="italic font-serif text-slate-800">"{item.customization.text}"</span>
                       </div>
                     )}
@@ -190,9 +190,9 @@ export const ProductionPanel: React.FC = () => {
                               href={p.url}
                               target="_blank"
                               rel="noreferrer"
-                              className="inline-flex items-center gap-1.5 bg-white border border-slate-200 hover:border-amber-400 px-2.5 py-1 rounded-lg text-[11px] font-medium text-slate-700 shadow-xs"
+                              className="inline-flex items-center gap-1.5 bg-white border border-slate-200 hover:border-blue-400 px-2.5 py-1 rounded-lg text-[11px] font-medium text-slate-700 shadow-xs"
                             >
-                              <Download className="w-3 h-3 text-amber-700" />
+                              <Download className="w-3 h-3 text-blue-700" />
                               <span>Photo #{pIdx + 1} ({p.quality || 'Print Ready'})</span>
                             </a>
                           ))}

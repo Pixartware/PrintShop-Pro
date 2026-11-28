@@ -134,7 +134,7 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
             placeholder="Search by Order #, Customer, Phone, or SKU..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-[#FAF8F5] border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-600/30"
+            className="w-full bg-[#F8FAFC] border border-slate-200 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600/30"
           />
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
         </div>
@@ -145,7 +145,7 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-[#FAF8F5] border border-slate-200 rounded-lg p-1.5 text-xs font-medium text-slate-800"
+              className="bg-[#F8FAFC] border border-slate-200 rounded-lg p-1.5 text-xs font-medium text-slate-800"
             >
               <option value="ALL">All Order Stages</option>
               {allStatuses.map(s => (
@@ -157,7 +157,7 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
           <select
             value={paymentFilter}
             onChange={(e) => setPaymentFilter(e.target.value)}
-            className="bg-[#FAF8F5] border border-slate-200 rounded-lg p-1.5 text-xs font-medium text-slate-800"
+            className="bg-[#F8FAFC] border border-slate-200 rounded-lg p-1.5 text-xs font-medium text-slate-800"
           >
             <option value="ALL">All Payments</option>
             <option value="Pending">Pending</option>
@@ -193,7 +193,7 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
               ) : (
                 filteredOrders.map((ord) => (
                   <tr key={ord.id} className="hover:bg-slate-50 transition-colors">
-                    <td className="py-3.5 px-4 font-mono font-bold text-amber-950">
+                    <td className="py-3.5 px-4 font-mono font-bold text-blue-950">
                       {ord.order_number}
                     </td>
                     <td className="py-3.5 px-4 text-slate-500">
@@ -222,7 +222,7 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
                       <div className="flex items-center justify-end gap-1.5">
                         <button
                           onClick={() => setSelectedOrder(ord)}
-                          className="bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold px-3 py-1.5 rounded-lg border border-amber-200 transition-colors inline-flex items-center gap-1 cursor-pointer"
+                          className="bg-blue-50 hover:bg-blue-100 text-blue-900 font-bold px-3 py-1.5 rounded-lg border border-blue-200 transition-colors inline-flex items-center gap-1 cursor-pointer"
                         >
                           <Eye className="w-3.5 h-3.5" />
                           <span>Inspect</span>
@@ -248,12 +248,12 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
       {/* Order Detail Modal */}
       {selectedOrder && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs overflow-y-auto">
-          <div className="bg-[#FFFDF9] rounded-3xl border border-[#E8DFD0] shadow-2xl max-w-3xl w-full overflow-hidden my-8 animate-scale-in">
+          <div className="bg-[#FFFDF9] rounded-3xl border border-[#E2E8F0] shadow-2xl max-w-3xl w-full overflow-hidden my-8 animate-scale-in">
             {/* Modal Header */}
-            <div className="bg-[#FAF7F2] p-6 border-b border-[#EAE0D0] flex items-center justify-between">
+            <div className="bg-[#F8FAFC] p-6 border-b border-[#E2E8F0] flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-3">
-                  <span className="font-mono font-bold text-2xl text-amber-950">
+                  <span className="font-mono font-bold text-2xl text-blue-950">
                     {selectedOrder.order_number}
                   </span>
                   <StatusBadge status={selectedOrder.order_status} size="md" />
@@ -286,8 +286,8 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
             {/* Modal Body */}
             <div className="p-6 space-y-6 max-h-[75vh] overflow-y-auto">
               {/* Quick Status Progression Controller */}
-              <div className="bg-amber-50 p-4 rounded-2xl border border-amber-200 space-y-2">
-                <label className="text-xs font-bold text-amber-950 uppercase tracking-wider block">
+              <div className="bg-blue-50 p-4 rounded-2xl border border-blue-200 space-y-2">
+                <label className="text-xs font-bold text-blue-950 uppercase tracking-wider block">
                   Advance Order Workflow Stage:
                 </label>
                 <div className="flex items-center gap-3">
@@ -295,13 +295,13 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
                     value={selectedOrder.order_status}
                     disabled={updatingStatus}
                     onChange={(e) => handleStatusChange(selectedOrder.order_number, e.target.value)}
-                    className="flex-1 bg-white border border-amber-300 rounded-xl p-2.5 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-amber-600/30"
+                    className="flex-1 bg-white border border-blue-300 rounded-xl p-2.5 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-blue-600/30"
                   >
                     {allStatuses.map(s => (
                       <option key={s} value={s}>{s}</option>
                     ))}
                   </select>
-                  <span className="text-[11px] text-amber-900 font-semibold">
+                  <span className="text-[11px] text-blue-900 font-semibold">
                     {updatingStatus ? 'Updating...' : 'Changes timeline immediately'}
                   </span>
                 </div>
@@ -330,9 +330,9 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
               </div>
 
               {/* Google Drive Order Storage */}
-              <div className="bg-gradient-to-r from-amber-50 to-orange-50 p-4 rounded-2xl border border-amber-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="bg-gradient-to-r from-amber-50 to-orange-50 p-4 rounded-2xl border border-blue-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-800 shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-800 shrink-0">
                     <FolderCheck className="w-5 h-5" />
                   </div>
                   <div>
@@ -350,7 +350,7 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
                     href={selectedOrder.google_drive_url || `https://drive.google.com/drive/search?q=${encodeURIComponent(selectedOrder.order_number)}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-800 hover:bg-amber-900 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-blue-800 hover:bg-blue-900 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
                     <span>ડ્રાઇવમાં ફોલ્ડર ખોલો (Open Folder)</span>
@@ -383,7 +383,7 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
                             <p className="text-[11px] text-slate-500">Frame: {item.frame}</p>
                           )}
                           {item.customization?.text && (
-                            <p className="text-[11px] text-amber-800 italic font-semibold">
+                            <p className="text-[11px] text-blue-800 italic font-semibold">
                               Custom Text: "{item.customization.text}"
                             </p>
                           )}
@@ -411,7 +411,7 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
                     <div>
                       <h4 className="font-serif font-bold text-sm text-slate-900 flex items-center gap-2">
                         <span>Customer Uploaded High-Res Photos</span>
-                        <span className="bg-amber-100 text-amber-900 text-xs px-2.5 py-0.5 rounded-full font-bold">
+                        <span className="bg-blue-100 text-blue-900 text-xs px-2.5 py-0.5 rounded-full font-bold">
                           {selectedOrder.items.flatMap(i => i.customization?.photos || []).length} Photos
                         </span>
                       </h4>
@@ -424,7 +424,7 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
                     <a
                       href={`/api/orders/${selectedOrder.order_number}/download-photos`}
                       download={`${selectedOrder.order_number}_Customer_Photos.zip`}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold shadow-sm transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold shadow-sm transition-all cursor-pointer"
                     >
                       <Download className="w-4 h-4" />
                       <span>Download All Photos (ZIP)</span>
@@ -435,7 +435,7 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
                   {selectedOrder.local_storage_path && (
                     <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 flex items-center justify-between">
                       <div className="flex items-center gap-2 truncate">
-                        <FolderCheck className="w-4 h-4 text-amber-700 shrink-0" />
+                        <FolderCheck className="w-4 h-4 text-blue-700 shrink-0" />
                         <span className="truncate">
                           <strong>Local Server Folder:</strong> {selectedOrder.local_storage_path}/Uploaded Photos/
                         </span>
@@ -473,7 +473,7 @@ export const OrdersManager: React.FC<{ initialOrderNumber?: string }> = ({ initi
                             <a
                               href={photo.url}
                               download={`Photo_${pIdx + 1}_${selectedOrder.order_number}.jpg`}
-                              className="p-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded-lg shadow-sm transition-colors text-[10px] font-bold flex items-center gap-1 cursor-pointer"
+                              className="p-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-sm transition-colors text-[10px] font-bold flex items-center gap-1 cursor-pointer"
                               title="Download Original High-Res"
                             >
                               <Download className="w-3.5 h-3.5" />

@@ -151,8 +151,8 @@ export const QualityControlPanel: React.FC = () => {
                   onClick={() => setSelectedOrder(ord)}
                   className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${
                     selectedOrder?.id === ord.id
-                      ? 'border-amber-700 bg-amber-50/60 shadow-xs'
-                      : 'border-slate-200 hover:border-amber-300'
+                      ? 'border-blue-700 bg-blue-50/60 shadow-xs'
+                      : 'border-slate-200 hover:border-blue-300'
                   }`}
                 >
                   <div className="flex justify-between items-start">
@@ -178,7 +178,7 @@ export const QualityControlPanel: React.FC = () => {
               <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono font-bold text-xl text-amber-950">
+                    <span className="font-mono font-bold text-xl text-blue-950">
                       {selectedOrder.order_number}
                     </span>
                     <span className="text-xs bg-cyan-100 text-cyan-900 font-bold px-2.5 py-0.5 rounded-full">
@@ -199,7 +199,7 @@ export const QualityControlPanel: React.FC = () => {
               </div>
 
               {/* Order Items Snapshot to inspect against physical piece */}
-              <div className="bg-[#FAF8F5] p-4 rounded-2xl border border-[#E8DFD0] space-y-2">
+              <div className="bg-[#F8FAFC] p-4 rounded-2xl border border-[#E2E8F0] space-y-2">
                 <span className="text-[10px] uppercase font-bold text-slate-500 block">
                   Physical Verification Target:
                 </span>
@@ -207,7 +207,7 @@ export const QualityControlPanel: React.FC = () => {
                   <div key={idx} className="text-xs text-slate-800">
                     <span className="font-bold">{i.quantity}× {i.product_name}</span> — Size: <span className="font-semibold">{i.size}</span> | Material: <span className="font-semibold">{i.material}</span> | Frame: <span className="font-semibold">{i.frame || 'Frameless'}</span>
                     {i.customization?.text && (
-                      <p className="text-amber-800 italic text-[11px] mt-0.5">
+                      <p className="text-blue-800 italic text-[11px] mt-0.5">
                         Required Text: "{i.customization.text}"
                       </p>
                     )}
@@ -260,7 +260,7 @@ export const QualityControlPanel: React.FC = () => {
                   placeholder="Record edge alignment notes, print color check, or rework reason..."
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full bg-[#FAF8F5] border border-slate-300 rounded-xl p-2.5 text-xs text-slate-800"
+                  className="w-full bg-[#F8FAFC] border border-slate-300 rounded-xl p-2.5 text-xs text-slate-800"
                 />
               </div>
 
@@ -280,7 +280,7 @@ export const QualityControlPanel: React.FC = () => {
                   type="button"
                   disabled={submitting}
                   onClick={() => handleQcSubmit('Rework Required')}
-                  className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-4 rounded-xl text-xs shadow-xs"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl text-xs shadow-xs"
                 >
                   Rework Required
                 </button>

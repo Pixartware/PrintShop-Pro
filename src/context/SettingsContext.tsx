@@ -48,7 +48,7 @@ const SettingsContext = createContext<SettingsContextType>({
 export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [settings, setSettings] = useState<AppSettings>(() => {
     try {
-      const cached = localStorage.getItem('craftique_settings');
+      const cached = localStorage.getItem('printshoppro_settings');
       if (cached) {
         const parsed = JSON.parse(cached);
         return { ...DEFAULT_SETTINGS, ...parsed };
@@ -68,7 +68,7 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
           const merged = { ...DEFAULT_SETTINGS, ...data.data };
           setSettings(merged);
           try {
-            localStorage.setItem('craftique_settings', JSON.stringify(merged));
+            localStorage.setItem('printshoppro_settings', JSON.stringify(merged));
           } catch (e) {}
         }
       }
@@ -82,18 +82,18 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     const handleSettingsUpdated = () => {
       try {
-        const cached = localStorage.getItem('craftique_settings');
+        const cached = localStorage.getItem('printshoppro_settings');
         if (cached) {
           setSettings({ ...DEFAULT_SETTINGS, ...JSON.parse(cached) });
         }
       } catch (e) {}
     };
 
-    window.addEventListener('craftique_settings_updated', handleSettingsUpdated);
+    window.addEventListener('printshoppro_settings_updated', handleSettingsUpdated);
     window.addEventListener('storage', handleSettingsUpdated);
 
     return () => {
-      window.removeEventListener('craftique_settings_updated', handleSettingsUpdated);
+      window.removeEventListener('printshoppro_settings_updated', handleSettingsUpdated);
       window.removeEventListener('storage', handleSettingsUpdated);
     };
   }, []);
@@ -102,8 +102,8 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     setSettings(prev => {
       const updated = { ...prev, ...newSettings };
       try {
-        localStorage.setItem('craftique_settings', JSON.stringify(updated));
-        window.dispatchEvent(new Event('craftique_settings_updated'));
+        localStorage.setItem('printshoppro_settings', JSON.stringify(updated));
+        window.dispatchEvent(new Event('printshoppro_settings_updated'));
       } catch (e) {}
       return updated;
     });

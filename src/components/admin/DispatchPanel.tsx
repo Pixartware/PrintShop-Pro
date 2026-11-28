@@ -138,8 +138,8 @@ export const DispatchPanel: React.FC = () => {
                   onClick={() => setSelectedOrder(ord)}
                   className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${
                     selectedOrder?.id === ord.id
-                      ? 'border-amber-700 bg-amber-50/60 shadow-xs'
-                      : 'border-slate-200 hover:border-amber-300'
+                      ? 'border-blue-700 bg-blue-50/60 shadow-xs'
+                      : 'border-slate-200 hover:border-blue-300'
                   }`}
                 >
                   <div className="flex justify-between items-start">
@@ -165,7 +165,7 @@ export const DispatchPanel: React.FC = () => {
               <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono font-bold text-xl text-amber-950">
+                    <span className="font-mono font-bold text-xl text-blue-950">
                       {selectedOrder.order_number}
                     </span>
                     <StatusBadge status={selectedOrder.order_status} />
@@ -186,7 +186,7 @@ export const DispatchPanel: React.FC = () => {
               </div>
 
               {/* Destination address card */}
-              <div className="bg-[#FAF8F5] p-4 rounded-2xl border border-[#E8DFD0] flex flex-col sm:flex-row justify-between gap-4">
+              <div className="bg-[#F8FAFC] p-4 rounded-2xl border border-[#E2E8F0] flex flex-col sm:flex-row justify-between gap-4">
                 <div>
                   <span className="text-[10px] uppercase font-bold text-slate-500 block mb-1">
                     Shipment Destination:
@@ -203,7 +203,7 @@ export const DispatchPanel: React.FC = () => {
                   <span className="text-[10px] uppercase font-bold text-slate-500 block mb-1">
                     Order Value:
                   </span>
-                  <span className="font-serif text-lg font-bold text-amber-900">
+                  <span className="font-serif text-lg font-bold text-blue-900">
                     ₹{selectedOrder.grand_total.toLocaleString('en-IN')}
                   </span>
                   <span className="text-[10px] text-emerald-700 font-bold block">

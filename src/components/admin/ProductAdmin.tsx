@@ -175,7 +175,7 @@ export const ProductAdmin: React.FC = () => {
 
           <button
             onClick={openNewProduct}
-            className="bg-[#B45309] hover:bg-[#92400E] text-white font-bold py-2 px-4 rounded-xl text-xs flex items-center gap-1.5 shadow-xs shrink-0"
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-2 px-4 rounded-xl text-xs flex items-center gap-1.5 shadow-xs shrink-0"
           >
             <Plus className="w-4 h-4" />
             <span>Add Product</span>
@@ -215,7 +215,7 @@ export const ProductAdmin: React.FC = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="py-3 px-4 font-mono font-bold text-amber-950">
+                  <td className="py-3 px-4 font-mono font-bold text-blue-950">
                     {prod.sku}
                   </td>
                   <td className="py-3 px-4 text-slate-600">
@@ -236,9 +236,9 @@ export const ProductAdmin: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setAiModalProduct(prod)}
-                      className="inline-flex items-center gap-1 bg-amber-50 hover:bg-amber-100 text-amber-900 text-[10px] font-bold px-2.5 py-1 rounded-lg border border-amber-200"
+                      className="inline-flex items-center gap-1 bg-blue-50 hover:bg-blue-100 text-blue-900 text-[10px] font-bold px-2.5 py-1 rounded-lg border border-blue-200"
                     >
-                      <Sparkles className="w-3 h-3 text-amber-700" />
+                      <Sparkles className="w-3 h-3 text-blue-700" />
                       <span>Generate AI</span>
                     </button>
                   </td>
@@ -277,8 +277,8 @@ export const ProductAdmin: React.FC = () => {
       {/* Edit Product Modal */}
       {isEditing && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs overflow-y-auto">
-          <div className="bg-[#FFFDF9] rounded-3xl border border-[#E8DFD0] shadow-2xl max-w-3xl w-full overflow-hidden my-8 animate-scale-in flex flex-col max-h-[90vh]">
-            <div className="bg-[#FAF7F2] p-5 border-b border-[#EAE0D0] flex items-center justify-between">
+          <div className="bg-[#FFFDF9] rounded-3xl border border-[#E2E8F0] shadow-2xl max-w-3xl w-full overflow-hidden my-8 animate-scale-in flex flex-col max-h-[90vh]">
+            <div className="bg-[#F8FAFC] p-5 border-b border-[#E2E8F0] flex items-center justify-between">
               <div>
                 <h3 className="font-serif font-bold text-lg text-slate-900">
                   {form.id ? `Edit: ${form.name}` : 'Create New Product'}
@@ -290,9 +290,9 @@ export const ProductAdmin: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setAiModalProduct(form as Product)}
-                  className="bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5"
+                  className="bg-blue-100 hover:bg-blue-200 text-blue-900 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1.5"
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-amber-800" />
+                  <Sparkles className="w-3.5 h-3.5 text-blue-800" />
                   <span>Generate Listing with AI</span>
                 </button>
                 <button
@@ -309,28 +309,28 @@ export const ProductAdmin: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setActiveTab('basic')}
-                className={`py-3 px-4 border-b-2 transition-colors ${activeTab === 'basic' ? 'border-amber-800 text-amber-900 font-bold' : 'border-transparent text-slate-500'}`}
+                className={`py-3 px-4 border-b-2 transition-colors ${activeTab === 'basic' ? 'border-blue-800 text-blue-900 font-bold' : 'border-transparent text-slate-500'}`}
               >
                 Basic Information
               </button>
               <button
                 type="button"
                 onClick={() => setActiveTab('pricing')}
-                className={`py-3 px-4 border-b-2 transition-colors ${activeTab === 'pricing' ? 'border-amber-800 text-amber-900 font-bold' : 'border-transparent text-slate-500'}`}
+                className={`py-3 px-4 border-b-2 transition-colors ${activeTab === 'pricing' ? 'border-blue-800 text-blue-900 font-bold' : 'border-transparent text-slate-500'}`}
               >
                 Pricing & Costs
               </button>
               <button
                 type="button"
                 onClick={() => setActiveTab('customization')}
-                className={`py-3 px-4 border-b-2 transition-colors ${activeTab === 'customization' ? 'border-amber-800 text-amber-900 font-bold' : 'border-transparent text-slate-500'}`}
+                className={`py-3 px-4 border-b-2 transition-colors ${activeTab === 'customization' ? 'border-blue-800 text-blue-900 font-bold' : 'border-transparent text-slate-500'}`}
               >
                 Customizer Options
               </button>
               <button
                 type="button"
                 onClick={() => setActiveTab('seo')}
-                className={`py-3 px-4 border-b-2 transition-colors ${activeTab === 'seo' ? 'border-amber-800 text-amber-900 font-bold' : 'border-transparent text-slate-500'}`}
+                className={`py-3 px-4 border-b-2 transition-colors ${activeTab === 'seo' ? 'border-blue-800 text-blue-900 font-bold' : 'border-transparent text-slate-500'}`}
               >
                 SEO & Tags
               </button>
@@ -432,7 +432,7 @@ export const ProductAdmin: React.FC = () => {
                         type="number"
                         value={form.selling_price || 0}
                         onChange={(e) => setForm({ ...form, selling_price: Number(e.target.value) })}
-                        className="w-full bg-white border border-slate-300 rounded-xl p-2.5 text-xs font-bold text-amber-900"
+                        className="w-full bg-white border border-slate-300 rounded-xl p-2.5 text-xs font-bold text-blue-900"
                       />
                     </div>
                     <div>
@@ -446,7 +446,7 @@ export const ProductAdmin: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="bg-[#FAF8F5] p-4 rounded-2xl border border-slate-200 space-y-2">
+                  <div className="bg-[#F8FAFC] p-4 rounded-2xl border border-slate-200 space-y-2">
                     <span className="text-xs font-bold text-slate-800 block">Unit Cost Breakdown for Profit Margin:</span>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                       <div>
@@ -498,7 +498,7 @@ export const ProductAdmin: React.FC = () => {
                         type="checkbox"
                         checked={form.requires_photo || false}
                         onChange={(e) => setForm({ ...form, requires_photo: e.target.checked })}
-                        className="rounded text-amber-800"
+                        className="rounded text-blue-800"
                       />
                       <span className="font-semibold">Requires Customer Photo Upload</span>
                     </label>
@@ -508,7 +508,7 @@ export const ProductAdmin: React.FC = () => {
                         type="checkbox"
                         checked={form.custom_text_allowed || false}
                         onChange={(e) => setForm({ ...form, custom_text_allowed: e.target.checked })}
-                        className="rounded text-amber-800"
+                        className="rounded text-blue-800"
                       />
                       <span className="font-semibold">Allow Custom Text / Inscription</span>
                     </label>
@@ -564,7 +564,7 @@ export const ProductAdmin: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2 bg-[#B45309] hover:bg-[#92400E] text-white rounded-xl text-xs font-bold shadow-xs flex items-center gap-1.5"
+                  className="px-6 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl text-xs font-bold shadow-xs flex items-center gap-1.5"
                 >
                   <Check className="w-4 h-4" />
                   <span>Save Product</span>

@@ -166,7 +166,7 @@ export const DesignApprovalPanel: React.FC = () => {
               <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono font-bold text-xl text-amber-950">
+                    <span className="font-mono font-bold text-xl text-blue-950">
                       {selectedOrder.order_number}
                     </span>
                     <StatusBadge status={selectedOrder.order_status} />
@@ -185,7 +185,7 @@ export const DesignApprovalPanel: React.FC = () => {
 
               {/* Current Active Proof & Customer Revision Notes */}
               {proof && (
-                <div className="bg-[#FAF8F5] p-5 rounded-2xl border border-slate-200 space-y-4">
+                <div className="bg-[#F8FAFC] p-5 rounded-2xl border border-slate-200 space-y-4">
                   <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
                     Active Design Proof Version
                   </span>
@@ -200,8 +200,8 @@ export const DesignApprovalPanel: React.FC = () => {
                         Status: <strong className="text-slate-900">{proof.customer_status}</strong>
                       </p>
                       {proof.customer_notes && (
-                        <div className="bg-amber-50 p-2.5 rounded-xl border border-amber-200 text-amber-950 font-medium">
-                          <span className="text-[10px] uppercase font-bold text-amber-800 block">Customer Feedback:</span>
+                        <div className="bg-blue-50 p-2.5 rounded-xl border border-blue-200 text-blue-950 font-medium">
+                          <span className="text-[10px] uppercase font-bold text-blue-800 block">Customer Feedback:</span>
                           "{proof.customer_notes}"
                         </div>
                       )}
@@ -209,7 +209,7 @@ export const DesignApprovalPanel: React.FC = () => {
                         href={proof.proof_url}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-amber-800 font-bold hover:underline inline-flex items-center gap-1"
+                        className="text-blue-800 font-bold hover:underline inline-flex items-center gap-1"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         <span>Open High-Res Proof in New Tab</span>
@@ -249,7 +249,7 @@ export const DesignApprovalPanel: React.FC = () => {
                     placeholder="e.g. Adjusted warm color balance, enhanced contrast, kerned custom typography..."
                     value={designerNotes}
                     onChange={(e) => setDesignerNotes(e.target.value)}
-                    className="w-full bg-[#FAF8F5] border border-slate-300 rounded-xl p-2.5 text-xs text-slate-800"
+                    className="w-full bg-[#F8FAFC] border border-slate-300 rounded-xl p-2.5 text-xs text-slate-800"
                   />
                 </div>
 

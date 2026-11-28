@@ -77,11 +77,11 @@ export const AiListingModal: React.FC<AiListingModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-xs overflow-y-auto">
-      <div className="bg-[#FFFDF9] rounded-3xl border border-[#E8DFD0] shadow-2xl max-w-3xl w-full overflow-hidden my-8 animate-scale-in flex flex-col max-h-[90vh]">
+      <div className="bg-[#FFFDF9] rounded-3xl border border-[#E2E8F0] shadow-2xl max-w-3xl w-full overflow-hidden my-8 animate-scale-in flex flex-col max-h-[90vh]">
         {/* Header */}
         <div className="bg-gradient-to-r from-amber-900 to-amber-800 text-white p-6 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-xl bg-amber-700 flex items-center justify-center shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-blue-700 flex items-center justify-center shadow-xs">
               <Sparkles className="w-5 h-5 text-amber-200" />
             </div>
             <div>
@@ -106,7 +106,7 @@ export const AiListingModal: React.FC<AiListingModalProps> = ({
         <div className="p-6 space-y-6 flex-1 overflow-y-auto">
           {!generatedData ? (
             <div className="py-12 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-amber-50 text-amber-800 flex items-center justify-center mx-auto border border-amber-200">
+              <div className="w-16 h-16 rounded-full bg-blue-50 text-blue-800 flex items-center justify-center mx-auto border border-blue-200">
                 <Sparkles className="w-8 h-8" />
               </div>
               <h3 className="font-serif text-xl font-bold text-slate-800">
@@ -120,7 +120,7 @@ export const AiListingModal: React.FC<AiListingModalProps> = ({
                 type="button"
                 disabled={loading}
                 onClick={handleGenerate}
-                className="bg-[#B45309] hover:bg-[#92400E] disabled:bg-slate-400 text-white font-bold py-3.5 px-8 rounded-full text-xs shadow-md shadow-amber-900/15 inline-flex items-center gap-2 transition-all"
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:bg-slate-400 text-white font-bold py-3.5 px-8 rounded-full text-xs shadow-md shadow-blue-900/15 inline-flex items-center gap-2 transition-all"
               >
                 <Sparkles className="w-4 h-4" />
                 <span>{loading ? 'Analyzing Product & Generating...' : 'Generate Listing with AI'}</span>
@@ -129,15 +129,15 @@ export const AiListingModal: React.FC<AiListingModalProps> = ({
           ) : (
             <div className="space-y-5">
               {/* Overwrite guard warning */}
-              <div className="bg-amber-50 p-3.5 rounded-2xl border border-amber-200 text-xs text-amber-950 flex items-center justify-between">
+              <div className="bg-blue-50 p-3.5 rounded-2xl border border-blue-200 text-xs text-blue-950 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <ShieldAlert className="w-4 h-4 text-amber-700 shrink-0" />
+                  <ShieldAlert className="w-4 h-4 text-blue-700 shrink-0" />
                   <span>AI generated content must be reviewed before saving. Existing descriptions will only update upon confirmation.</span>
                 </div>
                 <button
                   onClick={handleGenerate}
                   disabled={loading}
-                  className="text-xs font-bold text-amber-900 hover:underline flex items-center gap-1 shrink-0 ml-3"
+                  className="text-xs font-bold text-blue-900 hover:underline flex items-center gap-1 shrink-0 ml-3"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
                   <span>Regenerate</span>
@@ -191,7 +191,7 @@ export const AiListingModal: React.FC<AiListingModalProps> = ({
                 <div className="space-y-1.5">
                   {editableFeatures.map((feat, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-xs bg-slate-50 p-2 rounded-lg border border-slate-200">
-                      <span className="text-amber-800 font-bold">•</span>
+                      <span className="text-blue-800 font-bold">•</span>
                       <span className="text-slate-800 flex-1">{feat}</span>
                     </div>
                   ))}
@@ -216,9 +216,9 @@ export const AiListingModal: React.FC<AiListingModalProps> = ({
               )}
 
               {/* SEO Meta Tags */}
-              <div className="bg-[#FAF8F5] p-4 rounded-2xl border border-[#E8DFD0] space-y-1.5 text-xs">
-                <span className="text-[10px] uppercase font-bold text-amber-900 block">SEO & Slug Metadata</span>
-                <p className="text-slate-600"><strong>URL Slug:</strong> <span className="font-mono text-amber-800">{generatedData.url_slug}</span></p>
+              <div className="bg-[#F8FAFC] p-4 rounded-2xl border border-[#E2E8F0] space-y-1.5 text-xs">
+                <span className="text-[10px] uppercase font-bold text-blue-900 block">SEO & Slug Metadata</span>
+                <p className="text-slate-600"><strong>URL Slug:</strong> <span className="font-mono text-blue-800">{generatedData.url_slug}</span></p>
                 <p className="text-slate-600"><strong>Meta Description:</strong> {generatedData.meta_description}</p>
                 <p className="text-slate-600"><strong>Image Alt Text:</strong> {generatedData.image_alt_text}</p>
               </div>
@@ -229,7 +229,7 @@ export const AiListingModal: React.FC<AiListingModalProps> = ({
                   type="checkbox"
                   checked={confirmOverwrite}
                   onChange={(e) => setConfirmOverwrite(e.target.checked)}
-                  className="rounded text-amber-800 accent-amber-800"
+                  className="rounded text-blue-800 accent-amber-800"
                 />
                 <span className="font-semibold">
                   I approve these AI improvements and authorize updating this product's listing copy.
@@ -241,7 +241,7 @@ export const AiListingModal: React.FC<AiListingModalProps> = ({
 
         {/* Footer Actions */}
         {generatedData && (
-          <div className="p-4 bg-[#FAF7F2] border-t border-[#EAE0D0] flex items-center justify-between">
+          <div className="p-4 bg-[#F8FAFC] border-t border-[#E2E8F0] flex items-center justify-between">
             <button
               onClick={() => setGeneratedData(null)}
               className="text-xs font-semibold text-slate-600 hover:text-slate-900"
@@ -253,7 +253,7 @@ export const AiListingModal: React.FC<AiListingModalProps> = ({
               type="button"
               disabled={!confirmOverwrite}
               onClick={handleSaveAndApply}
-              className="bg-[#B45309] hover:bg-[#92400E] disabled:bg-slate-300 text-white font-bold py-2.5 px-6 rounded-xl text-xs flex items-center gap-2 shadow-xs transition-all"
+              className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:bg-slate-300 text-white font-bold py-2.5 px-6 rounded-xl text-xs flex items-center gap-2 shadow-xs transition-all"
             >
               <Check className="w-4 h-4" />
               <span>Approve & Save AI Listing</span>
