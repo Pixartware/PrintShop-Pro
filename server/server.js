@@ -841,7 +841,7 @@ function renderProductShareHtml(req, res, targetSku) {
     if (m) sku = decodeURIComponent(m[1]);
   }
 
-  const host = req.get('x-forwarded-host') || req.get('host') || 'craftique-art.vercel.app';
+  const host = req.get('x-forwarded-host') || req.get('host') || 'printshop-pro.vercel.app';
   const proto = req.get('x-forwarded-proto') || 'https';
   const baseUrl = `${proto}://${host}`;
 
@@ -859,14 +859,16 @@ function renderProductShareHtml(req, res, targetSku) {
 
   let title = 'Akshar PrintShop Pro — Commercial Digital Printing & Finishing';
   let description = 'Akshar PrintShop Pro — High-Speed Commercial Digital Printing, 12x18 & 13x19 Sheets, Stickers, Visiting Cards, Flyers & Finishing.';
-  let imageUrl = `${baseUrl}/logo.png`;
+  let imageUrl = `${baseUrl}/og-banner.jpg`;
   let canonicalUrl = baseUrl;
 
   if (product) {
     title = `${product.name} — Akshar PrintShop Pro`;
     description = `Starting at ₹${product.selling_price.toLocaleString('en-IN')}. Customise sizes, archival finishes & upload your photos online at Akshar PrintShop Pro.`;
 
-    if (product.images && product.images.length > 0) {
+    if (product.sku === 'PERSONALIZED_PRINT_SERVICE') {
+      imageUrl = `${baseUrl}/og-banner.jpg`;
+    } else if (product.images && product.images.length > 0) {
       const img = product.images[0];
       if (img.startsWith('http://') || img.startsWith('https://')) {
         imageUrl = img;
@@ -932,18 +934,24 @@ function renderProductShareHtml(req, res, targetSku) {
   // Open Graph Image Block for WhatsApp / Facebook / Twitter
   const ogImageBlock = `
     <meta property="og:image" content="${imageUrl}" />
+    <meta property="og:image:url" content="${imageUrl}" />
     <meta property="og:image:secure_url" content="${imageUrl}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:alt" content="${product ? product.name : 'Akshar PrintShop Pro'}" />`;
+    <meta property="og:image:alt" content="${product ? product.name : 'Akshar PrintShop Pro'}" />
+    <meta itemprop="image" content="${imageUrl}" />
+    <link rel="image_src" href="${imageUrl}" />`;
 
   // Clean up any existing Open Graph image tags to prevent conflicts
+  html = html.replace(/<meta\s+property=["']og:image:url["'][^>]*>/gi, '');
   html = html.replace(/<meta\s+property=["']og:image:secure_url["'][^>]*>/gi, '');
   html = html.replace(/<meta\s+property=["']og:image:type["'][^>]*>/gi, '');
   html = html.replace(/<meta\s+property=["']og:image:width["'][^>]*>/gi, '');
   html = html.replace(/<meta\s+property=["']og:image:height["'][^>]*>/gi, '');
   html = html.replace(/<meta\s+property=["']og:image:alt["'][^>]*>/gi, '');
+  html = html.replace(/<meta\s+itemprop=["']image["'][^>]*>/gi, '');
+  html = html.replace(/<link\s+rel=["']image_src["'][^>]*>/gi, '');
   html = html.replace(/<meta\s+property=["']og:image["'][^>]*>/gi, ogImageBlock.trim());
 
   // Twitter cards

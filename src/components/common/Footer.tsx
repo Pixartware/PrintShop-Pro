@@ -4,8 +4,7 @@ import { useSettings } from '../../context/SettingsContext';
 
 export const Footer: React.FC<{ 
   onNavigate: (v: string, p?: string) => void;
-  onOpenShareModal?: () => void;
-}> = ({ onNavigate, onOpenShareModal }) => {
+}> = ({ onNavigate }) => {
   const { settings } = useSettings();
   const cleanPhone = String(settings.whatsapp_number || '916354871446').replace(/[^0-9]/g, '');
   const brandName = settings.brand_title || 'Akshar PrintShop Pro';
@@ -88,14 +87,6 @@ export const Footer: React.FC<{
                   <ExternalLink className="w-3 h-3" />
                 </button>
               </li>
-              {onOpenShareModal && (
-                <li>
-                  <button onClick={onOpenShareModal} className="hover:text-blue-400 transition-colors flex items-center gap-1.5 font-medium text-blue-400 cursor-pointer">
-                    <Share2 className="w-3.5 h-3.5" />
-                    <span>Social Media Banners & Flyers</span>
-                  </button>
-                </li>
-              )}
               <li>
                 <a
                   href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hi ${brandName} Team, I need assistance with my print job`)}`}

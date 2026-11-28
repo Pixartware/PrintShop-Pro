@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Compass, MessageCircle, Menu, X, ArrowRight, User, Sparkles, Printer, Share2 } from 'lucide-react';
+import { ShoppingBag, Compass, MessageCircle, Menu, X, ArrowRight, User, Sparkles, Printer } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import { useCustomerAuth } from '../../context/CustomerAuthContext';
@@ -13,7 +13,6 @@ interface NavbarProps {
   searchQuery: string;
   onOpenCustomerAuth?: () => void;
   onOpenCustomerAccount?: () => void;
-  onOpenShareModal?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -22,8 +21,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSearchChange,
   searchQuery,
   onOpenCustomerAuth,
-  onOpenCustomerAccount,
-  onOpenShareModal
+  onOpenCustomerAccount
 }) => {
   const { itemCount, setIsCartOpen } = useCart();
   const { user, isAuthenticated } = useAuth();
@@ -97,16 +95,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Compass className="w-4 h-4 text-orange-500" />
               <span>Track Order</span>
             </button>
-            {onOpenShareModal && (
-              <button
-                type="button"
-                onClick={onOpenShareModal}
-                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5 cursor-pointer"
-              >
-                <Share2 className="w-4 h-4 text-blue-600" />
-                <span>Promo Banners</span>
-              </button>
-            )}
             <a
               href={`https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(brandTitle)}%2C%20I%20have%20an%20enquiry%20about%20custom%20printing`}
               target="_blank"
@@ -120,17 +108,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Actions: Account, Track, Theme, Cart */}
           <div className="flex items-center gap-2 sm:gap-3.5">
-            {onOpenShareModal && (
-              <button
-                type="button"
-                onClick={onOpenShareModal}
-                className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/60 transition-all shadow-xs cursor-pointer"
-                title="Download Social Media Banners & Share Link"
-              >
-                <Share2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                <span>Share & Banners</span>
-              </button>
-            )}
             {/* Customer Login / My Account */}
             {isLoggedIn && customer ? (
               <button
@@ -214,19 +191,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Printer className="w-4 h-4 text-blue-600" />
               <span>Custom Printing Configurator</span>
             </button>
-
-            {onOpenShareModal && (
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenShareModal();
-                }}
-                className="w-full text-left py-2 px-3 rounded-xl text-sm font-semibold text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-800 flex items-center gap-2 cursor-pointer"
-              >
-                <Share2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span>Social Media Banners & Share</span>
-              </button>
-            )}
 
             <button
               onClick={() => {

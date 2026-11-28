@@ -71,7 +71,6 @@ export const App: React.FC = () => {
   const [isCustomerAuthOpen, setIsCustomerAuthOpen] = useState(false);
   const [isCustomerOrdersOpen, setIsCustomerOrdersOpen] = useState(false);
   const [sharingProduct, setSharingProduct] = useState<Product | null>(null);
-  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   // Products and Categories data
   const [products, setProducts] = useState<Product[]>([]);
@@ -342,7 +341,6 @@ export const App: React.FC = () => {
             onSearchChange={setSearchQuery}
             onOpenCustomerAuth={() => setIsCustomerAuthOpen(true)}
             onOpenCustomerAccount={() => setIsCustomerOrdersOpen(true)}
-            onOpenShareModal={() => setIsShareModalOpen(true)}
           />
 
           <main className="flex-1">
@@ -365,16 +363,8 @@ export const App: React.FC = () => {
                         </p>
                       </div>
 
-                      {/* Key Quick Badges & Share Banner Button */}
+                      {/* Key Quick Badges */}
                       <div className="flex flex-wrap items-center gap-2.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300 shrink-0">
-                        <button
-                          type="button"
-                          onClick={() => setIsShareModalOpen(true)}
-                          className="flex items-center gap-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white font-bold px-3.5 py-2 rounded-xl shadow-md shadow-blue-900/20 transition-all cursor-pointer"
-                        >
-                          <Share2 className="w-3.5 h-3.5" />
-                          <span>Promo Banners & Share</span>
-                        </button>
                         <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-xl shadow-xs">
                           <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
                           <span>12-Color Archival</span>
@@ -391,6 +381,17 @@ export const App: React.FC = () => {
                     </div>
                   </div>
                 </section>
+
+                {/* Visual Brand Promotional Banner */}
+                <div className="w-full max-w-[1880px] 2xl:max-w-[2200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 pt-5">
+                  <div className="relative rounded-3xl overflow-hidden border border-slate-200/90 dark:border-slate-800 shadow-xl bg-slate-950 aspect-[16/7] sm:aspect-[21/8] md:aspect-[24/8] max-h-[340px]">
+                    <img 
+                      src="/og-banner.jpg" 
+                      alt="Akshar PrintShop Pro — Commercial Digital Printing & Precision Finishing" 
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
+                </div>
 
                 {/* Dedicated Custom Printing Configurator Workspace */}
                 <section id="customizer-section" className="w-full max-w-[1880px] 2xl:max-w-[2200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8">
@@ -451,7 +452,7 @@ export const App: React.FC = () => {
             )}
           </main>
 
-          <Footer onNavigate={handleNavigate} onOpenShareModal={() => setIsShareModalOpen(true)} />
+          <Footer onNavigate={handleNavigate} />
         </>
       )}
 
@@ -524,12 +525,9 @@ export const App: React.FC = () => {
 
       {/* Share Product & Promo Banners Modal */}
       <ShareProductModal
-        isOpen={isShareModalOpen || Boolean(sharingProduct)}
+        isOpen={Boolean(sharingProduct)}
         product={sharingProduct}
-        onClose={() => {
-          setIsShareModalOpen(false);
-          setSharingProduct(null);
-        }}
+        onClose={() => setSharingProduct(null)}
       />
     </div>
   );
