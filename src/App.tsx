@@ -35,7 +35,7 @@ import { AdminSettings } from './components/admin/AdminSettings';
 
 import { useCart } from './context/CartContext';
 import { useAuth } from './context/AuthContext';
-import { Sparkles, ArrowLeft, Filter, Heart, MessageCircle, Share2 } from 'lucide-react';
+import { ArrowLeft, Filter, Heart, MessageCircle, Share2 } from 'lucide-react';
 
 const ORDERED_CATEGORIES = [
   "Personalized Print Service",
@@ -346,52 +346,19 @@ export const App: React.FC = () => {
           <main className="flex-1">
             {currentView === 'home' && (
               <>
-                {/* Top Announcement & Brand Highlights Bar */}
-                <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/70 via-slate-50 to-slate-50 dark:from-[#0B1528] dark:via-[#0B0F19] dark:to-[#0B0F19] pt-6 pb-2 border-b border-slate-200/80 dark:border-slate-800/80">
+                {/* Top Announcement Bar */}
+                <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/70 via-slate-50 to-slate-50 dark:from-[#0B1528] dark:via-[#0B0F19] dark:to-[#0B0F19] py-4 border-b border-slate-200/80 dark:border-slate-800/80">
                   <div className="w-full max-w-[1880px] 2xl:max-w-[2200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-3">
-                      <div className="space-y-1.5">
-                        <div className="inline-flex items-center gap-2 bg-blue-100/90 dark:bg-blue-950/70 border border-blue-200 dark:border-blue-800 px-3 py-1 rounded-full text-xs font-bold text-blue-900 dark:text-blue-300">
-                          <Sparkles className="w-3.5 h-3.5 text-orange-500" />
-                          <span>Direct Commercial Digital Press • Studio Production</span>
-                        </div>
-                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                          Commercial Digital <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-orange-500 bg-clip-text text-transparent">Sheet Printing Hub</span>
-                        </h1>
-                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
-                          Studio-grade 100 to 350 GSM cardstock, precision CNC kiss-cut stickers, visiting cards, flyers, and boutique packaging with live real-time price calculation and instant dynamic UPI checkout.
-                        </p>
-                      </div>
-
-                      {/* Key Quick Badges */}
-                      <div className="flex flex-wrap items-center gap-2.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300 shrink-0">
-                        <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-xl shadow-xs">
-                          <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                          <span>12-Color Archival</span>
-                        </div>
-                        <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-xl shadow-xs">
-                          <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                          <span>Live Sheet Pricing</span>
-                        </div>
-                        <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 px-3.5 py-2 rounded-xl shadow-xs">
-                          <div className="w-2 h-2 rounded-full bg-orange-500"></div>
-                          <span>Dynamic UPI QR</span>
-                        </div>
-                      </div>
+                    <div className="space-y-1">
+                      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                        Commercial Digital <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-orange-500 bg-clip-text text-transparent">Sheet Printing Hub</span>
+                      </h1>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
+                        Studio-grade 100 to 350 GSM cardstock, precision CNC kiss-cut stickers, visiting cards, flyers, and boutique packaging with live real-time price calculation and instant dynamic UPI checkout.
+                      </p>
                     </div>
                   </div>
                 </section>
-
-                {/* Visual Brand Promotional Banner */}
-                <div className="w-full max-w-[1880px] 2xl:max-w-[2200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 pt-5">
-                  <div className="relative rounded-3xl overflow-hidden border border-slate-200/90 dark:border-slate-800 shadow-xl bg-slate-950 aspect-[16/7] sm:aspect-[21/8] md:aspect-[24/8] max-h-[340px]">
-                    <img 
-                      src="/og-banner.jpg" 
-                      alt="Akshar PrintShop Pro — Commercial Digital Printing & Precision Finishing" 
-                      className="w-full h-full object-cover object-center"
-                    />
-                  </div>
-                </div>
 
                 {/* Dedicated Custom Printing Configurator Workspace */}
                 <section id="customizer-section" className="w-full max-w-[1880px] 2xl:max-w-[2200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8">
